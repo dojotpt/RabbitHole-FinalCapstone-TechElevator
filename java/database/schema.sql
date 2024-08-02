@@ -10,4 +10,14 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+CREATE TABLE album (
+    album_id serial,
+    title VARCHAR(128) NOT NULL,
+    artist VARCHAR(128) NOT NULL,
+    year INT,
+    genre VARCHAR(28),
+    notes TEXT,
+    createdAt TIMESTAMP
+);
+
 COMMIT TRANSACTION;
