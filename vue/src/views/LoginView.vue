@@ -67,4 +67,11 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+#register {
+  width: 40px;
+  
+}
+#login {
+  background: rgba(94, 65, 36, 0.9);
+}
 </style>
