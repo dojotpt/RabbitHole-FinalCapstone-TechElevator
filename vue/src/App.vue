@@ -2,7 +2,7 @@
   <div id="capstone-app">
     <div class="blurred-background"></div>
     <header>
-      <h1>Rabbit Hole</h1>
+      <h1 class="title">Rabbit Hole</h1>
       <form action="/search" method="get" class="search-form">
   <input type="search" id="search" name="q" placeholder="Search Collections">
   <button id="search-button">
@@ -48,6 +48,9 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+#login ,#register {
+  border: 2px solid black;
+}
 
 
 /* Add styles for your header here */
@@ -83,19 +86,48 @@ header {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  border-bottom:  2px solid black;
 }
 #header-buttons {
   display: flex;
   gap: 10px;
 }
-
-h1 {
+.title {
   color: #78c0A8;
   font-family: 'RabbitFont';
   font-size: 90px;
   width: 400px;
   font-weight: 300; /* Use a lighter weight */
+  display: flex;
+  align-items: center;
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
+h1 {
+  font-family: 'RabbitFont';
+  font-weight: 300;
+  color: #78c0A8;
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+label {
+  margin-right: 0.5rem;
+  color: #FCEBB6;
+  text-shadow: 
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+
+
 
 input[type="search"] {
   height: 46px;
