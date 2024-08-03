@@ -19,28 +19,31 @@ public class JdbcAlbumDao implements AlbumDao {
 
     @Override
     public List<Album> getAll() {
-        final String sql = "Select album_id, title, artist, year, genre, notes, createdat\n" +
-                "\n" +
-                "From album;";
         final List<Album> albums = new ArrayList<>();
+        final String sql = "SELECT album_id, registered_user_id, title, artist, year_released, genre, notes, create_date\n" +
+                "FROM album;";
         try {
-            SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql);
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
-                final Album album = new Album(
-                        results.getInt("album_id"),
-                        results.getString("title"),
-                        results.getString("artist"),
-                        results.getInt("year"),
-                        results.getString("genre"),
-                        results.getString("notes"),
-                        results.getString("createdat")
-                );
-                albums.add(album);
+                albums.add(mapRowToAlbum(results));
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("unable to connect to server or database", e);
         }
         return albums;
+    }
+
+    Album mapRowToAlbum(SqlRowSet rowSet) {
+        Album album = new Album();
+        album.setAlbumId(rowSet.getInt("album_id"));
+        album.setRegisteredUserId(rowSet.getInt("registered_user_id"));
+        album.setTitle(rowSet.getString("title"));
+        album.setArtist(rowSet.getString("artist"));
+        album.setYearReleased(rowSet.getInt("year_released"));
+        album.setGenre(rowSet.getString("genre"));
+        album.setNotes(rowSet.getString("notes"));
+        album.setCreateDate(rowSet.getString("create_date"));
+        return album;
     }
 }
 

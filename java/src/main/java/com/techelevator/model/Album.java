@@ -1,20 +1,35 @@
 package com.techelevator.model;
 
 public class Album {
-    private int record_id;
+    private int albumId;
+    private int registeredUserId;
     private String title;
     private String artist;
-    private int year;
+    private int yearReleased;
     private String genre;
     private String notes;
-// how to handle create date?? Local Date Time?
-    public Album(int record_id, String title, String artist, int year, String genre, String notes, String createDate) {
-        this.record_id = record_id;
+    private String createDate;
+
+    public Album(int albumId, int registeredUserId, String title, String artist, int yearReleased, String genre, String notes, String createDate) {
+        this.albumId = albumId;
+        this.registeredUserId = registeredUserId;
         this.title = title;
         this.artist = artist;
-        this.year = year;
+        this.yearReleased = yearReleased;
         this.genre = genre;
         this.notes = notes;
+        this.createDate = createDate;
+    }
+    public Album() {
+
+    }
+
+    public void setAlbumId(int albumId) {
+        this.albumId = albumId;
+    }
+
+    public void setRegisteredUserId(int registeredUserId) {
+        this.registeredUserId = registeredUserId;
     }
 
     public void setTitle(String title) {
@@ -25,8 +40,8 @@ public class Album {
         this.artist = artist;
     }
 
-    public void setRelease_date(int year) {
-        this.year = year;
+    public void setYearReleased(int yearReleased) {
+        this.yearReleased = yearReleased;
     }
 
     public void setGenre(String genre) {
@@ -37,8 +52,16 @@ public class Album {
         this.notes = notes;
     }
 
-    public int getRecord_id() {
-        return record_id;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public int getAlbumId() {
+        return albumId;
+    }
+
+    public int getRegisteredUserId() {
+        return registeredUserId;
     }
 
     public String getTitle() {
@@ -49,8 +72,8 @@ public class Album {
         return artist;
     }
 
-    public int getYear() {
-        return year;
+    public int getYearReleased() {
+        return yearReleased;
     }
 
     public String getGenre() {
@@ -59,5 +82,9 @@ public class Album {
 
     public String getNotes() {
         return notes;
+    }
+
+    public String getCreateDate() {
+        return createDate;
     }
 }
