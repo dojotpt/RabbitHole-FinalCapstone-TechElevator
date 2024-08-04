@@ -112,6 +112,8 @@ label {
   border-radius: 10px;
   text-align: center;
   justify-content: center;
+  border: 2px solid black;
+  
   
 
   

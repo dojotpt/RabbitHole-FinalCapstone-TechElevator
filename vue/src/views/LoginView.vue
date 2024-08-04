@@ -1,5 +1,8 @@
 <template>
+  
+  
   <div class="login-container">
+    <div class="blurred-background"></div>
   <div id="login">
     <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
@@ -29,7 +32,9 @@
 import authService from "../services/AuthService";
 
 export default {
-  components: {},
+  components: {
+    
+  },
   data() {
     return {
       user: {
@@ -64,6 +69,19 @@ export default {
 
 <style scoped>
 
+.blurred-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('src/images/record store.jpeg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+  z-index: -1;
+}
+
 #password{
 margin-left: 3px;
 }
@@ -97,6 +115,7 @@ label {
   width: 370px;
   border-radius: 10px;
   text-align: center;
+  border: 2px solid black;
   
 }
 input{
