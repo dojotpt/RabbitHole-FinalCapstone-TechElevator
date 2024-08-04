@@ -1,28 +1,7 @@
 <template>
   <div id="capstone-app">
-    <div class="blurred-background"></div>
-    <header>
-      <h1 class="title">Rabbit Hole</h1>
-      <form action="/search" method="get" class="search-form">
-  <input type="search" id="search" name="q" placeholder="Search Collections">
-  <button id="search-button">
-    <img id="search-icon" src="src/images/search_.png" alt="Search">
-  </button>
-</form>
-      <nav id="header-buttons">
-        
-        
-        <!-- <button id="browse-collections">Browse Collections</button> -->
-        
-        <button id="header-register" @click="goTo('register')">Register</button>
-
-        <button id="header-login" @click="goTo('login')">Login</button>
-      </nav>
-      <!-- Add any navigation links or other header elements here -->
-    </header>
-    
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
@@ -50,6 +29,9 @@ export default {
 }
 #login ,#register {
   border: 2px solid black;
+}
+#logo {
+  text-decoration: none;
 }
 
 
