@@ -27,11 +27,10 @@ private final UserDao userDao;
         this.userDao = userDao;
     }
 
-
     @GetMapping("mylibrary/{id}")
-    public AlbumResponseDto getAll(@PathVariable int id, Principal principal) {
+    public AlbumResponseDto getLibraryByRegUserId(@PathVariable int id, Principal principal) {
         authHelper(id, principal);
-        final List<Album> albums = this.albumDao.getAll();
+        final List<Album> albums = this.albumDao.getLibraryByRegUserId(id);
         return new AlbumResponseDto(albums);
     }
 

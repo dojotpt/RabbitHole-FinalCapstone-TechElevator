@@ -5,5 +5,6 @@ import com.techelevator.model.Album;
 import java.util.List;
 
 public interface AlbumDao {
-    List<Album> getAll();
+   
+       List<Album> getLibraryByRegUserId(int id);
 }
