@@ -1,3 +1,4 @@
+
 BEGIN TRANSACTION;
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
@@ -15,12 +16,11 @@ INSERT INTO album (registered_user_id, title, artist, year_released, genre, note
 (1, 'Born to Run', 'Bruce Springsteen', 1975, 'Rock', 'Springsteen''s breakthrough album, which solidified his reputation.', NOW()),
 (3, 'The Joshua Tree', 'U2', 1987, 'Rock', 'Widely regarded as U2''s magnum opus, with hits like "With or Without You".', NOW());
 
-<<<<<<< HEAD
+
 INSERT INTO collections (user_id, title, description) VALUES
 (1, 'Summer Jams', 'Songs I like listening to on hot days while taking a drive.'),
 (2, 'The Heaviest Metal', 'So heavy I cant even lift the albums.');
 
 
-=======
->>>>>>> 34aa55b95355744856a9f905235cc4a77a71e250
+
 COMMIT TRANSACTION;

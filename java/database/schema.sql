@@ -1,12 +1,8 @@
 BEGIN TRANSACTION;
 
-<<<<<<< HEAD
 -- Drop tables in the correct order
 DROP TABLE IF EXISTS  users, album, collections;
-=======
-DROP TABLE IF EXISTS album;
-DROP TABLE IF EXISTS users;
->>>>>>> 34aa55b95355744856a9f905235cc4a77a71e250
+
 
 -- Create the users table
 CREATE TABLE users (
@@ -17,7 +13,6 @@ CREATE TABLE users (
     CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
-<<<<<<< HEAD
 -- Create the album table
 CREATE TABLE album (
     album_id SERIAL,
@@ -43,28 +38,14 @@ CREATE TABLE collections (
    
     CONSTRAINT PK_collection PRIMARY KEY (collection_id),
     CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users(user_id)
-=======
 -- registered_users
 -- CONSTRAINT FK_users FOREIGN KEY (users.username)
-
-CREATE TABLE album (
-   album_id serial,
-   registered_user_id int,
-   title VARCHAR(128) NOT NULL,
-   artist VARCHAR(128) NOT NULL,
-   year_released INT,
-   genre VARCHAR(28),
-   notes TEXT,
-   create_date TIMESTAMP,
-   CONSTRAINT PK_album PRIMARY KEY (album_id)
-   --CONSTRAINT FK_users FOREIGN KEY (user_id)
->>>>>>> 34aa55b95355744856a9f905235cc4a77a71e250
 );
 
 
 
-<<<<<<< HEAD
-COMMIT;
-=======
+
+
+
 COMMIT TRANSACTION;
->>>>>>> 34aa55b95355744856a9f905235cc4a77a71e250
+
