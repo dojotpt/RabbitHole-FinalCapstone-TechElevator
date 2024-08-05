@@ -6,9 +6,13 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
+<<<<<<< HEAD
 import MyLibraryView from '../views/MyLibraryView.vue';
 import MyCollectionsView from '../views/MyCollectionsView.vue';
 import MyFriendsView from '../views/MyFriendsView.vue';
+=======
+import LibraryView from '../views/LibraryView.vue';
+>>>>>>> 34aa55b95355744856a9f905235cc4a77a71e250
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -52,6 +56,7 @@ const routes = [
     }
   },
   {
+<<<<<<< HEAD
     path: "/mylibrary",
     name: "my-library",
     component: MyLibraryView,
@@ -71,6 +76,11 @@ const routes = [
     path: "/mycollections",
     name: "my-collections",
     component: MyCollectionsView,
+=======
+    path: "/library",
+    name: "library",
+    component: LibraryView,
+>>>>>>> 34aa55b95355744856a9f905235cc4a77a71e250
     meta: {
       requiresAuth: false
     }
@@ -94,7 +104,7 @@ router.beforeEach((to) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && store.state.token === '') {
-    return {name: "login"};
+    return { name: "login" };
   }
   // Otherwise, do nothing and they'll go to their next destination
 });

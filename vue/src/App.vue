@@ -36,19 +36,22 @@
         
     </header>
     
+    
    
     
     <router-view />
+    
   </div>
+  
 </template>
 
 <script>
+import CollectionService from './services/CollectionService';
+
 export default {
   name: 'App',
   data() {
     return {
-      searchQuery: '',
-      selectedFilter: '',
     };
   },
   computed: {
@@ -60,22 +63,16 @@ export default {
     goTo(routeName) {
       this.$router.push({ name: routeName });
     },
-    handleSearch() {
-      console.log(this.searchQuery);
-      this.$root.$emit('search', this.searchQuery);
-      this.$router.push({ name: 'search', query: { q: this.searchQuery } });
-    },
-    handleFilterChange() {
-      console.log(this.selectedFilter);
-      this.$root.$emit('filter', this.selectedFilter);
-    },
+  
     logout() {
       this.$store.commit('setToken', '');
       this.$store.commit('setUser', null);
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       this.$router.push({ name: 'login' });
-    }
+    },
+     
+    
   }
 }
 </script>
@@ -87,6 +84,7 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+
 .show {
   display: inline-block;
 }

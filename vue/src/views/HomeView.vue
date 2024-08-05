@@ -3,50 +3,40 @@
     <div class="blurred-background"></div>
     <collection-list :collections="collections"/>
   </div>
+  <div class="home-container">        
+   <h1>Home</h1>
+   
+   <h2>Welcome to the Rabbit hole, a place were record collectors, enthusiasts or people who just like cataloging can come and make a digital library of a record collection. </h2>
+
+    <li>As a guest of our website you can browse collections made public by users!</li>
+
+     <li> As a user you can create your own library of up to 25 records  and curate 2 collections and browse friends collections!</li>
+
+     <li>As a Premium user you can have unlimited records in your library and unlimited collections!</li>
+
+     <li>So what are you waiting for how far down the Rabbit Hole do you want to go.</li>
+    
+   </div>
+  
 </template>
 
 <script>
 import CollectionList from '../components/CollectionList.vue';
-import CollectionService from '../services/CollectionService';
+// import CollectionService from '../services/CollectionService';
 
 export default {
   components: {
-    CollectionList
+    
   },
   data() {
     return {
-      collections: [],
-      allCollections: [], // To store the complete list of collections
+      
+      
     };
   },
-  methods: {
-    async getCollections(){
-      try {
-        const response = await CollectionService.list();
-        this.collections = response.data;
-        this.allCollections = response.data; // Store the complete list
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    filterCollections(filterValue) {
-      if (filterValue) {
-        this.collections = this.allCollections.filter(collection => 
-          collection.title.includes(filterValue) || collection.description.includes(filterValue)
-        );
-      } else {
-        this.collections = this.allCollections; // Reset to all collections if no filter
-      }
-    }
-  },
-  // created() {
-  //   getCollections();
-  //   // this.getCollections();
-  //   // this.$root.$on('filter', this.filterCollections);
-  // },
-  beforeDestroy() {
-    this.$root.$off('filter', this.filterCollections);
-  }
+
+  
+
 }
 </script>
 
@@ -54,6 +44,24 @@ export default {
 .home {
   padding: 20px;
 }
+.home-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(94, 65, 36, 0.9);
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    align-items:center;
+    border: black 2px solid;
+    margin: auto; 
+    justify-content: center;
+    font-family: 'RabbitFont';
+  font-weight: 300;
+  color: #78c0A8;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 30px;
+}
+
 
 .blurred-background {
   position: absolute;
