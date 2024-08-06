@@ -8,7 +8,7 @@
       <card id="browse-collections"><img src="src/images/browsecollectionsbutton.png" alt=""></card>
       <card id="about-us"><img src="src/images/recordlgenrecard.png" alt="">about us</card>
       <card id="profile"><img src="src/images/recordlgenrecard.png" alt="">profile</card>
-      <card id="placeholder"><img src="src/images/recordlgenrecard.png" alt="">placehold</card>
+      <card id="placeholder"><img src="src/images/recordlgenrecard.png" alt="">placehol</card>
     </div>
    
   </div>  
@@ -16,7 +16,7 @@
 
 <script>
 import CollectionList from '../components/CollectionList.vue';
-// import CollectionService from '../services/CollectionService';
+
 
 export default {
   components: {
