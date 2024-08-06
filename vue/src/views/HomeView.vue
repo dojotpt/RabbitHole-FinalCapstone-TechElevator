@@ -4,11 +4,13 @@
     
     <collection-list :collections="collections"/>
     <div class="home-container">
-      <card class="collection-card"></card>
+      
       <card id="browse-collections"><img src="src/images/browsecollectionsbutton.png" alt=""></card>
+      <div class="genre-container">
       <card id="about-us"><img src="src/images/recordlgenrecard.png" alt="">about us</card>
-      <card id="profile"><img src="src/images/recordlgenrecard.png" alt="">profile</card>
-      <card id="placeholder"><img src="src/images/recordlgenrecard.png" alt="">placehol</card>
+      <router-link id="my-library-font" :to="{name: 'my-library'}"> <card id="profile"><img src="src/images/recordlgenrecard.png" alt="">profile</card></router-link>
+      <router-link id="my-friends-font" :to="{name: 'my-friends'}"><card id="placeholder"><img src="src/images/recordlgenrecard.png" alt="">placehol</card></router-link>
+    </div>
     </div>
    
   </div>  
@@ -40,16 +42,18 @@ export default {
 }
 .home-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr ;
   grid-template-areas: 
   "collections genre1"
   "collections genre2"
   "collections genre3";   
 grid-auto-rows: auto;
+  
     background-color: black;
     border-radius: 10px;
     width: 100%;
-    height: 130%;
+    height: 50vh;
     align-items:center;
     justify-content: center;
     border: white 2px solid;
@@ -82,36 +86,53 @@ grid-auto-rows: auto;
   grid-area: collections;
   width:fit-content;
   height:fit-content;
-  width: 500px;
-  height: 500px;
+  width: 0px;
+  height: 390px;
   justify-self: center;
 
 }
 #about-us{
   grid-area: genre1;
   border : white 2px solid;
-height: fit-content;
+margin-bottom: 10px;
 font-size: 100px;
-text-align: center;
-width:90%;
+text-align: center;;
+background-image: url('src/images/about-us.avif');
+
+
 }
 #profile{
 grid-area: genre2;
 border : white 2px solid;
 text-align: center;
-height: fit-content;
+
 font-size: 100px;
-width:90%;
+
+background-image: url('src/images/tab-photo2.avif');
+
+;
 
 }
 #placeholder{
   grid-area: genre3;
   border : white 2px solid;
 text-align: center;
-height: fit-content;
+
 font-size: 100px;
-width:90%;
+
+background-image: url('src/images/tab-photo1.avif');
+
 
 }
+.genre-container{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  
+  
+  
+  
+}
+
 
 </style>
