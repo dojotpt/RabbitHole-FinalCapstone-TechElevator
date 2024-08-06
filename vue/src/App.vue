@@ -5,12 +5,12 @@
       <h1 class="title">
         <router-link :to="{name: 'home'}" class="title-link">Rabbit Hole</router-link>
       </h1>
-      <h2 class="my-buttons"> 
+      <!-- <h2 class="my-buttons"> 
          <router-link id="my-library-font" :to="{name: 'my-library'}">My Library </router-link>
          <router-link id="my-collections-font" :to="{name: 'my-collections'}">My Collections </router-link>
          <router-link id="my-friends-font" :to="{name: 'my-friends'}">My Friends </router-link>
-      </h2>
-     <div class="search-bar">
+      </h2> -->
+     <!-- <div class="search-bar">
       <form @submit.prevent="handleSearch" class="search-form">
         <select id="collection-filter" v-model="selectedFilter" @change="handleFilterChange">
         <option value=""></option>
@@ -26,7 +26,7 @@
           <img id="search-icon" src="src/images/search_.png" alt="Search">
         </button>
       </form>
-    </div>
+    </div> -->
       <nav id="header-buttons">
         <button :class="['header-register', { show: !isAuthenticated, hidden: isAuthenticated }]" @click="goTo('register')">Register</button>
         <button :class="['header-login', { show: !isAuthenticated, hidden: isAuthenticated }]" @click="goTo('login')">Login</button>
@@ -95,6 +95,12 @@ export default {
 
 .title{
   grid-area: title;
+  justify-self: baseline;
+  justify-content: center;
+  height: 70px;
+  margin-left: 30px;
+ 
+  
 }
 #collection-filter {
   display: flex;
@@ -111,8 +117,8 @@ export default {
   
 }
 header {
-  background-color: rgba(94, 65, 36, 0.9);
-  height: 120px;
+  background-color: black;
+  height: 70px;
   text-align: left;
   align-content: center;
   padding: 10px;
@@ -121,13 +127,12 @@ header {
   justify-content: space-between;
   position: relative;
   border-bottom: 2px solid black;
+  
 }
 #app-header {
-  background-color: rgba(94, 65, 36, 0.9);
-  height: 180px;
+  background-color: #FCEBB6;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
- 
+  grid-template-columns: 1fr 1fr 1fr; 
   grid-template-areas: 
     "title search buttons"
     "title library buttons"; /* My Library spans all columns at the bottom */
@@ -199,7 +204,8 @@ header {
   width: 400px;
   height: 50%;
   font-weight: 300;
-  text-shadow: -5px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -6px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  border-bottom: ; 
 }
 
 
@@ -280,11 +286,5 @@ button {
   height: auto;
 }
 
-.collection-container {
-  margin-top: 20px;
-  background-color: rgba(94, 65, 36, 0.9); /* Slight background color for visibility */
-  border: #000 solid 2px;
-  border-radius: 10px;
-  width: 400px;
-}
+
 </style>

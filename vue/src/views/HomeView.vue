@@ -1,23 +1,17 @@
 <template>
   <div id="home-view"> 
     <div class="blurred-background"></div>
-    <collection-list :collections="collections"/>
-  </div>
-  <div class="home-container">        
-   <h1>Home</h1>
-   
-   <h2>Welcome to the Rabbit hole, a place were record collectors, enthusiasts or people who just like cataloging can come and make a digital library of a record collection. </h2>
-
-    <li>As a guest of our website you can browse collections made public by users!</li>
-
-     <li> As a user you can create your own library of up to 25 records  and curate 2 collections and browse friends collections!</li>
-
-     <li>As a Premium user you can have unlimited records in your library and unlimited collections!</li>
-
-     <li>So what are you waiting for how far down the Rabbit Hole do you want to go.</li>
     
-   </div>
-  
+    <collection-list :collections="collections"/>
+    <div class="home-container">
+      <card class="collection-card"></card>
+      <card id="browse-collections"><img src="src/images/browsecollectionsbutton.png" alt=""></card>
+      <card id="about-us"><img src="src/images/recordlgenrecard.png" alt="">about us</card>
+      <card id="profile"><img src="src/images/recordlgenrecard.png" alt="">profile</card>
+      <card id="placeholder"><img src="src/images/recordlgenrecard.png" alt="">placehold</card>
+    </div>
+   
+  </div>  
 </template>
 
 <script>
@@ -45,21 +39,28 @@ export default {
   padding: 20px;
 }
 .home-container {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(94, 65, 36, 0.9);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 
+  "collections genre1"
+  "collections genre2"
+  "collections genre3";   
+grid-auto-rows: auto;
+    background-color: black;
     border-radius: 10px;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 130%;
     align-items:center;
-    border: black 2px solid;
-    margin: auto; 
     justify-content: center;
+    border: white 2px solid;
+    margin: auto; 
     font-family: 'RabbitFont';
   font-weight: 300;
   color: #78c0A8;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-size: 30px;
+  
+  
 }
 
 
@@ -69,10 +70,48 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('src/images/record store.jpeg');
+  background-image: url('src/images/recordcollection2.jpeg');
   background-size: cover;
   background-position: center;
-  filter: blur(5px);
+  filter: blur(1px);
   z-index: -1;
 }
+
+#browse-collections{
+  display: flex;
+  grid-area: collections;
+  width:fit-content;
+  height:fit-content;
+  width: 500px;
+  height: 500px;
+  justify-self: center;
+
+}
+#about-us{
+  grid-area: genre1;
+  border : white 2px solid;
+height: fit-content;
+font-size: 100px;
+text-align: center;
+width:90%;
+}
+#profile{
+grid-area: genre2;
+border : white 2px solid;
+text-align: center;
+height: fit-content;
+font-size: 100px;
+width:90%;
+
+}
+#placeholder{
+  grid-area: genre3;
+  border : white 2px solid;
+text-align: center;
+height: fit-content;
+font-size: 100px;
+width:90%;
+
+}
+
 </style>
