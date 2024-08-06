@@ -73,7 +73,7 @@ export default {
     background-color: black;
     border-radius: 10px;
     width: 100%;
-    height: 130%;
+    height: 50vh;
     align-items:center;
     justify-content: center;
     border: white 1px solid;
@@ -206,5 +206,6 @@ background-image: url('src/images/tab-photo-4.avif');
   
 
 }
+
 
 </style>
