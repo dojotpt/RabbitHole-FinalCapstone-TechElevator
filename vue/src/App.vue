@@ -221,6 +221,10 @@ h2 {
   color: #78c0A8;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+p {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+  font-weight: 300;
+color: black;}
 
 label {
   margin-right: 0.5rem;

@@ -15,8 +15,9 @@
                 </div>
 
                 <div class="card" v-for="album in albums" :key="album.id">
+                    
+                    <img v-bind:src="album.albumImage"/>
 
-                    <img src="@/images/vinyl-record_.png" />
                     <div class="text-box">
                         <h2>{{ album.title }}</h2>
                         <p>{{ album.artist }}</p>

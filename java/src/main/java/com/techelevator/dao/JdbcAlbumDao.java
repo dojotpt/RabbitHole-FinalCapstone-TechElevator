@@ -36,7 +36,7 @@ public class JdbcAlbumDao implements AlbumDao {
     @Override
     public List<Album> getLibraryByRegUserId(int id) {
         final List<Album> albums = new ArrayList<>();
-        final String sql = "SELECT album_id, registered_user_id, title, artist, year_released, genre, notes, create_date\n" +
+        final String sql = "SELECT album_id, registered_user_id, title, artist, year_released, genre, notes, album_image, create_date\n" +
                 "FROM album\n" +
                 "WHERE registered_user_id = ?;";
        try {
@@ -60,6 +60,7 @@ public class JdbcAlbumDao implements AlbumDao {
         album.setYearReleased(rowSet.getInt("year_released"));
         album.setGenre(rowSet.getString("genre"));
         album.setNotes(rowSet.getString("notes"));
+        album.setAlbumImage(rowSet.getString("album_image"));
         album.setCreateDate(rowSet.getString("create_date"));
         return album;
     }

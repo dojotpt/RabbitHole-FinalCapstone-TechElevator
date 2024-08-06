@@ -24,6 +24,7 @@ CREATE TABLE album (
     year_released INT,
     genre VARCHAR(28),
     notes TEXT,
+	album_image VARCHAR(256),
     create_date TIMESTAMP,
     CONSTRAINT PK_album PRIMARY KEY (album_id)
     -- Uncomment and add foreign key constraint if needed
