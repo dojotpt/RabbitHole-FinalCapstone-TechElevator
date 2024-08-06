@@ -1,13 +1,10 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: import.meta.env.VITE_REMOTE_API
-});
 
 export default {
 
     getLibraryByRegUserId(id) {
-        return http.get(`/mylibrary/${id}`);
+        return axios.get(`/mylibrary/${id}`);
     },
 
     // addAlbum(album) {
