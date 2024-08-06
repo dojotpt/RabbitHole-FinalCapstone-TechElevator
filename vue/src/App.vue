@@ -3,46 +3,48 @@
     <div class="blurred-background"></div>
     <header id="app-header">
       <h1 class="title">
-        <router-link :to="{name: 'home'}" class="title-link">Rabbit Hole</router-link>
+        <router-link :to="{ name: 'home' }" class="title-link">Rabbit Hole</router-link>
       </h1>
-      <h2 class="my-buttons"> 
-         <router-link id="my-library-font" :to="{name: 'my-library'}">My Library </router-link>
-         <router-link id="my-collections-font" :to="{name: 'my-collections'}">My Collections </router-link>
-         <router-link id="my-friends-font" :to="{name: 'my-friends'}">My Friends </router-link>
+      <h2 class="my-buttons">
+        <router-link id="my-library-font" :to="{ name: 'my-library' }">My Library </router-link>
+        <router-link id="my-collections-font" :to="{ name: 'my-collections' }">My Collections </router-link>
+        <router-link id="my-friends-font" :to="{ name: 'my-friends' }">My Friends </router-link>
       </h2>
-     <div class="search-bar">
-      <form @submit.prevent="handleSearch" class="search-form">
-        <select id="collection-filter" v-model="selectedFilter" @change="handleFilterChange">
-        <option value=""></option>
-        <option value="All">All</option>
-        <option value="value1">Rock</option>
-        <option value="value2">Jazz</option>
-        <option value="value3">Country</option>
-        <option value="value4">Alternative</option>
-       
-      </select>
-        <input type="search" v-model="searchQuery" id="search" name="q" placeholder="Search Collections">
-        <button id="search-button" type="submit">
-          <img id="search-icon" src="src/images/search_.png" alt="Search">
-        </button>
-      </form>
-    </div>
+      <div class="search-bar">
+        <form @submit.prevent="handleSearch" class="search-form">
+          <select id="collection-filter" v-model="selectedFilter" @change="handleFilterChange">
+            <option value=""></option>
+            <option value="All">All</option>
+            <option value="value1">Rock</option>
+            <option value="value2">Jazz</option>
+            <option value="value3">Country</option>
+            <option value="value4">Alternative</option>
+
+          </select>
+          <input type="search" v-model="searchQuery" id="search" name="q" placeholder="Search Collections">
+          <button id="search-button" type="submit">
+            <img id="search-icon" src="@/images/search_.png" alt="Search">
+          </button>
+        </form>
+      </div>
       <nav id="header-buttons">
-        <button :class="['header-register', { show: !isAuthenticated, hidden: isAuthenticated }]" @click="goTo('register')">Register</button>
-        <button :class="['header-login', { show: !isAuthenticated, hidden: isAuthenticated }]" @click="goTo('login')">Login</button>
+        <button :class="['header-register', { show: !isAuthenticated, hidden: isAuthenticated }]"
+          @click="goTo('register')">Register</button>
+        <button :class="['header-login', { show: !isAuthenticated, hidden: isAuthenticated }]"
+          @click="goTo('login')">Login</button>
         <button v-if="isAuthenticated" id="logout" @click="logout()">Logout</button>
         <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
       </nav>
-        
+
     </header>
-    
-    
-   
-    
+
+
+
+
     <router-view />
-    
+
   </div>
-  
+
 </template>
 
 <script>
@@ -63,7 +65,7 @@ export default {
     goTo(routeName) {
       this.$router.push({ name: routeName });
     },
-  
+
     logout() {
       this.$store.commit('setToken', '');
       this.$store.commit('setUser', null);
@@ -71,8 +73,8 @@ export default {
       localStorage.removeItem('user');
       this.$router.push({ name: 'login' });
     },
-     
-    
+
+
   }
 }
 </script>
@@ -93,9 +95,10 @@ export default {
   display: none;
 }
 
-.title{
+.title {
   grid-area: title;
 }
+
 #collection-filter {
   display: flex;
   border-radius: 20px 0 0 20px;
@@ -108,8 +111,9 @@ export default {
   background-size: 40px 40px;
   background-position: center;
   background-repeat: no-repeat;
-  
+
 }
+
 header {
   background-color: rgba(94, 65, 36, 0.9);
   height: 120px;
@@ -122,18 +126,22 @@ header {
   position: relative;
   border-bottom: 2px solid black;
 }
+
 #app-header {
   background-color: rgba(94, 65, 36, 0.9);
   height: 180px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
- 
-  grid-template-areas: 
+
+  grid-template-areas:
     "title search buttons"
-    "title library buttons"; /* My Library spans all columns at the bottom */
-  align-items: center; /* Center elements vertically */
+    "title library buttons";
+  /* My Library spans all columns at the bottom */
+  align-items: center;
+  /* Center elements vertically */
   border-bottom: 2px solid black;
 }
+
 .search-bar {
   grid-area: search;
   align-self: end;
@@ -168,10 +176,11 @@ header {
   gap: 40px;
   justify-content: end;
   align-items: end;
-  
+
 
 }
-.my-buttons{
+
+.my-buttons {
   display: flex;
   grid-area: library;
   font-size: 45px;
@@ -179,10 +188,12 @@ header {
   align-items: end;
   justify-items: end;
 
-  
+
 }
 
-#my-library-font ,#my-collections-font, #my-friends-font {
+#my-library-font,
+#my-collections-font,
+#my-friends-font {
   text-decoration: none;
   color: #78c0A8;
   text-shadow: -5px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -191,7 +202,7 @@ header {
 }
 
 
-.title-link {  
+.title-link {
   text-decoration: none;
   color: #78c0A8;
   font-family: 'RabbitFont';
@@ -203,10 +214,11 @@ header {
 }
 
 
-  
 
 
-h1 , h2 {
+
+h1,
+h2 {
   font-family: 'RabbitFont';
   font-weight: 300;
   color: #78c0A8;
@@ -231,16 +243,22 @@ button {
   cursor: pointer;
   border-radius: 10px;
   opacity: 1;
-}.header-register, .header-login  {
-  background-color: #F07818;
-  
 }
-.header-login:hover, .header-register:hover {
+
+.header-register,
+.header-login {
+  background-color: #F07818;
+
+}
+
+.header-login:hover,
+.header-register:hover {
   background-color: #F0A830;
 
 }
 
-#headerlogin, #browsecollections {
+#headerlogin,
+#browsecollections {
   background-color: #2C2C2C;
   color: white;
   border: 1px white solid;
@@ -282,7 +300,8 @@ button {
 
 .collection-container {
   margin-top: 20px;
-  background-color: rgba(94, 65, 36, 0.9); /* Slight background color for visibility */
+  background-color: rgba(94, 65, 36, 0.9);
+  /* Slight background color for visibility */
   border: #000 solid 2px;
   border-radius: 10px;
   width: 400px;
