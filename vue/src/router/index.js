@@ -24,7 +24,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -52,7 +52,7 @@ const routes = [
     }
   },
   {
-    path: "/mylibrary",
+    path: "/mylibrary/",
     name: "my-library",
     component: MyLibraryView,
     meta: {
@@ -70,7 +70,7 @@ const routes = [
   {
     path: "/mycollections",
     name: "my-collections",
-    component: MyCollectionsView,
+    component: MyCollectionsView
   }
 ];
 

@@ -16,18 +16,9 @@
     props: {
     collections: {
       type: Array,
-      required: true,
-      
-      
+      required: true
      }
-        
-        
     }
-  
-  
-      
-    
-   
   }
   
   </script >

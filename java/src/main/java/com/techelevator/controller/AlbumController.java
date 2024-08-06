@@ -16,7 +16,6 @@ import java.security.Principal;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
-//@RequestMapping("/mylibrary")
 @CrossOrigin
 public class AlbumController {
 private final AlbumDao albumDao;

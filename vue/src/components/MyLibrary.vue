@@ -1,107 +1,74 @@
 <template>
     <div id="main-container">
        
-        <div id="collection-container">
-            <ul id="list-container">
-                <li class="item">
-                    <img src="placeholder.jpg" alt="record" />
-                <div class="details">
-                    <p>Album Title</p>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
+        <div id="album-container">
+            <ul>
+                <li>
+                    <button>Add Record</button>
                 </li>
-                <li class="item">
-                    <img src="placeholder.jpg" alt="record" />
-                <div class="details">
-                    <p>Album Title</p>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-                </li>
-                <li class="item">
-                    <img src="placeholder.jpg" alt="record" />
-                <div class="details">
-                    <p>Album Title</p>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-                </li>
-                <li class="item">
-                    <img src="placeholder.jpg" alt="record" />
-                <div class="details">
-                    <p>Album Title</p>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-                </li>
-                <li class="item">
-                    <img src="placeholder.jpg" alt="record" />
-                <div class="details">
-                    <p>Album Title</p>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-                </li>
-                <li class="item">
-                    <img src="placeholder.jpg" alt="record" />
-                <div class="details">
-                    <p>Album Title</p>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-                </li>
-            </ul>
+                <li v-for="album in album" :key="album.id">
+            <h1>{{ album.title }}</h1>
+            <p>{{ album.artist }}</p>
+            <p>{{ album.genre }}</p>
+            <div class="button-container">
+                <button>Edit Record</button>
+                <button>Delete Record</button>
+            </div>
+            </li>
+        </ul>
         </div>
     </div>
 </template>
 
 <script>
+import MyLibraryService from '../services/MyLibraryService';
     export default {
-        components: {
-            
-        }
+        data() {
+            return {
+               
+            }
+        },
+        computed: {
+            albums() {
+                return this.$store.album.albums;
+            }
+        },
+
+    created() {
+        MyLibraryService.getLibrary()
+        .then( (response) => {
+            const myLibrary = response.data;
+            this.$store.commit('SET_LIBRARY', myLibrary);
+        })
+        // commit takes mutation and payload
+        /* revisit error
+        */
+        .catch(error => {
+            console.error(error);
+        });
+    }
     }
 </script>
 
 <style scoped>
 #main-container {
-   
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(94, 65, 36, 0.9);
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    align-items:center;
+    border: black 2px solid;
+    margin: auto; 
+    justify-content: center;
 }
 
-#library-nav-container {
 
+#album-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-#library-nav-container button {
-   
-}
-
-#collection-container {
-
-}
-
-.list-container {
-
-}
-
-.item {
-
-}
-
-.item img {
-
-}
-
-.details {
-
-}
-
-.details p {
-
-}
-
-.details button {
-
-}
 </style>

@@ -23,6 +23,9 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      SET_LIBRARY(state, mylibrary) {
+        state.mylibrary = mylibrary;
       }
     },
   });
