@@ -40,7 +40,9 @@
    
     
     <router-view />
-    
+    <footer>this is the footer <i class="fa-brands fa-facebook" style="color: #74C0FC;"></i>
+      <i class="fa-brands fa-twitter" style="color: #74C0FC;"></i>
+    </footer>
   </div>
   
 </template>
@@ -85,6 +87,16 @@ export default {
   font-style: normal;
 }
 
+footer{
+  background-color: #FCEBB6;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  border-top: 2px solid black;
+  height: 70px; 
+  margin-top: auto; 
+}
+
 .show {
   display: inline-block;
 }
@@ -127,8 +139,8 @@ header {
   justify-content: space-between;
   position: relative;
   border-bottom: 2px solid black;
-  
 }
+
 #app-header {
   background-color: #FCEBB6;
   display: grid;

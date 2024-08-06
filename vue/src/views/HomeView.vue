@@ -36,6 +36,7 @@
    
 
   </div>  
+  
 </template>
 
 <script>
@@ -60,30 +61,34 @@ export default {
 
 <style scoped>
 
+
 .home {
   padding: 20px;
 }
 .home-container {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: 1.3fr 2fr;
   grid-template-areas: 
   "collections genre1"
   "collections genre2"
   "collections genre3";   
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.75);
     border-radius: 10px;
-    width: 100%;
+    width: 98.94%;
     height: 50vh;
     align-items:center;
     justify-content: center;
-    border: white 1px solid;
-    margin: auto; 
+    border: 2PX #FCEBB6 solid;
+    margin: 10px; 
+    margin-top: 20px;
     font-family: 'RabbitFont';
-  font-weight: 300;
-  color: #78c0A8;
-  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  font-size: 25px;
-  
+    font-weight: 300;
+    color: #78c0A8;
+    text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 25px;
+    align-content: center;
+    box-shadow: black 0px 0px 100px;
+    
   
   
 }
@@ -98,7 +103,7 @@ export default {
   background-image: url('src/images/recordcollection2.jpeg');
   background-size: cover;
   background-position: center;
-  filter: blur(2px);
+  filter: blur(4px);
   z-index: -1;
   
 }
@@ -110,31 +115,42 @@ export default {
   grid-area: collections;
   width: 500px;
   height: 500px;
-  border: 1PX white solid;
+  border: 2PX #FCEBB6 solid;
   border-radius: 7PX;
   background-image: url('src/images/browsecollectionsbutton.png');
   background-size: cover;
   background-position: center;
   justify-self: self-end;
-  margin-right: 10px;
+  margin-right: 12px;
   color: white;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-size: 60px;
-  
+  ;
   
   
  }
  .card-text {
-  
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 7px; 
+  border-radius: 5px;
   font-size: 60px;
   
+}
+#placeholder .card-text{
+  backdrop-filter: blur(3px); 
+  
+}
+#about-us .card-text{
+ backdrop-filter: blur(3px); 
+  
+}
+#profile .card-text{
+  backdrop-filter: blur(3px); 
+
 }
   
   
@@ -149,38 +165,40 @@ export default {
   background-size: cover;
   background-position: center;
   grid-area: genre1;
-  border : white 1px solid;
+  border: 2PX #FCEBB6 solid;
   font-size: 80px;
   text-align: center;
-  width:90%;
+  width:70%;
   text-decoration: none;
-  height: 76%;
+  height: 90%;
   border-radius: 7PX;
   color: white;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   align-self: end;
+  margin-bottom: 10px;
   
 }
 #profile{
   display: flex;
   align-items: center;
   justify-content: center;
-grid-area: genre2;
-border : white 1px solid;
-text-align: center;
-height: fit-content;
-font-size: 80px;
-width:90%;
-background-image: url('src/images/tab-photo-4.avif');
+  grid-area: genre2;
+  border: 2PX #FCEBB6 solid;
+  text-align: center;
+  height: fit-content;
+  font-size: 80px;
+  width:70%;
+  background-image: url('src/images/tab-photo-4.avif');
   background-size: 80%;
   background-position: center;
   background-position-y: -85px;
-  
+  margin-top: px;
   border-radius: 7PX;
   color: white;
-  height: 76%;
+  height: 96%;
   text-decoration: none;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
   
 
 }
@@ -189,20 +207,21 @@ background-image: url('src/images/tab-photo-4.avif');
   display: flex;
   align-items: center;
   justify-content: center;
-  border : white 1px solid;
+  border: 2PX #FCEBB6 solid;
   text-align: center;
-  height: fit-content;
   font-size: 80px;
-  width:90%;
+  width:70%;
   background-image: url('src/images/tab-photo3.avif');
   background-size: cover;
   background-position: center;
   border-radius: 7PX;
   color: white;
-  height: 76%;
+  height: 90%;
   text-decoration: none;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   align-self: start;
+  box-shadow: 0 0 0 0px #FF6347;
+  margin-top: 10px;
   
 
 }
