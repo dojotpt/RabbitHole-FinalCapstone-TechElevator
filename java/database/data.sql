@@ -15,4 +15,9 @@ INSERT INTO album (registered_user_id, title, artist, year_released, genre, note
 (1, 'Born to Run', 'Bruce Springsteen', 1975, 'Rock', 'Springsteen''s breakthrough album, which solidified his reputation.', NOW()),
 (3, 'The Joshua Tree', 'U2', 1987, 'Rock', 'Widely regarded as U2''s magnum opus, with hits like "With or Without You".', NOW());
 
+INSERT INTO collections (user_id, title, description) VALUES
+(1, 'Summer Jams', 'Songs I like listening to on hot days while taking a drive.'),
+(2, 'The Heaviest Metal', 'So heavy I cant even lift the albums.');
+
+
 COMMIT TRANSACTION;

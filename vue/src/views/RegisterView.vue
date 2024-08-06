@@ -1,4 +1,5 @@
 <template>
+  <div class="register-container">
   <div id="register" class="text-center">
     <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
@@ -10,17 +11,23 @@
         <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
-        <label for="password">Password</label>
+        <label id="passwordText" for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
-        <label for="confirmPassword">Confirm Password</label>
+        <label id="confirmText" for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
+      <div>
+        <label for="premium">Premium</label>
+        <input  type="checkbox" id="premium" v-model="user.role">
+        
+      </div>
+      <button class="form-button" type="submit">Create Account</button>
       <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -73,10 +80,48 @@ export default {
 </script>
 
 <style scoped>
+
+#confirmPassword{
+ margin-right: 56px;
+}
+#password{
+margin-left: 3px;
+}
+.form-button{
+  background-color: #F0A830;
+  margin-top: 20px;
+}
+
+.form-button:hover{
+  background-color: #F07818;
+}
 .form-input-group {
   margin-bottom: 1rem;
+}
+.register-container {
+  display: flex;
+  justify-content: flex-end;
 }
 label {
   margin-right: 0.5rem;
 }
+#register {
+  display: flex;
+  background: rgba(94, 65, 36, 0.9);
+  width: 370px;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  border: 2px solid black;
+  
+  
+
+  
+}
+input{
+  background-color: #FCEBB6;
+  border-radius: 5px;
+}
+
+
 </style>
