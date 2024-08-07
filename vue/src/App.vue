@@ -28,15 +28,15 @@
       </form>
     </div>
       <nav id="header-buttons">
-        <button  v-if="!isAuthenticated" :class="['header-register']" @click="goTo('register')">Register</button>
-        <button  v-if="!isAuthenticated" :class="['header-login']" @click="togglePopup('buttonTrigger')">Login</button>
+        <button  v-if="!isAuthenticated" :class="['header-register']" @click="toggleRegisterPopup">Register</button>
+        <button  v-if="!isAuthenticated" :class="['header-login']" @click="togglePopup('login')">Login</button>
         <router-link id="logout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </nav>
         
     </header>
     <body>    
-      <Popup v-if="popupTriggers.buttonTrigger"  @toggle-popup="togglePopup('buttonTrigger')">
-    </Popup>
+      <Popup v-if="popupTriggers.login" @toggle-popup="togglePopup('login')"/>
+    <RegisterPopup v-if="popupTriggers.register" @toggle-popup="toggleRegisterPopup"/>
   </body>
 
 
@@ -56,6 +56,7 @@
 <script>
 
 import Popup from './components/LoginPopup.vue'
+import RegisterPopup from './components/RegisterPopup.vue';
 
 
 
@@ -64,12 +65,15 @@ export default {
 
 
   components: {
-    Popup
+    Popup,
+    RegisterPopup
   },
   data () {
     return {
-      popupTriggers:{
-        buttonTrigger: false,
+
+      popupTriggers: {
+        login: false,
+        register: false
       }
     }
   },
@@ -92,9 +96,12 @@ export default {
       localStorage.removeItem('user');
       this.$router.push({ name: 'login' });
     },
-    togglePopup (trigger){
+     togglePopup(trigger) {
       this.popupTriggers[trigger] = !this.popupTriggers[trigger];
-    }    
+    },
+    toggleRegisterPopup() {
+      this.popupTriggers.register = !this.popupTriggers.register;
+    }
   }
 }
 </script>

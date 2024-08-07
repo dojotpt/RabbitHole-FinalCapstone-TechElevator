@@ -3,29 +3,20 @@
         <div class="blurred-background"></div>
     <div class="collections-container">
         <h1>Collections View</h1>
-        <collection-list :collections="collections"/>
+        <collection-list ></collection-list>
     </div>
 </div>
 </template>
 
 <script>
 import CollectionList from '../components/CollectionList.vue'
-
-
-  export default {
-  components:{ 
-    CollectionList },
-  data() {
-    return {
-      // Sample data. Replace this with actual data fetching if needed.
-      collections: [
-        { id: 1, title: "Collection 1" },
-        { id: 2, title: "Collection 2" },
-        { id: 3, title: "Collection 3" }
-      ]
+    export default {
+     components:
+     {CollectionList,
     }
+  
   }
-}
+
 
 
 </script>

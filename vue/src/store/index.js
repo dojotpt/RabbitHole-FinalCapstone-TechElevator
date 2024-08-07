@@ -23,8 +23,12 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      SET_COLLECTIONS(state,collections) {
+        state.collections = collections;
       }
     },
   });
-  return store;
+  
+     return store;
 }

@@ -4,21 +4,34 @@
     <div>
     <ul>
       <li v-for="collection in collections" :key="collection.id" class="collection">
-        {{ collection.title }}
+        {{ collection.name }}
       </li>
     </ul>
   </div>
   </template>
   
   <script>
+import CollectionService from '../services/CollectionService';
+
   
   
   export default {
-    props: {
-    collections: {
-      type: Array,
-      required: true,
-     }   
+
+    computed: {
+      collections() {
+        return this.$store.state.collections
+      }
+    },
+
+    created() {
+      CollectionService.getAllCollections()
+      .then((response) => {
+        const results = response.data;
+        this.$store.commit('SET_COLLECTIONS', results.collections);        
+      })
+      .catch(error => {
+        console.error(error);
+      });
     }
   }
   

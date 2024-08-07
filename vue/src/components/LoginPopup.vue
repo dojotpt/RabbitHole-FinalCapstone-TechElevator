@@ -20,10 +20,10 @@
               <label for="password">Password</label>
               <input type="password" id="password" v-model="user.password" required />
             </div>
-            <button class="form-button" @click="handleClose">Cancel</button>
+            <button class="form-button-cancel" @click="handleClose">Cancel</button>
             <button class="form-button" type="submit" @click="loginAndClose"> Sign in </button>
             <p>
-              <router-link id="hyperlink" :to="{ name: 'register' }">Need an account? Sign up.</router-link>
+              <!-- <router-link id="hyperlink" :to="{ name: 'register' }">Need an account? Sign up.</router-link> -->
             </p>
           </form>
         </div>
@@ -97,7 +97,21 @@ export default {
   width: 100%;
 }
 
+.form-button-cancel {
+    margin-right: 20px;
+    font-family: "Caprasimo", sans-serif;
+  font-weight: 400;
+  background-color: #f07818;
+  font-size: large;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #fcebb6;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .form-button {
+  
   font-family: "Caprasimo", sans-serif;
   font-weight: 400;
   background-color: #f07818;
@@ -151,4 +165,5 @@ input {
   background-color: #fcebb6;
   border-radius: 5px;
 }
+
 </style>
