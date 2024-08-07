@@ -8,15 +8,18 @@
                     <img src="@/images/vinyl-record_.png" />
                     <h2>Add a New Record</h2>
                     <div class="text-box">
-                        <p>....</p>
-                        <p>....</p>
+                        <p>artist name</p>
+                        <p>genre</p>
                     </div>
-                    <button class="add-record-button">Add Record</button>
+                    <div class="button-container">
+                        <button class="add-record-button"><img id="add-record-button-img"
+                                src="@/images/sign-plus-square-fill_.png"></button>
+                    </div>
                 </div>
 
                 <div class="card" v-for="album in albums" :key="album.id">
-                    
-                    <img v-bind:src="album.albumImage"/>
+
+                    <img id="card-img" v-bind:src="album.albumImage" />
 
                     <div class="text-box">
                         <h2>{{ album.title }}</h2>
@@ -110,15 +113,29 @@ h2 {
     margin: 20px;
 }
 
+button {
+    background-color: #78c0A8;
+}
+
 .add-record-button {
     display: flex;
-    margin-left: 70px;
+    justify-content: center;
+}
+
+#add-record-button-img {
+    display: flex;
+    width: 35px;
     justify-content: center;
 }
 
 .card img {
     width: 100%;
-    height: 45%;
+}
+
+#card-img {
+    height: 250px;
+    border-radius: 2.5%;
+
 }
 
 #edit-button img {
