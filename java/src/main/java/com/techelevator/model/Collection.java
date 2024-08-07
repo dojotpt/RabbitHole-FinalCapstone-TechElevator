@@ -1,42 +1,52 @@
 package com.techelevator.model;
 
+
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Collection {
-    private int id;
-
+    private int collection_id;
     private int user_id;
-
-    private String title;
-
+    private String name;
     private String description;
+    private Boolean notPublic;
+    private Timestamp createDate;
 
-    private Boolean shared;
 
-    public Collection(int id, int user_id, String title, String description, Boolean shared) {
-        this.id = id;
-        this.user_id = user_id;
-        this.title = title;
+    public Collection( int collectionId, int userId, String name, Boolean notPublic, String description, Timestamp createDate) {
+        this. collection_id = collectionId;
+        this.user_id = userId;
+        this.name = name;
+        this.notPublic = notPublic;
         this.description = description;
-        this.shared = shared;
+        this.createDate = createDate;
     }
 
 
-    public int getId() {
-        return id;
-    }
 
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Boolean getShared() {
-        return shared;
+    public Boolean getNotPublic() {
+        return notPublic;
+    }
+
+    public Timestamp getCreateDate() {
+        return createDate;
+    }
+
+    public int getCollection_id() {
+        return collection_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
     }
 }
+
+

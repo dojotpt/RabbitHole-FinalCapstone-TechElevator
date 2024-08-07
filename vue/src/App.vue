@@ -1,5 +1,6 @@
 <template>
   <div id="capstone-app">
+
     <header id="app-header">
       <h1 class="title">
         <router-link :to="{name: 'home'}" class="title-link">Rabbit H<i class="fa-solid fa-compact-disc"></i>le</router-link>
@@ -42,6 +43,12 @@
     
    
     
+
+    <div id="nav">
+      
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+    </div>
+
     <router-view />
     <footer> <p class="company-info">Contact Us | 1-800-339-6887 | 1776 Paper St, Springfield</p> 
       <i class="logo"> <img class="logo-image" src="src/images/rabbit_.png" alt="logo"></i>
@@ -124,6 +131,9 @@ export default {
   height: 50px; 
   object-fit: contain;
   color: grey;
+}
+#logo {
+  text-decoration: none;
 }
 
 
