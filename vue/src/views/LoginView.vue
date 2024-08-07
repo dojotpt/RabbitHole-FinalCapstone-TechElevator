@@ -96,7 +96,7 @@ margin-left: 3px;
 .login-container {
   display: flex;
   justify-content: flex-end;
-/* Full viewport height */
+
 }
 .form-input-group {
   margin-bottom: 1rem;

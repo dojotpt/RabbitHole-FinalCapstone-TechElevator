@@ -7,30 +7,29 @@
         </div>
 
         <div id="browse-collections" class="card">
-          <div class="card-text">Browse Collections</div>
+          <a href="login" class="card-text">Browse Collections</a>
         </div>
 
         <div class="collection-card">
         </div>
 
         <div id="about-us" class="card">
-          <div class="card-text">About Us</div>
+          <a href="" class="card-text">About Us</a>
         </div>
 
         <div class="collection-card">
         </div>
 
         <div id="profile" class="card">
-          <div class="card-text">Profile</div>
+          <a href="" class="card-text">Profile</a>
         </div>
 
         <div class="collection-card">
         </div>
 
         <div id="placeholder" class="card">
-          <div class="card-text">Placeholder</div>
+          <a href="" class="card-text">Placeholder</a>
         </div>
-      
       
     </div>
    
@@ -40,11 +39,12 @@
 </template>
 
 <script>
-import CollectionList from '../components/CollectionList.vue';
+
 
 
 export default {
   components: {
+    
     
   },
   data() {
@@ -60,6 +60,13 @@ export default {
 </script>
 
 <style scoped>
+#home-view {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
 
 
 .home {
@@ -71,16 +78,11 @@ export default {
   grid-template-areas: 
   "collections genre1"
   "collections genre2"
-  "collections genre3";   
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 10px;
-    width: 98.94%;
+  "collections genre3";    
+    width: 100%;
     height: 50vh;
     align-items:center;
-    justify-content: center;
-    border: 2PX #FCEBB6 solid;
-    margin: 10px; 
-    margin-top: 20px;
+    justify-content: center;   
     font-family: 'RabbitFont';
     font-weight: 300;
     color: #78c0A8;
@@ -100,7 +102,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('src/images/recordcollection2.jpeg');
+  background-image: linear-gradient(hwb(28 5% 89% / 0.247),hwb(29 9% 81% / 0.5) ), url('src/images/recordcollection2.jpeg');
   background-size: cover;
   background-position: center;
   filter: blur(4px);
@@ -122,6 +124,7 @@ export default {
   background-position: center;
   justify-self: self-end;
   margin-right: 12px;
+  
   color: white;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-size: 60px;
@@ -130,6 +133,8 @@ export default {
   
  }
  .card-text {
+  font-family: "Caprasimo",sans-serif;
+  font-weight: 400; 
   width: 100%;
   height: 100%;
   backdrop-filter: blur(5px);
@@ -137,7 +142,11 @@ export default {
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  font-size: 60px;
+  font-size: 40px;
+  text-decoration: none;
+  color:  #FCEBB6;
+  /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+
   
 }
 #placeholder .card-text{

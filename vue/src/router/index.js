@@ -6,10 +6,11 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
-
 import MyLibraryView from '../views/MyLibraryView.vue';
 import MyCollectionsView from '../views/MyCollectionsView.vue';
 import MyFriendsView from '../views/MyFriendsView.vue';
+import LoginPopup from '../components/LoginPopup.vue';
+
 
 
 /**
@@ -59,7 +60,7 @@ const routes = [
     name: "my-library",
     component: MyLibraryView,
     meta: {
-      requiresAuth: true
+      requiresAuth: true  
     }
   },
   {
