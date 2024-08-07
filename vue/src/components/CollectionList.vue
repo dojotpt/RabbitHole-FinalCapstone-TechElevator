@@ -3,7 +3,7 @@
 <template>
     <div>
     <ul>
-      <li v-for="collection in collections" :key="collection.id">
+      <li v-for="collection in collections" :key="collection.id" class="collection">
         {{ collection.title }}
       </li>
     </ul>
@@ -18,17 +18,8 @@
     collections: {
       type: Array,
       required: true,
-      
-      
-     }
-        
-        
+     }   
     }
-  
-  
-      
-    
-   
   }
   
   </script >

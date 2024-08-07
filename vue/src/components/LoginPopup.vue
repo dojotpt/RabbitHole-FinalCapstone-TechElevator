@@ -21,7 +21,7 @@
               <input type="password" id="password" v-model="user.password" required />
             </div>
             <button class="form-button" @click="handleClose">Cancel</button>
-            <button class="form-button" type="submit">Sign in</button>
+            <button class="form-button" type="submit" @click="loginAndClose"> Sign in </button>
             <p>
               <router-link id="hyperlink" :to="{ name: 'register' }">Need an account? Sign up.</router-link>
             </p>
@@ -71,11 +71,12 @@ export default {
           }
         });
     },
+   loginAndClose() {
+     this.login();
+     this.$emit('toggle-popup');
+   }
 
-    loginAndClose() {
-      this.login(); // Call the login method
-      this.handleClose(); // Call the handleClose method
-    }
+   
   }
 };
 </script>

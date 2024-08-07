@@ -38,16 +38,7 @@
       <Popup v-if="popupTriggers.buttonTrigger"  @toggle-popup="togglePopup('buttonTrigger')">
     </Popup>
   </body>
-  
-    
-    
-   
-    
 
-    <div id="nav">
-      
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-    </div>
 
     <router-view />
     <footer> <p class="company-info">Contact Us | 1-800-339-6887 | 1776 Paper St, Springfield</p> 

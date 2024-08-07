@@ -33,9 +33,9 @@ CREATE TABLE collections (
     collection_id SERIAL,
     user_id INT,
     title VARCHAR(128) NOT NULL,
-    description VARCHAR(256) NOT NULL,
     shared BOOLEAN DEFAULT false,
-   
+    description VARCHAR(256) NOT NULL,
+    create_date TIMESTAMP,
     CONSTRAINT PK_collection PRIMARY KEY (collection_id),
     CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users(user_id)
 -- registered_users

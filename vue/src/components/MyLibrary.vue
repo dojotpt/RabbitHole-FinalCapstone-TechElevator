@@ -12,7 +12,7 @@
                     <h1>{{ album.title }}</h1>
                     <p>{{ album.artist }}</p>
                     <p>{{ album.genre }}</p>
-            <div class="card-container">
+                <div class="card-container">
                 <div class="card">
                     <img src="@/images/vinyl-record_.png" />
                     <h2>Add a New Record</h2>
@@ -22,9 +22,10 @@
                     </div>
                     <button class="add-record-button">Add Record</button>
                 </div>
+                </div>
             
 
-                <div class="card" v-for="album in albums" :key="album.id">
+                <div class="card" v-for="album in albums" :key="album.id"></div>
 
                     <img src="@/images/vinyl-record_.png" />
                     <div class="text-box">
@@ -46,10 +47,15 @@
    
 
 </template>
+<script>
+
+
+
+
 </script>
 
 <style scoped>
-#main-container {
+
 #my-library-container {
     display: flex;
     flex-direction: column;
@@ -61,7 +67,7 @@
 }
 
 
-#album-container {
+
 
 .card-container {
     display: flex;
