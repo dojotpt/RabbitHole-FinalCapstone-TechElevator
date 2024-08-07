@@ -7,7 +7,7 @@ import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import MyLibraryView from '../views/MyLibraryView.vue';
-import MyCollectionsView from '../views/MyCollectionsView.vue';
+import CollectionsView from '../views/CollectionsView.vue';
 import MyFriendsView from '../views/MyFriendsView.vue';
 
 /**
@@ -68,9 +68,13 @@ const routes = [
     }
   },
   {
-    path: "/mycollections",
-    name: "my-collections",
-    component: MyCollectionsView
+    path: "/collections",
+    name: "collections",
+    component: CollectionsView,
+    meta: {
+      requiresAuth: false
+    }
+
   }
 ];
 

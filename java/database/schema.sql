@@ -1,10 +1,7 @@
 BEGIN TRANSACTION;
 
-
 -- Drop tables in the correct order
-DROP TABLE IF EXISTS collections;
-DROP TABLE IF EXISTS album;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS  users, album, collections;
 
 -- Create the users table
 CREATE TABLE users (

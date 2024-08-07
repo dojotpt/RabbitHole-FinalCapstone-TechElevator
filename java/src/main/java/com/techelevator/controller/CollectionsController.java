@@ -22,6 +22,6 @@ public class CollectionsController {
 
     @GetMapping("/collections")
     public List<Collection> getAll(){
-        return this.collectionDao.getAll();
+        return this.collectionDao.getAllCollections();
     }
 }

@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface CollectionDao {
 
-    List<Collection> getAll();
+
+
+    List<Collection> getAllCollections();
+
 }

@@ -1,7 +1,6 @@
 <template>
 
     <div id="my-library-container">
-
         <div id="album-container">
             <div class="card-container">
                 <div class="card">
@@ -18,9 +17,7 @@
                 </div>
 
                 <div class="card" v-for="album in albums" :key="album.id">
-
                     <img id="card-img" v-bind:src="album.albumImage" />
-
                     <div class="text-box">
                         <h2>{{ album.title }}</h2>
                         <p>{{ album.artist }}</p>
@@ -38,6 +35,7 @@
 
 <script>
 import MyLibraryService from '../services/MyLibraryService';
+
 export default {
     data() {
         return {
@@ -59,10 +57,6 @@ export default {
             .catch(error => {
                 console.error(error);
             });
-        // commit takes mutation and payload
-        /* revisit error
-        */
-
     }
 }
 </script>
@@ -81,8 +75,6 @@ export default {
     justify-content: center;
     list-style-type: none;
 }
-
-
 
 .card-container {
     display: flex;
@@ -135,7 +127,30 @@ button {
 #card-img {
     height: 250px;
     border-radius: 2.5%;
+}
 
+h2 {
+    text-align: center;
+}
+
+.text-box p {
+    padding-left: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+.add-record-button {
+    display: flex;
+    margin-left: 70px;
+    justify-content: center;
+}
+
+.card img {
+    width: 100%;
 }
 
 #edit-button img {

@@ -1,3 +1,4 @@
+
 BEGIN TRANSACTION;
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
@@ -18,6 +19,5 @@ INSERT INTO album (registered_user_id, title, artist, year_released, genre, note
 INSERT INTO collections (user_id, title, description) VALUES
 (1, 'Summer Jams', 'Songs I like listening to on hot days while taking a drive.'),
 (2, 'The Heaviest Metal', 'So heavy I cant even lift the albums.');
-
 
 COMMIT TRANSACTION;
