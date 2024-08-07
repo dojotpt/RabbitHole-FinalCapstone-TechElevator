@@ -232,7 +232,7 @@ header {
   overflow: hidden;
 }
 
-.blurred-background {
+/* .blurred-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -243,7 +243,7 @@ header {
   background-position: center;
   filter: blur(5px);
   z-index: -1;
-}
+} */
 
 
 

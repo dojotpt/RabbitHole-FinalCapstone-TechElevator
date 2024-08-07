@@ -7,7 +7,7 @@
         </div>
 
         <div id="browse-collections" class="card">
-          <a href="login" class="card-text">Browse Collections</a>
+          <a href="collections" class="card-text">Browse Collections</a>
         </div>
 
         <div class="collection-card">
