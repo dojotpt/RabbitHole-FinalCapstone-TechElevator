@@ -118,6 +118,7 @@ h2 {
 
 .card img {
     width: 100%;
+    height: 45%;
 }
 
 #edit-button img {

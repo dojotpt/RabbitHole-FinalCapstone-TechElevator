@@ -27,7 +27,6 @@ CREATE TABLE album (
 	album_image VARCHAR(256),
     create_date TIMESTAMP,
     CONSTRAINT PK_album PRIMARY KEY (album_id),
-    -- Uncomment and add foreign key constraint if needed
     CONSTRAINT FK_registered_user FOREIGN KEY (registered_user_id) REFERENCES users(user_id)
 );
 
