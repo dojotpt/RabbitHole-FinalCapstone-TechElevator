@@ -24,10 +24,6 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
 
-
-
-
-
     @Override
     public List<Collection> getAllCollections() {
         final String sql = "select * from collections"; ;

@@ -45,6 +45,10 @@
                         <label for="album_image">Url for Album Image</label>
                         <input id="album_image" type="text" />
                     </div>
+                    <div class="actions">
+                        <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
+                        <button type="submit" v-on:click="saveDocument()">Save Document</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,6 +60,13 @@
 import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {
+
+    methods: {
+        cancel() {
+            this.$router.push({ name: "my-library" });
+        },
+
+}
 
 }
 </script>
