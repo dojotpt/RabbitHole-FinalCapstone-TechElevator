@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface AlbumDao {
        List<Album> getLibraryByRegUserId(int id);
-       Album addAlbum (Album album);
+       Album createAlbum(Album album);
        Album getAlbumById(int album_id);
+       List<Album> getAlbumsByCollectionId(int id /*id is collection id*/);
+
 }

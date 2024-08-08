@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
 -- Drop tables in the correct order
-DROP TABLE IF EXISTS  users, album, collections;
+DROP TABLE IF EXISTS  album_collections, users, album, collections;
 
 -- Create the users table
 CREATE TABLE users (
@@ -37,8 +37,14 @@ CREATE TABLE collections (
    
     CONSTRAINT PK_collection PRIMARY KEY (collection_id),
     CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users(user_id)
--- registered_users
--- CONSTRAINT FK_users FOREIGN KEY (users.username)
+);
+
+CREATE TABLE album_collections (
+album_id int NOT NULL,
+collection_id int NOT NULL,
+CONSTRAINT PK_album_collections PRIMARY KEY (album_id, collection_id), 
+CONSTRAINT FK_album_collections_album FOREIGN KEY (album_id) REFERENCES album(album_id),
+CONSTRAINT FK_album_collections_collections FOREIGN KEY (collection_id) REFERENCES collections(collection_id)
 );
 
 COMMIT TRANSACTION;
