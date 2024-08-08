@@ -16,6 +16,10 @@ public class JdbcAlbumDao implements AlbumDao {
     public JdbcAlbumDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+    @Override
+    public Album getAlbumById(int album_id) {
+        return null;
+    }
 
     @Override
     public List<Album> getLibraryByRegUserId(int id) {
@@ -33,6 +37,20 @@ public class JdbcAlbumDao implements AlbumDao {
        }
 
         return albums;
+    }
+
+    @Override
+    public Album addAlbum(Album album) {
+        final String sql = "INSERT INTO album(album_id, registered_user_id, title, artist, year_released, genre, notes, album_image, create_date\n)" +
+                    "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)\n" +
+                    "RETURNING album_id;";
+                try {
+                    int newAlbumId = jdbcTemplate.queryForObject(sql, int.class); // what is int.class? --- check for null pointer exception
+                    album = getAlbumById(newAlbumId);
+                } catch (CannotGetJdbcConnectionException e) {
+                    throw new DaoException("Unable to connect to server or database", e);
+                }
+                return album;
     }
 
     Album mapRowToAlbum(SqlRowSet rowSet) {

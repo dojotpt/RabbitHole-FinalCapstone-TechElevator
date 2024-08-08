@@ -2,7 +2,7 @@
 
     <div class="blurred-background"></div>
 
-    <div id="my-library-container">
+    <div class="my-library-container">
         <div id="album-container">
             <div class="card-container">
                 <div class="card">
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style scoped>
-#my-library-container {
+.my-library-container {
     display: flex;
     flex-direction: column;
     background-color: rgba(94, 65, 36, 0.5);
@@ -148,7 +148,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(hwb(28 5% 89% / 0.247), hwb(29 9% 81% / 0.5)), url('src/images/recordcollection2.jpeg');
+    background-image: linear-gradient(hwb(28 5% 89% / 0.247), hwb(29 9% 81% / 0.5)), url('@/images/recordcollection2.jpeg');
     background-size: cover;
     background-position: center;
     filter: blur(4px);

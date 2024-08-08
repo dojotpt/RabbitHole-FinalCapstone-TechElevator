@@ -33,6 +33,13 @@ private final UserDao userDao;
         return new AlbumResponseDto(albums);
     }
 
+    // requiring user id in the path would mean anonymous users can't add an album
+    @PostMapping("mylibrary/{id}")
+    public Album addAlbum(@Valid @RequestBody Album album, @PathVariable int id, Principal principal) {
+        authHelper(id, principal);
+    // null checks here    if ()
+        return albumDao.addAlbum(album);
+    }
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();
         User authenticatedUser = userDao.getUserByUsername(username);

@@ -7,9 +7,9 @@ export default {
         return axios.get(`/mylibrary/${id}`);
     },
 
-    // addAlbum(album) {
-    //     return http.post(`/`, album);
-    // },
+    addAlbum(album) {
+        return http.post(`/mylibrary/${id}`, album);
+    },
 
     // updateAlbum(id, album) {
     //     return http.put(`//${id}`)

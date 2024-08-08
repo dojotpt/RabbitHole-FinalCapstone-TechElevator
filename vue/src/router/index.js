@@ -9,6 +9,7 @@ import RegisterView from '../views/RegisterView.vue';
 import MyLibraryView from '../views/MyLibraryView.vue';
 import CollectionsView from '../views/CollectionsView.vue';
 import MyFriendsView from '../views/MyFriendsView.vue';
+import AddAlbumView from '../views/AddAlbumView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -52,9 +53,17 @@ const routes = [
     }
   },
   {
-    path: "/mylibrary/",
+    path: "/mylibrary",
     name: "my-library",
     component: MyLibraryView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/addAlbum",
+    name: "add-album",
+    component: AddAlbumView,
     meta: {
       requiresAuth: true
     }
