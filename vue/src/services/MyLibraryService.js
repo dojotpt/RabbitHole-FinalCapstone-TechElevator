@@ -11,6 +11,9 @@ export default {
         return http.post(`/mylibrary/${id}`, album);
     },
 
+    viewAlbumCollection(id) {
+        return axios.get(`albumcollection/${id}`)
+    }
     // updateAlbum(id, album) {
     //     return http.put(`//${id}`)
     // },

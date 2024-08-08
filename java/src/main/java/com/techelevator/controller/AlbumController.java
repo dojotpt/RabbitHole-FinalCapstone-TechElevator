@@ -40,13 +40,11 @@ private final UserDao userDao;
     // null checks here    if ()
         return albumDao.createAlbum(album);
     }
-    @GetMapping("albumcollection/{id}")
-    public AlbumResponseDto getAlbumsByCollectionId(@PathVariable int id) {
-        final List<Album> albumCollection = this.albumDao.getAlbumsByCollectionId(id);
+    @GetMapping("albumcollection/{collection_id}")
+    public AlbumResponseDto getAlbumsByCollectionId(@PathVariable int collection_id) {
+        final List<Album> albumCollection = this.albumDao.getAlbumsByCollectionId(collection_id);
         return new AlbumResponseDto(albumCollection);
     }
-
-
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();
         User authenticatedUser = userDao.getUserByUsername(username);

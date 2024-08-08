@@ -29,6 +29,9 @@ export function createStore(currentToken, currentUser) {
       },
       SET_LIBRARY(state, myLibrary) {
         state.myLibrary = myLibrary;
+      },
+      SET_ALBUM_COLLECTION(state, albumcollection) {
+        state.albumcollection = albumcollection;
       }
     },
   });

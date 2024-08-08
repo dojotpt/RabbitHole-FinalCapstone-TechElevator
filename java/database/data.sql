@@ -22,7 +22,7 @@ INSERT INTO collections (user_id, title, description) VALUES
 
  INSERT INTO album_collections (album_id, collection_id) VALUES
  (1, 1),
- (2, 1);
+ (2, 2);
 
 
 COMMIT TRANSACTION;

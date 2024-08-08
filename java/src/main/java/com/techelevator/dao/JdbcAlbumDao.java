@@ -39,14 +39,14 @@ public class JdbcAlbumDao implements AlbumDao {
 
         return albums;
     }
-    public List<Album> getAlbumsByCollectionId(int id /*id is collection id*/) {
+    public List<Album> getAlbumsByCollectionId(int collection_id /*id is collection id*/) {
         final List<Album> albumCollection = new ArrayList<>();
         final String sql = "SELECT a.album_id, registered_user_id, title, artist, year_released, genre, notes, album_image, create_date\n" +
                 "FROM album AS a\n" +
                 "JOIN album_collections AS ac ON a.album_id = ac.album_id\n" +
                 "WHERE ac.collection_id = ?;";
         try {
-            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, collection_id);
             while (results.next()) {
                 albumCollection.add(mapRowToAlbum(results));
             }

@@ -6,9 +6,7 @@ export default {
 
   list() {
     return axios.get('/collections');
-
   },
-
 
 
 }
