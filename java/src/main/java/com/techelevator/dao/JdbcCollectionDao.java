@@ -44,14 +44,12 @@ public class JdbcCollectionDao implements CollectionDao {
                         results.getBoolean("shared"),
                         results.getString("description"),
                         results.getTimestamp("create_date")
-
                 );
                 collections.add(collection);
             }
         }catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         }
-
         return collections;
     }
 
