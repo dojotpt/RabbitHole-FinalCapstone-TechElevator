@@ -8,7 +8,7 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import MyLibraryView from '../views/MyLibraryView.vue';
 import CollectionsView from '../views/CollectionsView.vue';
-import MyFriendsView from '../views/MyFriendsView.vue';
+
 
 
 
@@ -61,15 +61,7 @@ const routes = [
     name: "my-library",
     component: MyLibraryView,
     meta: {
-      requiresAuth: true  
-    }
-  },
-  {
-    path: "/myfriends",
-    name: "my-friends",
-    component: MyFriendsView,
-    meta: {
-      requiresAuth: false
+      requiresAuth: true 
     }
   },
   {

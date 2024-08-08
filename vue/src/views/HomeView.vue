@@ -14,21 +14,23 @@
         </div>
 
         <div id="about-us" class="card">
-          <a href="" class="card-text">About Us</a>
+          <a href="mylibrary" class="card-text">My Library</a>
         </div>
 
         <div class="collection-card">
         </div>
 
-        <div id="profile" class="card">
-          <a href="" class="card-text">Profile</a>
-        </div>
+        <!-- will add later for full functionality after demo -->
+
+        <!-- <div id="profile" class="card">
+          <a href="profile" class="card-text">Profile</a>
+        </div> -->
 
         <div class="collection-card">
         </div>
 
         <div id="placeholder" class="card">
-          <a href="" class="card-text">Placeholder</a>
+          <a href="" class="card-text">My Collections</a>
         </div>
       
     </div>
@@ -40,23 +42,6 @@
 
 <script>
 
-
-
-export default {
-  components: {
-    
-    
-  },
-  data() {
-    return {
-      
-      
-    };
-  },
-
-  
-
-}
 </script>
 
 <style scoped>
@@ -65,10 +50,7 @@ export default {
   height: 100%;
   justify-content: center;
   align-items: center;
-
 }
-
-
 .home {
   padding: 20px;
 }
@@ -89,13 +71,8 @@ export default {
     text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     font-size: 25px;
     align-content: center;
-    box-shadow: black 0px 0px 100px;
-    
-  
-  
+    box-shadow: black 0px 0px 100px; 
 }
-
-
 .blurred-background {
   position: absolute;
   top: 0;
@@ -106,13 +83,9 @@ export default {
   background-size: cover;
   background-position: center;
   filter: blur(4px);
-  z-index: -1;
-  
+  z-index: -1; 
 }
-
-
-#browse-collections{
-  
+#browse-collections{ 
   display: flex;
   grid-area: collections;
   width: 500px;
@@ -124,13 +97,9 @@ export default {
   background-position: center;
   justify-self: self-end;
   margin-right: 12px;
-  
   color: white;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-size: 60px;
-  ;
-  
-  
  }
  .card-text {
   font-family: "Caprasimo",sans-serif;
@@ -145,27 +114,16 @@ export default {
   font-size: 40px;
   text-decoration: none;
   color:  #FCEBB6;
-  /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
-
-  
 }
 #placeholder .card-text{
   backdrop-filter: blur(3px); 
-  
 }
 #about-us .card-text{
  backdrop-filter: blur(3px); 
-  
 }
 #profile .card-text{
-  backdrop-filter: blur(3px); 
-
+  backdrop-filter: blur(3px);
 }
-  
-  
-  
-
- 
 #about-us{
   display: flex;
   align-items: center;
@@ -184,8 +142,7 @@ export default {
   color: white;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   align-self: end;
-  margin-bottom: 10px;
-  
+  margin-bottom: 10px;  
 }
 #profile{
   display: flex;
@@ -207,9 +164,6 @@ export default {
   height: 96%;
   text-decoration: none;
   text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
-  
-
 }
 #placeholder{
   grid-area: genre3;
@@ -231,8 +185,6 @@ export default {
   align-self: start;
   box-shadow: 0 0 0 0px #FF6347;
   margin-top: 10px;
-  
-
 }
 
 

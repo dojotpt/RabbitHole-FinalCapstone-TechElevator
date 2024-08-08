@@ -4,6 +4,7 @@ BEGIN TRANSACTION;
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
+
 INSERT INTO album (registered_user_id, title, artist, year_released, genre, notes, create_date) VALUES
 (1, 'Abbey Road', 'The Beatles', 1969, 'Rock', 'One of the most acclaimed albums in the history of popular music.', NOW()),
 (2, 'Back in Black', 'AC/DC', 1980, 'Hard Rock', 'Best-selling album by a band, and the second best-selling album in history.', NOW()),
@@ -19,7 +20,14 @@ INSERT INTO album (registered_user_id, title, artist, year_released, genre, note
 
 INSERT INTO collections (user_id, title, description) VALUES
 (1, 'Summer Jams', 'Songs I like listening to on hot days while taking a drive.'),
-(2, 'The Heaviest Metal', 'So heavy I cant even lift the albums.');
+(2, 'The Heaviest Metal', 'So heavy I cant even lift the albums.'),
+(2, 'Rare Release', 'Here are some of my favorite rare releases.'),
+(2, 'Tis The Season', 'I like collecting Christmas albums , here are some of my favorites.'),
+(2, 'Mr Pink', 'This is my Pink Floyd collection.'),
+(2, 'Signed Records', 'This is a collection of all my records that have signatures on them.'),
+(2, 'Vintage Vinyls', 'My vintage collection'),
+(2, 'Smooth Jazz Times', 'So smooth the stylus wont work.');
+
 
 
 

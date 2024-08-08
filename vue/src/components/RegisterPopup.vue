@@ -4,7 +4,7 @@
         <div class="register-container">
           <div class="blurred-background"></div>
           <div id="register" class="text-center">
-            <form @submit.prevent="handleRegisterAndClose">
+            <form @submit.prevent="register">
               <h1>Create Account</h1>
               <div role="alert" v-if="registrationErrors">
                 {{ registrationErrorMsg }}
@@ -56,10 +56,7 @@
         handleClose() {
       this.$emit('toggle-popup');
     },
-      handleRegisterAndClose() {
-        this.register();
-        this.$emit('toggle-popup');
-      },
+    
       register() {
         if (this.user.password !== this.user.confirmPassword) {
           this.registrationErrors = true;
@@ -69,17 +66,35 @@
             .register(this.user)
             .then((response) => {
               if (response.status === 201) {
+                authService
+                  .login(this.user)
+                     .then(response => {
+                      if (response.status === 200) {
+                     this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+                     this.$store.commit("SET_USER", response.data.user);
+                     this.$router.push("/");
+                      }
+        })
+        .catch(error => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
                 this.$router.push({
-                  path: '/login',
+                  path: '/',
                   query: { registration: 'success' },
+                  
                 });
               }
+              this.$emit('toggle-popup');
             })
             .catch((error) => {
               const response = error.response;
               this.registrationErrors = true;
               if (response.status === 400) {
-                this.registrationErrorMsg = 'Bad Request: Validation Errors';
+                this.registrationErrorMsg = 'User name is already taken.';
               }
             });
         }
@@ -160,7 +175,7 @@ text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 #register {
     background: #fcebb6;
   width: 385px;
-  height: 273px;
+  height: 283px;
   border-radius: 10px;
   text-align: center;
   border: 2px solid black;
@@ -179,6 +194,9 @@ text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 input{
   background-color: #FCEBB6;
   border-radius: 5px;
+}
+#premium{
+  margin-bottom: 20px;
 }
 
 

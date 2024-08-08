@@ -1,13 +1,20 @@
 
 
-<template>
-    <div>
-    <ul>
-      <li v-for="collection in collections" :key="collection.id" class="collection">
-        {{ collection.name }}
-      </li>
-    </ul>
-  </div>
+<template>   
+          
+      <div id="collection-container">
+        <div class="background"></div>
+        <div v-for="collection in collections" :key="collection.id" class="collection">
+          <img class="img" src="src/images/recordcollectioncard.png" alt="">
+          <div class="text-box">
+            <h2>{{ collection.name }}</h2>
+            <p>{{ collection.description }}</p>
+          </div>
+          <div class="button-container"> </div>
+        </div>
+  
+      </div>
+  
   </template>
   
   <script>
@@ -38,29 +45,58 @@ import CollectionService from '../services/CollectionService';
   </script >
   
   <style scoped>
- .collection {
-  border-bottom: 1px solid #f2f2f2;
-}
-.collection:last-child {
-  border-bottom: 0px;
-}
-.collection a {
-  display: block;
-  padding: 10px 20px;
-}
-.collection a:link, .topic a:visited {
-  color: blue;
-  text-decoration: none;
-}
-.collection a:hover {
-  background-color: #f2f2f2;
-  cursor: pointer;
+#collection-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 65%; 
+  overflow: auto; 
+  justify-content: space-evenly;
+  border: none;
+  gap: 30px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
 }
   
 
+.background {
+  background-color:black ;
+  opacity: 80%;
+}
+p{
+  height: 40px;
+  width: 350px;
+  font-size: 17px;
+
+}
+
+h2{
+font-weight: 300;
+
+}
+
+.img  {
+  display: flex;
+  width: 300px;
+  height: 150px;
+  margin:15px;
+}
+.collection {
+  background-color: black;
+  display: flex;
+  width: 750px;
+  border-radius: 10px ;
+  border: 2px solid ;
+
+  
+  
+  
+}
+</style>
+  
 
 
-  </style>
   
 
 

@@ -26,7 +26,7 @@ export function createStore(currentToken, currentUser) {
       },
       SET_COLLECTIONS(state,collections) {
         state.collections = collections;
-      }
+      },
     },
   });
   

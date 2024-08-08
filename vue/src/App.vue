@@ -1,106 +1,95 @@
 <template>
   <div id="capstone-app">
-
     <header id="app-header">
       <h1 class="title">
-        <router-link :to="{name: 'home'}" class="title-link">Rabbit H<i class="fa-solid fa-compact-disc"></i>le</router-link>
+        <router-link :to="{ name: 'home' }" class="title-link">Rabbit H<i class="fa-solid fa-compact-disc"></i>le</router-link>
       </h1>
-      <!-- <h2 class="my-buttons"> 
-         <router-link id="my-library-font" :to="{name: 'my-library'}">My Library </router-link>
-         <router-link id="my-collections-font" :to="{name: 'my-collections'}">My Collections </router-link>
-         <router-link id="my-friends-font" :to="{name: 'my-friends'}">My Friends </router-link>
-      </h2> -->
-     <div class="search-bar">
-      <form @submit.prevent="handleSearch" class="search-form">
-        <select id="collection-filter" @change="handleFilterChange">
-        <option value=""></option>
-        <option value="All">All</option>
-        <option value="value1">Rock</option>
-        <option value="value2">Jazz</option> 
-        <option value="value3">Country</option>
-        <option value="value4">Alternative</option>
-       
-      </select>
-        <input type="search" id="search" name="q" placeholder="Search Collections">
-        <button id="search-button" type="submit">
-          <img id="search-icon" src="src/images/search_.png" alt="Search">
-        </button>
-      </form>
-    </div>
+      <div class="search-bar">
+        <form @submit.prevent="handleSearch" class="search-form">
+          <select id="collection-filter" @change="handleFilterChange">
+            <option value=""></option>
+            <option value="All">All</option>
+            <option value="value1">Rock</option>
+            <option value="value2">Jazz</option> 
+            <option value="value3">Country</option>
+            <option value="value4">Alternative</option>
+          </select>
+          <input type="search" id="search" name="q" placeholder="Search Collections">
+          <button id="search-button" type="submit">
+            <img id="search-icon" src="src/images/search_.png" alt="Search">
+          </button>
+        </form>
+      </div>
       <nav id="header-buttons">
-        <button  v-if="!isAuthenticated" :class="['header-register']" @click="toggleRegisterPopup">Register</button>
-        <button  v-if="!isAuthenticated" :class="['header-login']" @click="togglePopup('login')">Login</button>
-        <router-link id="logout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <button v-if="!isAuthenticated" :class="['header-register']" @click="toggleRegisterPopup">Register</button>
+        <button v-if="!isAuthenticated" :class="['header-login']" @click="togglePopup('login')">Login</button>
+        <router-link id="logout" v-if="isAuthenticated" :to="{ name: 'logout' }">Logout</router-link>
       </nav>
-        
     </header>
     <body>    
       <Popup v-if="popupTriggers.login" @toggle-popup="togglePopup('login')"/>
-    <RegisterPopup v-if="popupTriggers.register" @toggle-popup="toggleRegisterPopup"/>
-  </body>
-
-
+      <RegisterPopup v-if="popupTriggers.register" @toggle-popup="toggleRegisterPopup"/>
+    </body>
     <router-view />
-    <footer> <p class="company-info">Contact Us | 1-800-339-6887 | 1776 Paper St, Springfield</p> 
-      <i class="logo"> <img class="logo-image" src="src/images/rabbit_.png" alt="logo"></i>
+    <footer>
+      <p class="company-info">Contact Us | 1-800-339-6887 | 1776 Paper St, Springfield</p> 
+      <i class="logo">
+        <img class="logo-image" src="src/images/rabbit_.png" alt="logo">
+      </i>
       <div class="social">
-      <i class="fa-brands fa-facebook" style="color: #4460A0;"></i>
-      <i class="insta-icon"> <img src="src/images/insta.png" alt=""></i>
-      <i class="fa-brands fa-twitter" style="color: #74C0FC;"></i>
-    </div>
+        <i class="fa-brands fa-facebook" style="color: #4460A0;"></i>
+        <i class="insta-icon">
+          <img src="src/images/insta.png" alt="">
+        </i>
+        <i class="fa-brands fa-twitter" style="color: #74C0FC;"></i>
+      </div>
     </footer>
   </div>
-  
 </template>
 
 <script>
-
 import Popup from './components/LoginPopup.vue'
 import RegisterPopup from './components/RegisterPopup.vue';
 
-
-
 export default {
   name: 'App',
-
-
   components: {
     Popup,
     RegisterPopup
   },
-  data () {
+  data() {
     return {
-
       popupTriggers: {
         login: false,
         register: false
       }
     }
   },
-
   computed: {
     isAuthenticated() {
       return this.$store.state.token !== '';
     }
   },
   methods: {
-   
     goTo(routeName) {
       this.$router.push({ name: routeName });
     },
-  
     logout() {
-      this.$store.commit('setToken', '');
-      this.$store.commit('setUser', null);
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      this.$store.commit('LOGOUT');
       this.$router.push({ name: 'login' });
     },
-     togglePopup(trigger) {
+    togglePopup(trigger) {
       this.popupTriggers[trigger] = !this.popupTriggers[trigger];
     },
     toggleRegisterPopup() {
       this.popupTriggers.register = !this.popupTriggers.register;
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if (from.name === 'home' && to.name === 'my-library' && !this.isAuthenticated) {
+        this.togglePopup('login');
+      }
     }
   }
 }
@@ -111,8 +100,6 @@ export default {
 @font-face {
   font-family: 'RabbitFont';
   src: url('@/assets/fonts/RABBITZ HOLE_PERSONALUSEONLY.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 .insta-icon img{
@@ -233,25 +220,14 @@ header {
 }
 
 #capstone-app {
-  position: relative;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* .blurred-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('src/images/record store.jpeg');
   background-size: cover;
-  background-position: center;
-  filter: blur(5px);
-  z-index: -1;
-} */
+ position: relative;
+  height: 100vh;
+  flex-direction: column;
+  background-size: cover;
+
+}
 
 
 
@@ -384,6 +360,7 @@ input[type="search"] {
   height: auto;
   
 }
+
 
 
 </style>
