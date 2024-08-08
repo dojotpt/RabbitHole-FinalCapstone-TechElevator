@@ -236,8 +236,7 @@ header {
   text-shadow: -5px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.title-link {
-.title-link {  
+.title-link { 
   text-decoration: none;
   color: #78c0A8;
   font-family: 'RabbitFont';

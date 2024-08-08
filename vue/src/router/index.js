@@ -8,7 +8,6 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import MyLibraryView from '../views/MyLibraryView.vue';
 import CollectionsView from '../views/CollectionsView.vue';
-import MyFriendsView from '../views/MyFriendsView.vue';
 import AddAlbumView from '../views/AddAlbumView.vue';
 import ViewAlbumCollection from '../components/ViewAlbumCollection.vue';
 
