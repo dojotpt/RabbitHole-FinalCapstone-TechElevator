@@ -94,7 +94,7 @@
               const response = error.response;
               this.registrationErrors = true;
               if (response.status === 400) {
-                this.registrationErrorMsg = 'User name is already taken.';
+                this.registrationErrorMsg = 'User name already taken.';
               }
             });
         }
