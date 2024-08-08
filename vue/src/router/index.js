@@ -8,11 +8,9 @@ import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
 import MyLibraryView from '../views/MyLibraryView.vue';
 import CollectionsView from '../views/CollectionsView.vue';
-
-
-
-
-
+import MyFriendsView from '../views/MyFriendsView.vue';
+import AddAlbumView from '../views/AddAlbumView.vue';
+import ViewAlbumCollection from '../components/ViewAlbumCollection.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -28,7 +26,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -56,12 +54,19 @@ const routes = [
     }
   },
   {
-
     path: "/mylibrary",
     name: "my-library",
     component: MyLibraryView,
     meta: {
-      requiresAuth: true 
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/addAlbum",
+    name: "add-album",
+    component: AddAlbumView,
+    meta: {
+      requiresAuth: true
     }
   },
   {
@@ -71,7 +76,14 @@ const routes = [
     meta: {
       requiresAuth: false
     }
-
+  },
+  {
+    path: "/albumcollection",
+    name: "album-collection",
+    component: ViewAlbumCollection,
+    meta: {
+      requiresAuth: false
+    }
   }
 ];
 

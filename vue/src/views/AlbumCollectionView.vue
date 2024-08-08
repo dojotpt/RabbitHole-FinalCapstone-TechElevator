@@ -1,18 +1,17 @@
 <template>
     <div class="library-container">
         <div id="my-library">
-            <MyLibrary />
+            <ViewAlbumCollection />
         </div>
     </div>
 </template>
 
 <script>
-import MyLibrary from '../components/MyLibrary.vue';
+import ViewAlbumCollection from '../components/ViewAlbumCollection';
 export default {
     components: {
-        MyLibrary,
+        ViewAlbumCollection,
     }
-
 }
 </script>
 

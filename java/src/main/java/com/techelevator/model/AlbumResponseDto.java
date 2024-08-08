@@ -4,12 +4,12 @@ import java.util.List;
 
 public class AlbumResponseDto {
 
-    private List<Album> data;
+    private List<Album> albums;
 
-    public AlbumResponseDto(List<Album> data) {
-        this.data = data;
+    public AlbumResponseDto(List<Album> albums) {
+        this.albums = albums;
     }
-    public List<Album> getData() {
-        return data;
+    public List<Album> getAlbums() {
+        return albums;
     }
 }

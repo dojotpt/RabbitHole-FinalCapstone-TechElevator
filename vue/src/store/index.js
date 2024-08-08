@@ -5,7 +5,10 @@ export function createStore(currentToken, currentUser) {
   let store = _createStore({
     state: {
       token: currentToken || '',
-      user: currentUser || {}
+      user: currentUser || {},
+      myLibrary: {
+        albums: [] //collection of albums
+      }
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -24,11 +27,16 @@ export function createStore(currentToken, currentUser) {
         state.user = {};
         axios.defaults.headers.common = {};
       },
+      SET_LIBRARY(state, myLibrary) {
+        state.myLibrary = myLibrary;
+      },
+      SET_ALBUM_COLLECTION(state, albumcollection) {
+        state.albumcollection = albumcollection;
+      },
       SET_COLLECTIONS(state,collections) {
         state.collections = collections;
       },
     },
   });
-  
-     return store;
+  return store;
 }

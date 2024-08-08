@@ -4,7 +4,8 @@
 
     <header id="app-header">
       <h1 class="title">
-        <router-link :to="{name: 'home'}" class="title-link">Rabbit H<i class="fa-solid fa-compact-disc"></i>le</router-link>
+        <router-link :to="{ name: 'home' }" class="title-link">Rabbit H<i
+            class="fa-solid fa-compact-disc"></i>le</router-link>
       </h1>
 
           <!-- search bar to be added later  -->
@@ -34,7 +35,7 @@
         <button  v-if="!isAuthenticated" :class="['header-login']" @click="togglePopup('login')">Login</button>
         <router-link id="logout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </nav>
-        
+
     </header>
     <body>    
       <Popup v-if="popupTriggers.login" @toggle-popup="togglePopup('login')"/>
@@ -42,34 +43,31 @@
   </body>
 
     <router-view />
-    <footer> <p class="company-info">Contact Us | 1-800-339-6887 | 1776 Paper St, Springfield</p> 
-      <i class="logo"> <img class="logo-image" src="src/images/rabbit_.png" alt="logo"></i>
+    <footer>
+      <p class="company-info">Contact Us | 1-800-339-6887 | 1776 Paper St, Springfield</p>
+      <i class="logo"> <img class="logo-image" src="@/images/rabbit_.png" alt="logo"></i>
       <div class="social">
-      <i class="fa-brands fa-facebook" style="color: #4460A0;"></i>
-      <i class="insta-icon"> <img src="src/images/insta.png" alt=""></i>
-      <i class="fa-brands fa-twitter" style="color: #74C0FC;"></i>
-    </div>
+        <i class="fa-brands fa-facebook" style="color: #4460A0;"></i>
+        <i class="insta-icon"> <img src="@/images/insta.png" alt=""></i>
+        <i class="fa-brands fa-twitter" style="color: #74C0FC;"></i>
+      </div>
     </footer>
   </div>
+
 
 </template>
 
 <script>
-
 import Popup from './components/LoginPopup.vue'
 import RegisterPopup from './components/RegisterPopup.vue';
 
-
-
 export default {
   name: 'App',
-
-
   components: {
     Popup,
     RegisterPopup
   },
-  data () {
+  data() {
     return {
       popupTriggers: {
         login: false,
@@ -84,11 +82,10 @@ export default {
     }
   },
   methods: {
-   
     goTo(routeName) {
       this.$router.push({ name: routeName });
     },
-  
+
     logout() {
       this.$store.commit('setToken', '');
       this.$store.commit('setUser', null);
@@ -106,8 +103,7 @@ export default {
 }
 </script>
 
-<style  scoped>
-
+<style scoped>
 @font-face {
   font-family: 'RabbitFont';
   src: url('@/assets/fonts/RABBITZ HOLE_PERSONALUSEONLY.TTF') format('truetype');
@@ -118,16 +114,19 @@ export default {
   height: 30px; 
   object-fit: contain; 
 }
-.logo{
+
+.logo {
   display: flex;
-  width: 50px; 
-  height: 50px; 
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   color: grey;
 }
+
 #logo {
   text-decoration: none;
 }
+
 .fa-brands.fa-facebook {
   font-size: 30px;
 }
@@ -137,40 +136,44 @@ export default {
 .fa-compact-disc{
   font-size: 45px;
 }
-.social{
+
+.social {
   display: flex;
   justify-content: space-between;
   width: 180px;
   margin-right: 50px;
   margin-left: 180px;
 }
-.company-info{
- margin-left: 50px;
+
+.company-info {
+  margin-left: 50px;
 }
 footer{
   display: flex;
   background-color: #FCEBB6;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   border-top: 2px solid black;
-  height: 70px; 
+  height: 70px;
   margin-top: auto;
   justify-content: space-between;
 }
+
 .show {
   display: inline-block;
 }
 .hidden {
   display: none;
 }
-.title{
+.title {
   grid-area: title;
   justify-self: baseline;
   justify-content: center;
   height: 70px;
   margin-left: 30px; 
 }
+
 #collection-filter {
   display: flex;
   border-radius: 20px 0 0 20px;
@@ -185,6 +188,7 @@ footer{
   background-repeat: no-repeat;
   border: black 2px solid;
 }
+
 header {
   background-color: black;
   height: 70px;
@@ -200,15 +204,16 @@ header {
 #app-header {
   background-color: #FCEBB6;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-areas: 
-    "title search buttons"; 
-  align-items: center; 
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "title search buttons";
+  align-items: center;
   border-bottom: 2px solid black;
 }
+
 .search-bar {
   grid-area: search;
-  
+
 }
 #capstone-app {
   display: flex;
@@ -230,6 +235,8 @@ header {
   color: #78c0A8;
   text-shadow: -5px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+
+.title-link {
 .title-link {  
   text-decoration: none;
   color: #78c0A8;
@@ -256,7 +263,7 @@ input[type="search"] {
 
   height: 46px;
   font-weight: 700;
-  background-color:  #FCEBB6;
+  background-color: #FCEBB6;
   text-align: center;
   border-left: none;
   border-right: none;
@@ -270,22 +277,23 @@ input[type="search"] {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 10px;
-  color:  #FCEBB6;
+  color: #FCEBB6;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 #logout {
-  font-family: "Caprasimo",sans-serif;
-  font-weight: 400; 
+  font-family: "Caprasimo", sans-serif;
+  font-weight: 400;
   background-color: #F07818;
   font-size: large;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 10px;
-  color:  #FCEBB6;
+  color: #FCEBB6;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   text-decoration: none;
-  border:#000 2px solid;
+  border: #000 2px solid;
 }
+
 #logout:hover {
   background-color: #F0A830; 
 }

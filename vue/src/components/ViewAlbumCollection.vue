@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import CollectionService from '../services/CollectionService';
 import MyLibraryService from '../services/MyLibraryService';
 
 export default {
@@ -52,7 +53,7 @@ export default {
     },
 
     created() {
-        MyLibraryService.getLibraryByRegUserId(this.$store.state.user.id)
+        MyLibraryService.viewAlbumCollection(this.$store.state.user.id)
             .then((response) => {
                 const myLibrary = response.data;
                 this.$store.commit('SET_LIBRARY', myLibrary);
@@ -61,6 +62,23 @@ export default {
                 console.error(error);
             });
     }
+
+    // computed: {
+    //     albums() {
+    //         return this.$store.state.albumcollection;
+    //     }
+    // },
+
+    // created() {
+    //     CollectionService.viewAlbumCollection(this.$store.state.albumcollection.albums)
+    //         .then((response) => {
+    //             const albumcollection = response.data;
+    //             this.$store.commit('SET_ALBUM_COLLECTION', albumcollection);
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         });
+    // }
 }
 </script>
 

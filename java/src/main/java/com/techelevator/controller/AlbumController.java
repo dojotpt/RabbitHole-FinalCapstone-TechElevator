@@ -16,7 +16,6 @@ import java.security.Principal;
 
 @RestController
 @PreAuthorize("isAuthenticated()")
-//@RequestMapping("/mylibrary")
 @CrossOrigin
 public class AlbumController {
 private final AlbumDao albumDao;
@@ -34,6 +33,18 @@ private final UserDao userDao;
         return new AlbumResponseDto(albums);
     }
 
+    // requiring user id in the path would mean anonymous users can't add an album
+    @PostMapping("mylibrary/{id}")
+    public Album createAlbum(@Valid @RequestBody Album album, @PathVariable int id, Principal principal) {
+        authHelper(id, principal);
+    // null checks here    if ()
+        return albumDao.createAlbum(album);
+    }
+    @GetMapping("albumcollection/{collection_id}")
+    public AlbumResponseDto getAlbumsByCollectionId(@PathVariable int collection_id) {
+        final List<Album> albumCollection = this.albumDao.getAlbumsByCollectionId(collection_id);
+        return new AlbumResponseDto(albumCollection);
+    }
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();
         User authenticatedUser = userDao.getUserByUsername(username);
