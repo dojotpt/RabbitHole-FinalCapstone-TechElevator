@@ -61,7 +61,7 @@ const routes = [
     }
   },
   {
-    path: "/addAlbum",
+    path: "/mylibrary/addAlbum",
     name: "add-album",
     component: AddAlbumView,
     meta: {
