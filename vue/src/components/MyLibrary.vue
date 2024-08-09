@@ -36,7 +36,7 @@
 
 </template>
 
-<script>
+<script> 
 import MyLibraryService from '../services/MyLibraryService';
 
 export default {
