@@ -1,3 +1,5 @@
+ROLLBACK;
+
 BEGIN TRANSACTION;
 
 -- Drop tables in the correct order
