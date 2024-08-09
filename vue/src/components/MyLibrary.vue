@@ -184,4 +184,56 @@ button {
 #delete-button img {
     width: 25px;
 }
+
+@media only screen and (min-width: 1024px) {
+    .my-library-container {
+        width: 60%;
+        height: 60%;
+    }
+
+    .card-container {
+        max-height: 90vh;
+    }
+
+    .card {
+        width: 300px;
+    }
+
+    .button-container {
+        margin: 30px;
+    }
+
+    .blurred-background {
+        filter: blur(6px);
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    .text-box p {
+        padding-left: 25px;
+    }
+
+    .add-record-button {
+        font-size: 1.2em;
+    }
+
+    #add-record-button-img {
+        width: 30px;
+    }
+
+    #edit-button img {
+        width: 30px;
+    }
+
+    #delete-button img {
+        width: 30px;
+
+    }
+}
 </style>
