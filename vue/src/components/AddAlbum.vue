@@ -1,6 +1,6 @@
 <template>
     <div class="blurred-background"></div>
-    <form v-on:submit.prevent>
+    <form class="add-album-form" v-on:submit.prevent="saveAlbum">
         <div class="card-container">
             <img src="@/images/sample_album.jpg" />
 
@@ -11,20 +11,20 @@
                 <div class="text-box">
                     <div class="field">
                         <label for="title">Title</label>
-                        <input id="title" type="text" />
+                        <input id="title" type="text" v-model="album.title" />
                     </div>
                     <div class="field">
                         <label for="artist">Artist</label>
-                        <input id="artist" type="text" />
+                        <input id="artist" type="text" v-model="album.artist" />
                     </div>
                     <div class="field">
                         <!-- /* need to trim year released, right? */   -->
                         <label for="year_released">Year Released</label>
-                        <input id="year_released" type="text" />
+                        <input id="year_released" type="text" v-model="album.year_released" />
                     </div>
                     <div class="field">
                         <label for="genre">Genre</label>
-                        <select id="genre">
+                        <select id="genre" v-model="album.genre">
                             <option value="Pop">Pop</option>
                             <option value="Rock">Rock</option>
                             <option value="R&B">R&B</option>
@@ -34,20 +34,19 @@
                             <option value="Electronic Dance Music">Electronic Dance Music</option>
                             <option value="Reggae">Reggae</option>
                             <option value="Latin">Latin</option>
-
                         </select>
                     </div>
                     <div class="field">
                         <label for="notes">Notes</label>
-                        <input id="notes" type="text" />
+                        <input id="notes" type="text" v-model="album.notes" />
                     </div>
                     <div class="field">
                         <label for="album_image">Url for Album Image</label>
-                        <input id="album_image" type="text" />
+                        <input id="album_image" type="text" v-model="album.album_image" />
                     </div>
                     <div class="actions">
                         <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
-                        <button type="submit" v-on:click="saveDocument()">Save Document</button>
+                        <button type="submit" v-on:click="saveAlbum()">Save Album</button>
                     </div>
                 </div>
             </div>
@@ -60,13 +59,36 @@
 import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {
+    data() {
+        return {
+            album: {
+                title: '',
+                artist: '',
+                genre: '',
+                notes: '',
+                album_image: ''
+            }
+        };
+    },
 
     methods: {
+        saveAlbum() {
+            MyLibraryService
+                .addAlbum(this.album)
+                .then(response => {
+                    if (response.status === 201) {
+                        this.$router.push({ name: 'my-library' });
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
         cancel() {
             this.$router.push({ name: "my-library" });
-        },
+        }
 
-}
+    }
 
 }
 </script>

@@ -59,8 +59,8 @@ public class JdbcAlbumDao implements AlbumDao {
     @Override
     public Album createAlbum(Album album) {
         Album createAlbum = null;
-        final String sql = "INSERT INTO album(registered_user_id, title, artist, year_released, genre, notes, album_image\n)" +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)\n" +
+        final String sql = "INSERT INTO album(registered_user_id, title, artist, year_released, genre, notes, album_image, create_date\n)" +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, NOW())\n" +
                     "RETURNING album_id;";
                 try {
                     int newAlbumId = jdbcTemplate.queryForObject(sql, int.class, album.getRegisteredUserId(), album.getTitle(), album.getArtist(), album.getYearReleased(),
