@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AddAlbum />
+        <AddAlbum :album="album" />
     </div>
 </template>
 
@@ -10,6 +10,20 @@ import AddAlbum from '../components/AddAlbum.vue';
 export default {
     components: {
         AddAlbum
+    },
+    data() {
+        return {
+
+            album: {
+                registeredUserId: this.$store.state.user.id,
+                title: '',
+                artist: '',
+                yearReleased: '',
+                genre: '',
+                notes: '',
+                albumImage: ''
+            }
+        }
     }
 }
 

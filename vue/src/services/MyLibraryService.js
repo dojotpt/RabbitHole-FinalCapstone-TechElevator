@@ -7,12 +7,12 @@ export default {
         return axios.get(`/mylibrary/${id}`);
     },
 
-    addAlbum(id, album) {
-        return axios.post(`/mylibrary/${id}`, album);
+    addAlbum(album) {
+        return axios.post(`/albums`, album);
     },
 
-    viewAlbumCollection(id) {
-        return axios.get(`albumcollection/${id}`)
+    getCollection(id) {
+        return axios.get(`/albumcollection/${id}`)
     }
     // updateAlbum(id, album) {
     //     return http.put(`//${id}`)

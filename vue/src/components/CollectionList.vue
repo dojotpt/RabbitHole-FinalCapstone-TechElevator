@@ -6,6 +6,8 @@
     </div>
     <div class="background"></div>
     <div v-for="collection in collections" :key="collection.id" class="collection">
+      <router-link v-bind:to="{ name: 'AlbumCollectionView', params: { collectionId: collection.id } }"></router-link>
+
       <img class="img" src="src/images/recordcollectioncard.png" alt="">
       <div class="text-box">
         <h2>{{ collection.name }}</h2>

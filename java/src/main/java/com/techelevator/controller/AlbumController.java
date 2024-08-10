@@ -15,7 +15,7 @@ import java.util.List;
 import java.security.Principal;
 
 @RestController
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 @CrossOrigin
 public class AlbumController {
 private final AlbumDao albumDao;
@@ -26,20 +26,22 @@ private final UserDao userDao;
         this.userDao = userDao;
     }
 
-    @GetMapping("mylibrary/{id}")
-    public AlbumResponseDto getLibraryByRegUserId(@PathVariable int id, Principal principal) {
-        authHelper(id, principal);
+    @GetMapping("/mylibrary/{id}")
+    public AlbumResponseDto getLibraryByRegUserId(@PathVariable int id/*, Principal principal*/) {
+//        authHelper(id, principal);
         final List<Album> albums = this.albumDao.getLibraryByRegUserId(id);
         return new AlbumResponseDto(albums);
     }
 
     // requiring user id in the path would mean anonymous users can't add an album
-    @PostMapping("mylibrary/")
-    public Album createAlbum(@Valid @RequestBody Album album, Principal principal) {
-    // null checks here    if ()
+    //,@PathVariable int id, Principal principal
+    @PostMapping("/albums")
+    public Album createAlbum(@RequestBody Album album/*, @PathVariable int id, Principal principal*/) {
+//    authHelper(id, principal);
+        // null checks here    if ()
         return albumDao.createAlbum(album);
     }
-    @GetMapping("albumcollection/{collection_id}")
+    @GetMapping("/albumcollection/{collection_id}")
     public AlbumResponseDto getAlbumsByCollectionId(@PathVariable int collection_id) {
         final List<Album> albumCollection = this.albumDao.getAlbumsByCollectionId(collection_id);
         return new AlbumResponseDto(albumCollection);

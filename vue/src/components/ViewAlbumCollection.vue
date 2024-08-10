@@ -39,28 +39,11 @@ export default {
         }
     },
 
-    created() {
-        MyLibraryService.viewAlbumCollection(this.$store.state.user.id)
-            .then((response) => {
-                const myLibrary = response.data;
-                this.$store.commit('SET_LIBRARY', myLibrary);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
-    // computed: {
-    //     albums() {
-    //         return this.$store.state.albumcollection;
-    //     }
-    // },
-
     // created() {
-    //     CollectionService.viewAlbumCollection(this.$store.state.albumcollection.albums)
+    //     MyLibraryService.viewAlbumCollection(this.$store.state.user.id)
     //         .then((response) => {
-    //             const albumcollection = response.data;
-    //             this.$store.commit('SET_ALBUM_COLLECTION', albumcollection);
+    //             const myLibrary = response.data;
+    //             this.$store.commit('SET_LIBRARY', myLibrary);
     //         })
     //         .catch(error => {
     //             console.error(error);

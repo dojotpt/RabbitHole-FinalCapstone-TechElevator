@@ -19,8 +19,8 @@
                     </div>
                     <div class="field">
                         <!-- /* need to trim year released, right? */   -->
-                        <label for="year_released">Year Released</label>
-                        <input id="year_released" type="text" v-model="album.year_released" />
+                        <label for="yearReleased">Year Released</label>
+                        <input id="yearReleased" type="text" v-model="album.yearReleased" />
                     </div>
                     <div class="field">
                         <label for="genre">Genre</label>
@@ -41,12 +41,12 @@
                         <input id="notes" type="text" v-model="album.notes" />
                     </div>
                     <div class="field">
-                        <label for="album_image">Url for Album Image</label>
-                        <input id="album_image" type="text" v-model="album.album_image" />
+                        <label for="albumImage">Url for Album Image</label>
+                        <input id="albumImage" type="text" v-model="album.albumImage" />
                     </div>
                     <div class="actions">
                         <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
-                        <button type="submit" v-on:click="saveAlbum()">Save Album</button>
+                        <button type="submit">Save Album</button>
                     </div>
                 </div>
             </div>
@@ -59,14 +59,26 @@
 import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {
+    props: {
+        // userId: {
+        //     type: Number,
+        //     required: true
+        // },
+        album: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
-            album: {
-                title: '',
-                artist: '',
-                genre: '',
-                notes: '',
-                album_image: ''
+            addAlbum: {
+                registeredUserId: this.$store.state.user.id,
+                title: this.album.title,
+                artist: this.album.artist,
+                yearReleased: parseInt(this.album.yearReleased, 10),
+                genre: this.album.genre,
+                notes: this.album.notes,
+                albumImage: this.album.albumImage
             }
         };
     },
@@ -76,7 +88,7 @@ export default {
             MyLibraryService
                 .addAlbum(this.album)
                 .then(response => {
-                    if (response.status === 201) {
+                    if (response.status === 200) {
                         this.$router.push({ name: 'my-library' });
                     }
                 })

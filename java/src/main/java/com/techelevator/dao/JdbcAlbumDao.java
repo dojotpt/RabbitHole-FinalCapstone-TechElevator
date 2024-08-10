@@ -36,7 +36,6 @@ public class JdbcAlbumDao implements AlbumDao {
        } catch (CannotGetJdbcConnectionException e) {
            throw new DaoException("unable to connect to server or database", e);
        }
-
         return albums;
     }
     public List<Album> getAlbumsByCollectionId(int collection_id /*id is collection id*/) {
