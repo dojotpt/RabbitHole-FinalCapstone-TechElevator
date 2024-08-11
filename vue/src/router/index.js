@@ -77,7 +77,7 @@ const routes = [
     }
   },
   {
-    path: "/albumcollection",
+    path: "/albumcollection/:collection_id",
     name: "album-collection",
     component: ViewAlbumCollection,
     meta: {

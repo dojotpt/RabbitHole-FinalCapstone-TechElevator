@@ -6,15 +6,19 @@
         <div id="album-container">
             <div class="card-container">
                 <div class="card">
-                    <img id="sample-album-img" src="@/images/sample_album.jpg" />
+                    <router-link :to="`/albums`">
+                        <img id="sample-album-img" src="@/images/sample_album.jpg" />
+                    </router-link>
                     <h3>Add a New Record</h3>
                     <div class="text-box">
                         <p>Artist name</p>
                         <p>Genre</p>
                     </div>
                     <div class="button-container">
-                        <button class="add-record-button"><img id="add-record-button-img"
-                                src="@/images/sign-plus-square-fill_.png"></button>
+                        <router-link :to="`/albums`">
+                            <button class="add-record-button"><img id="add-record-button-img"
+                                    src="@/images/sign-plus-square-fill_.png"></button>
+                        </router-link>
                     </div>
                 </div>
 
@@ -36,7 +40,7 @@
 
 </template>
 
-<script> 
+<script>
 import MyLibraryService from '../services/MyLibraryService';
 
 export default {

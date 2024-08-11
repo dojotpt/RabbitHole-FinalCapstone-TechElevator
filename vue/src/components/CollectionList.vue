@@ -1,38 +1,28 @@
 <template>
-
   <div id="collection-container">
-    <div class="button-container">
-      <a href="albumcollection" class="card-text">View Collection 1</a>
-    </div>
     <div class="background"></div>
     <div v-for="collection in collections" :key="collection.id" class="collection">
-      <router-link v-bind:to="{ name: 'AlbumCollectionView', params: { collectionId: collection.id } }"></router-link>
-
-      <img class="img" src="src/images/recordcollectioncard.png" alt="">
+      <router-link :to="`/albumcollection/${collection.collection_id}`">
+        <img src="@/images/recordcollectioncard.png" alt="Album Collection Card">
+      </router-link>
       <div class="text-box">
         <h2>{{ collection.name }}</h2>
         <p>{{ collection.description }}</p>
       </div>
-
+      <div class="button-container"> </div>
     </div>
-
   </div>
-
 </template>
 
 <script>
 import CollectionService from '../services/CollectionService';
 
-
-
 export default {
-
   computed: {
     collections() {
       return this.$store.state.collections
     }
   },
-
   created() {
     CollectionService.getAllCollections()
       .then((response) => {
@@ -44,8 +34,8 @@ export default {
       });
   }
 }
-
 </script>
+
 
 <style scoped>
 #collection-container {
@@ -77,7 +67,6 @@ p {
 
 h2 {
   font-weight: 300;
-
 }
 
 .img {
@@ -93,9 +82,5 @@ h2 {
   width: 750px;
   border-radius: 10px;
   border: 2px solid;
-
-
-
-
 }
 </style>

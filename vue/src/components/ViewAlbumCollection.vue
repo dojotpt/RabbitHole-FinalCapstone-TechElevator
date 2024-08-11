@@ -1,7 +1,5 @@
 <template>
-
     <div class="blurred-background"></div>
-
     <div class="my-library-container">
         <div id="album-container">
             <div class="card-container">
@@ -20,38 +18,33 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
-import CollectionService from '../services/CollectionService';
 import MyLibraryService from '../services/MyLibraryService';
-
 export default {
-    data() {
-        return {
-
-        }
-    },
     computed: {
         albums() {
             return this.$store.state.myLibrary.albums;
         }
     },
-
-    // created() {
-    //     MyLibraryService.viewAlbumCollection(this.$store.state.user.id)
-    //         .then((response) => {
-    //             const myLibrary = response.data;
-    //             this.$store.commit('SET_LIBRARY', myLibrary);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         });
-    // }
+    created() {
+        const collectionId = this.$route.params.collection_id;
+        if (collectionId) {
+            MyLibraryService.getCollection(collectionId)
+                .then((response) => {
+                    const myLibrary = response.data;
+                    this.$store.commit('SET_LIBRARY', myLibrary);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        } else {
+            console.error("No collection ID found in the route parameters.");
+        }
+    }
 }
 </script>
-
 <style scoped>
 .my-library-container {
     display: flex;
@@ -78,7 +71,7 @@ export default {
 
 .card {
     background-color: rgba(94, 65, 36, 0.5);
-    border: 2px solid #78c0A8;
+    border: 2px solid #78C0A8;
     border-radius: 10px;
     width: 250px;
     margin: 20px;
@@ -86,11 +79,10 @@ export default {
 
 h3 {
     font-family: "Caprasimo", sans-serif;
-    color: #78c0A8;
+    color: #78C0A8;
     font-size: medium;
     text-align: center;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
 }
 
 p {
@@ -141,7 +133,6 @@ button {
     background-position: center;
     filter: blur(4px);
     z-index: -1;
-
 }
 
 .text-box p {

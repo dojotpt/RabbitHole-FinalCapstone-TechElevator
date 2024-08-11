@@ -60,10 +60,6 @@ import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {
     props: {
-        // userId: {
-        //     type: Number,
-        //     required: true
-        // },
         album: {
             type: Object,
             required: true
@@ -82,7 +78,6 @@ export default {
             }
         };
     },
-
     methods: {
         saveAlbum() {
             MyLibraryService
