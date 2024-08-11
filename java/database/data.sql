@@ -2,6 +2,7 @@ BEGIN TRANSACTION;
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('user1','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt4oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 
 INSERT INTO album (registered_user_id, title, artist, year_released, genre, notes, album_image, create_date) VALUES
 (2, 'Abbey Road', 'The Beatles', 1969, 'Rock', 'One of the most acclaimed albums in the history of popular music.', 'https://i.discogs.com/ffj9SJ3O75j7CiAA3QlvCMLSzqsFKaSq6N_U84eL5t8/rs:fit/g:sm/q:90/h:400/w:387/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEwNjU0/NTgzLTE1MDE3NzIx/MTktMTExOS5qcGVn.jpeg', NOW()),
@@ -131,7 +132,6 @@ INSERT INTO album (registered_user_id, title, artist, year_released, genre, note
 (2, 'Hell Awaits', 'Slayer', 1985, 'Rock', 'Famous for its dark themes and complex arrangements.', 'https://i.discogs.com/S2vkQq_tAqfEulYGJF0KtZ4Q6VNSjqXFCVk_s9MONf0/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEwMjY3/MTMtMTYzNDY0OTE4/MS0zMjg1LmpwZWc.jpeg', NOW()),
 (2, 'Holy Diver', 'Dio', 1983, 'Rock', 'Featuring classic heavy metal sound with powerful vocals and fantasy themes.', '', NOW());
 
-
 INSERT INTO collections (user_id, title, description) VALUES
 (1, 'Summer Jams', 'Songs I like listening to on hot days while taking a drive.'),
 (2, 'The Heaviest Metal', 'So heavy I cant even lift the albums.'),
@@ -141,7 +141,6 @@ INSERT INTO collections (user_id, title, description) VALUES
 (2, 'Signed Records', 'This is a collection of all my records that have signatures on them.'),
 (2, 'Vintage Vinyls', 'My vintage collection'),
 (2, 'Smooth Jazz Times', 'So smooth the stylus wont work.');
-
 
  INSERT INTO album_collections (album_id, collection_id) VALUES
 (1, 1),
