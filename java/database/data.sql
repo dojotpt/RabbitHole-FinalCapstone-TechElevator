@@ -213,13 +213,5 @@ INSERT INTO collections (user_id, title, description) VALUES
 (66, 3),
 (81, 3);
 
-
-
-
-
-
-
-
-
 COMMIT TRANSACTION;
 
