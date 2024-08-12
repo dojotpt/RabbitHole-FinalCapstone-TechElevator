@@ -9,5 +9,7 @@ public interface CollectionDao {
 
 
     List<Collection> getAllCollections();
-
+    Collection createCollection(Collection collection);
+    Collection getCollectionById(int collection_id);
+    Collection getCollectionByUser_Id(int user_id);
 }

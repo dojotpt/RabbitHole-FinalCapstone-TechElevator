@@ -3,9 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.CollectionDao;
 import com.techelevator.model.Collection;
 import com.techelevator.model.CollectionResponseDto;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +24,9 @@ public class CollectionsController {
         final List<Collection> collections = this.collectionDao.getAllCollections();
         return new CollectionResponseDto(collections);
     }
+    @PostMapping("/collections")
+    public Collection addCollection(@RequestBody Collection collection){
+        return collectionDao.createCollection(collection);
+    }
+
 }

@@ -7,33 +7,33 @@ import java.sql.Timestamp;
 public class Collection {
     private int collection_id;
     private int user_id;
-    private String name;
+    private String title;
     private String description;
-    private Boolean notPublic;
+    private Boolean shared;
     private Timestamp createDate;
 
 
-    public Collection( int collectionId, int userId, String name, Boolean notPublic, String description, Timestamp createDate) {
+    public Collection( int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate) {
         this. collection_id = collectionId;
         this.user_id = userId;
-        this.name = name;
-        this.notPublic = notPublic;
+        this.title = title;
+        this.shared = shared;
         this.description = description;
         this.createDate = createDate;
     }
 
 
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Boolean getNotPublic() {
-        return notPublic;
+    public Boolean getShared() {
+        return shared;
     }
 
     public Timestamp getCreateDate() {
@@ -46,6 +46,10 @@ public class Collection {
 
     public int getUser_id() {
         return user_id;
+    }
+
+    public void setCollection_id(int collection_id) {
+        this.collection_id = collection_id;
     }
 }
 
