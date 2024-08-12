@@ -19,7 +19,19 @@ public class JdbcAlbumDao implements AlbumDao {
     }
     @Override
     public Album getAlbumById(int album_id) {
-        return null;
+        Album album = null;
+        final String sql = "SELECT album_id, registered_user_id, title, artist, year_released, genre, notes, album_image, create_date\n" +
+                "FROM album\n" +
+                "WHERE album_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
+            while (results.next()) {
+                album = mapRowToAlbum(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+        return album;
     }
 
     @Override

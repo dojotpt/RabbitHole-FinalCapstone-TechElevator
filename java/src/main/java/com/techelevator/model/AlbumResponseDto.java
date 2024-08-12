@@ -5,6 +5,7 @@ import java.util.List;
 public class AlbumResponseDto {
 
     private List<Album> albums;
+//    private Album album;
 
     public AlbumResponseDto(List<Album> albums) {
         this.albums = albums;
@@ -12,4 +13,7 @@ public class AlbumResponseDto {
     public List<Album> getAlbums() {
         return albums;
     }
+//    public getAlbumById(album) {
+//        return album;
+//    }
 }

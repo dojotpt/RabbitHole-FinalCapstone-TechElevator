@@ -23,7 +23,9 @@
                 </div>
 
                 <div class="card" v-for="album in albums" :key="album.id">
-                    <img class="card-img" v-bind:src="album.albumImage" />
+                    <router-link :to="`/album/${album.album_id}`">
+                        <img class="card-img" v-bind:src="album.albumImage" />
+                    </router-link>
                     <div class="text-box">
                         <h3>{{ album.title }}</h3>
                         <p>{{ album.artist }}</p>
