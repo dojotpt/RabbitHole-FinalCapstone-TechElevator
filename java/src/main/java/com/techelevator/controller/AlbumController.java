@@ -44,6 +44,10 @@ private final UserDao userDao;
        return this.albumDao.getAlbumById(album_id);
     }
 
+    @GetMapping("/album/{album_id}/stats")
+    public int getAlbumInCollectionsTotal(@PathVariable int album_id) {
+        return this.albumDao.getAlbumInCollectionsTotal(album_id);
+    }
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();
         User authenticatedUser = userDao.getUserByUsername(username);

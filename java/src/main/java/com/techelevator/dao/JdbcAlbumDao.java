@@ -33,6 +33,22 @@ public class JdbcAlbumDao implements AlbumDao {
         }
         return album;
     }
+    @Override
+    public int getAlbumInCollectionsTotal(int album_id) {
+        int numberOfCollections = 0;
+        final String sql = "SELECT COUNT(album_id) AS collection_count\n" +
+                "FROM album_collections\n" +
+                "WHERE album_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
+            if (results.next()) {
+                numberOfCollections = results.getInt("collection_count");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+        return numberOfCollections;
+    }
 
     @Override
     public List<Album> getLibraryByRegUserId(int id) {

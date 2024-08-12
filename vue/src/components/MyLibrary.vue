@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="card" v-for="album in albums" :key="album.id">
-                    <router-link :to="`/album/${album.album_id}`">
+                    <router-link :to="`/album/${album.albumId}`">
                         <img class="card-img" v-bind:src="album.albumImage" />
                     </router-link>
                     <div class="text-box">

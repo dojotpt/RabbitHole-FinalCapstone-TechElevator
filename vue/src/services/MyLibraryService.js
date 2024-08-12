@@ -16,6 +16,9 @@ export default {
     },
     getAlbum(id) {
         return axios.get(`/album/${id}`)
+    },
+    getCollectionStats(id) {
+        return axios.get(`/album/${id}/stats`)
     }
     // updateAlbum(id, album) {
     //     return http.put(`//${id}`)

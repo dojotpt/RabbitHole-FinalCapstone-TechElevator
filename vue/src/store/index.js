@@ -33,6 +33,9 @@ export function createStore(currentToken, currentUser) {
       SET_ALBUM(state, album) {
         state.album = album;
       },
+      SET_STATS(state, stats) {
+        state.stats = stats;
+      },
       SET_ALBUM_COLLECTION(state, albumcollection) {
         state.albumcollection = albumcollection;
       },
