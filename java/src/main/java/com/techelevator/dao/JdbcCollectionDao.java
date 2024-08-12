@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Album;
 import com.techelevator.model.Collection;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
@@ -71,8 +72,28 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
-    public Collection getCollectionByUser_Id(int user_id) {
-        return null;
+    public List<Collection> getCollectionByUser_Id(int user_id) {
+        final List<Collection> userCollections = new ArrayList<>();
+        final String sql = "SELECT collection_id, user_id, title, description, shared, create_date FROM collections WHERE user_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, user_id);
+            while (results.next()) {
+                userCollections.add(mapRowToCollection(results));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+        return userCollections;
+    }
+    Collection mapRowToCollection(SqlRowSet rowSet) {
+        Collection collection = new Collection();
+        collection.setCollection_id(rowSet.getInt("collection_id"));
+        collection.setUser_id(rowSet.getInt("user_id"));
+        collection.setTitle(rowSet.getString("title"));
+        collection.setDescription(rowSet.getString("description"));
+        collection.setShared(rowSet.getBoolean("shared"));
+        collection.setCreateDate(rowSet.getTimestamp("create_date"));
+        return collection;
     }
 
 }

@@ -11,14 +11,34 @@ public class Collection {
     private String description;
     private Boolean shared;
     private Timestamp createDate;
+    public Collection() {}
 
-
-    public Collection( int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate) {
+    public Collection(int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate) {
         this. collection_id = collectionId;
         this.user_id = userId;
         this.title = title;
         this.shared = shared;
         this.description = description;
+        this.createDate = createDate;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setShared(Boolean shared) {
+        this.shared = shared;
+    }
+
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
 
