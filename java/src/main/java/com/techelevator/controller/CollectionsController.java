@@ -28,9 +28,9 @@ public class CollectionsController {
         final List<Collection> collections = this.collectionDao.getAllCollections();
         return new CollectionResponseDto(collections);
     }
-    @GetMapping("/mycollections/{user_id}")
-    public CollectionResponseDto getCollectionByUserId(@PathVariable int user_id) {
-        final List<Collection> collections = this.collectionDao.getCollectionByUser_Id(user_id);
+    @GetMapping("/mycollections/{id}")
+    public CollectionResponseDto getCollectionByUserId(@PathVariable int id) {
+        final List<Collection> collections = this.collectionDao.getCollectionByUser_Id(id);
         return new CollectionResponseDto(collections);
     }
     @PostMapping("/addcollections")

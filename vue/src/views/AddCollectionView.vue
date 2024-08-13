@@ -13,7 +13,7 @@ export default {
     data () {
         return {
             collection: {
-                userId: this.$store.state.user.id,
+                user_id: this.$store.state.user.id,
                 title: '',
                 description: '',
                 shared:''

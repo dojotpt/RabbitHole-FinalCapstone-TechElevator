@@ -1,37 +1,41 @@
+
 <template>
-    <div class="blurred-background"></div>
-    <form class="add-album-form" v-on:submit.prevent="saveCollection">
+    <div class="collection-form-wrapper">
+      <div class="blurred-background"></div>
+      <form class="add-album-form" @submit.prevent="saveCollection">
         <div class="card-container">
-            <img src="@/images/addrecordcollectioncard.png" />
-
-            <div class="card">
-                <div id="title-box">
-                    <h3>Add a Collection</h3>
-                </div>
-                <div class="text-box">
-                    <div class="field">
-                        <label for="title">Title</label>
-                        <input id="title" type="text" v-model="collection.title" />
-                    </div>
-                    <div class="field">
-                        <label for="description">Description</label>
-                        <input id="description" type="text" v-model="collection.description" />
-                    </div>
-                    <label class="checkbox-label" for="shared">Public
-                    <input type="checkbox" id="shared" v-model="collection.shared"></label>
-                   
-                  
-                    <div class="actions">
-                        <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
-                        <button type="submit">Save Collection</button>
-                    </div>
-                </div>
+          <img src="@/images/addrecordcollectioncard.png" alt="Add Record Collection Card" />
+  
+          <div class="card">
+            <div id="title-box">
+              <h3>Add a Collection</h3>
             </div>
+            <div class="text-box">
+              <div class="field">
+                <label for="title">Title</label>
+                <input id="title" type="text" v-model="newCollection.title" />
+              </div>
+              <div class="field">
+                <label for="description">Description</label>
+                <input id="description" type="text" v-model="newCollection.description" />
+              </div>
+              <div class="field">
+                <label class="checkbox-label" for="shared">
+                  Public
+                  <input type="checkbox" id="shared" v-model="newCollection.shared" />
+                </label>
+              </div>
+              <div class="actions">
+                <button type="button" @click="cancel">Cancel</button>
+                <button type="submit">Save Collection</button>
+              </div>
+            </div>
+          </div>
         </div>
-
-    </form>
-</template>
-
+      </form>
+    </div>
+  </template>
+  
 <script>
 import CollectionService from '../services/CollectionService.js';
 
@@ -44,31 +48,29 @@ export default {
     },
     data() {
         return {
-            // collection: {
-            //     UserId: this.$store.state.user.id,
-            //     title: '',
-            //     description: ''
-            // }
+            newCollection: {
+                user_id: this.collection.user_id,
+                title: this.collection.title,
+                description: this.collection.description,
+                shared: this.collection.shared
+            }
         };
     },
     
     methods: {
-        saveCollection() {
-            CollectionService
-                .addCollection(this.collection)
-                .then(response => {
-                    if (response.status === 200) {
-                        this.$router.push({ name: 'my-collections' });
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        },
-        cancel() {
-            this.$router.push({ name: "my-collections" });
-        }
-
+    saveCollection() {
+       CollectionService.addCollection(this.newCollection)
+       .then( r => {
+         if (r.status === 201) {
+          this.$store.commit('SET_MY_COLLECTION',r.data);
+         }
+         
+       })
+       this.$router.push({ name: 'my-collections' });
+    },
+    cancel() {
+        this.$router.push({ name: 'my-collections' }); 
+    }
     }
 
 }
@@ -79,9 +81,8 @@ export default {
 .actions {
     display: flex;
     align-self: center;
-    width: 320px;
-  
     justify-content: space-between;
+    width:330px;
     
 }
 .checkbox-label {

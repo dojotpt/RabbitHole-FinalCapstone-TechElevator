@@ -1,24 +1,26 @@
 <template>
-    <div class="blurred-background"></div>
-    <div class="my-library-container">
+    <div class="container">
+      <div class="blurred-background"></div>
+      <div class="my-library-container">
         <div id="album-container">
-            <div class="card-container">
-                <div class="card" v-for="album in albums" :key="album.id">
-                    <img class="card-img" v-bind:src="album.albumImage" />
-                    <div class="text-box">
-                        <h3>{{ album.title }}</h3>
-                        <p>{{ album.artist }}</p>
-                        <p>{{ album.genre }}</p>
-                    </div>
-                    <div class="button-container">
-                        <button id="edit-button"><img src="@/images/edit_.png"></button>
-                        <button id="delete-button"><img src="@/images/trash_.png"></button>
-                    </div>
-                </div>
+          <div class="card-container">
+            <div class="card" v-for="album in albums" :key="album.id">
+              <img class="card-img" v-bind:src="album.albumImage" />
+              <div class="text-box">
+                <h3>{{ album.title }}</h3>
+                <p>{{ album.artist }}</p>
+                <p>{{ album.genre }}</p>
+              </div>
+              <div class="button-container">
+                <button id="edit-button"><img src="@/images/edit_.png" alt="Edit"></button>
+                <button id="delete-button"><img src="@/images/trash_.png" alt="Delete"></button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</template>
+  </template>
 
 <script>
 import MyLibraryService from '../services/MyLibraryService';
@@ -52,7 +54,7 @@ export default {
     background-color: rgba(94, 65, 36, 0.5);
     border-radius: 10px;
     width: 80%;
-    height: 80%;
+    height: 100%;
     align-items: center;
     margin: auto;
     justify-content: center;
@@ -60,13 +62,14 @@ export default {
 }
 
 .card-container {
-    max-height: 80vh;
+    height: 80vh;
     overflow-y: scroll;
     scrollbar-color: #F07818 rgb(94, 65, 36);
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     list-style-type: none;
+    
 }
 
 .card {
