@@ -8,6 +8,7 @@ export function createStore(currentToken, currentUser) {
       user: currentUser || {},
       myLibrary: {
         albums: [] //collection of albums
+        
       }
     },
     mutations: {
@@ -36,6 +37,9 @@ export function createStore(currentToken, currentUser) {
       SET_COLLECTIONS(state,collections) {
         state.collections = collections;
       },
+      SET_MY_COLLECTIONS(state,myCollections) {
+        state.myCollections = myCollections;
+      }
     },
   });
   return store;

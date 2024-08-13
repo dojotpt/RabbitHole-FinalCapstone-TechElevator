@@ -6,7 +6,7 @@
         <img src="@/images/recordcollectioncard.png" alt="Album Collection Card">
       </router-link>
       <div class="text-box">
-        <h2>{{ collection.name }}</h2>
+        <h2>{{ collection.title }}</h2>
         <p>{{ collection.description }}</p>
       </div>
       <div class="button-container"> </div>
@@ -42,7 +42,7 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  width: 65%;
+  width: 80%;
   overflow: auto;
   justify-content: space-evenly;
   border: none;
@@ -60,26 +60,28 @@ export default {
 
 p {
   height: 40px;
-  width: 350px;
-  font-size: 17px;
+  width: 400px;
+  font-size: 19px;
+ margin-left: 23px;
 
 }
 
 h2 {
   font-weight: 300;
+  font-size: 45px;
 }
 
-.img {
+img {
   display: flex;
-  width: 300px;
-  height: 150px;
-  margin: 15px;
+ 
+  height: 270px;
+  margin: 20px;
 }
 
 .collection {
   background-color: black;
   display: flex;
-  width: 750px;
+  width: 1100px;
   border-radius: 10px;
   border: 2px solid;
 }

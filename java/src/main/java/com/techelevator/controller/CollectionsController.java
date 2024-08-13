@@ -26,12 +26,12 @@ public class CollectionsController {
         final List<Collection> collections = this.collectionDao.getAllCollections();
         return new CollectionResponseDto(collections);
     }
-    @GetMapping("/collections/{user_id}")
+    @GetMapping("/mycollections/{user_id}")
     public CollectionResponseDto getCollectionByUserId(@PathVariable int user_id) {
         final List<Collection> collections = this.collectionDao.getCollectionByUser_Id(user_id);
         return new CollectionResponseDto(collections);
     }
-    @PostMapping("/collections")
+    @PostMapping("/addcollections")
     public Collection addCollection(@RequestBody Collection collection){
         return collectionDao.createCollection(collection);
     }

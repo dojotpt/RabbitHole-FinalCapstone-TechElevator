@@ -30,7 +30,7 @@
         </div>
 
         <div id="placeholder" class="card">
-          <a href="" class="card-text">My Collections</a>
+          <a href="mycollections" class="card-text">My Collections</a>
         </div>
       
     </div>
@@ -174,9 +174,8 @@
   text-align: center;
   font-size: 80px;
   width:70%;
-  background-image: url('src/images/tab-photo3.avif');
+  background-image: url('src/images/mycollections.jpg');
   background-size: cover;
-  background-position: center;
   border-radius: 7PX;
   color: white;
   height: 90%;
