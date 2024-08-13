@@ -90,8 +90,8 @@ export default {
     align-self: center;
 }
 .card-container {
-    max-height: 80vh;
-    overflow-y: scroll;
+    height: 500px;
+    
     scrollbar-color: #F07818 rgb(94, 65, 36);
     display: flex;
     justify-content: space-evenly;
@@ -101,11 +101,11 @@ export default {
 
 .card {
     background-color: rgba(0, 0, 0, 0.6);
-    border: 2px solid #78c0A8;
+    border: 3px solid #78c0A8;
     border-radius: 10px;
-    width: 700px;
-    height: 685px;
-    margin: 20px;
+    width: 600px;
+    height: 600px;
+    
     display: flex;
     flex-direction: column;
     align-items: center;

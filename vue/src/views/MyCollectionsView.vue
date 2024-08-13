@@ -3,7 +3,7 @@
     <div class="blurred-background"></div>
     <div class="collections-container">
         <div class="container-view" >
-           <MyCollections></MyCollections>
+           <MyCollections/>
 
            
         </div>

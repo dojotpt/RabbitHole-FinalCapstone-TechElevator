@@ -109,6 +109,9 @@ export default {
   font-family: 'RabbitFont';
   src: url('@/assets/fonts/RABBITZ HOLE_PERSONALUSEONLY.TTF') format('truetype');
 }
+.card-collection {
+  
+}
 
 .insta-icon img {
   display: flex;
