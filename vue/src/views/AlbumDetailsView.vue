@@ -14,9 +14,11 @@ export default {
     },
     data() {
         return {
-            album: {}
+            album: {},
+            stats: 0
         }
     }
+   
 }
 
 </script>

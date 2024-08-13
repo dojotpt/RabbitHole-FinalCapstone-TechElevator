@@ -20,6 +20,12 @@ export default {
     updateAlbum(id, album) {
         return axios.put(`/album/${id}`)
     },
+    getCollectionStats(id) {
+        return axios.get(`/album/${id}/stats`)
+    }
+    // updateAlbum(id, album) {
+    //     return http.put(`//${id}`)
+    // },
 
     // deleteAlbum(id) {
     //     return axios.delete(`//${id}`);
