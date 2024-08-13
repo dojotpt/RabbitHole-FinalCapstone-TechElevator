@@ -12,7 +12,12 @@ export function createStore(currentToken, currentUser) {
       },
       myCollections: {
         collections: []
-     
+      },
+      albumcollection: {
+        albums: []
+      },
+      collections: {
+        collections: []
       }
     },
     mutations: {

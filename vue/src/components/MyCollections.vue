@@ -2,7 +2,7 @@
     <div id="collection-container">
       <div class="background"></div>
       <div class="collection">
-                    <router-link :to="`/albums`">
+                    <router-link :to="`/addcollections`">
                         <img id="sample-album-img" src="@/images/addrecordcollectioncard.png" />
                     </router-link>
                    
@@ -11,7 +11,7 @@
                         
                         <p>Description</p>
                         <div class="button-container">
-                        <router-link :to="`/albums`">
+                        <router-link :to="`/addcollections`">
                             <button class="add-record-button"><img id="add-record-button-img"
                                     src="@/images/sign-plus-square-fill_.png"></button>
                         </router-link>

@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.CollectionDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Album;
 import com.techelevator.model.AlbumResponseDto;
 import com.techelevator.model.Collection;
@@ -15,9 +16,10 @@ public class CollectionsController {
 
     private CollectionDao collectionDao;
 
-
-    public CollectionsController(CollectionDao collectionDao){
+    private final UserDao userDao;
+    public CollectionsController(CollectionDao collectionDao, UserDao userDao){
         this.collectionDao = collectionDao;
+        this.userDao = userDao;
     }
 
 
@@ -35,5 +37,6 @@ public class CollectionsController {
     public Collection addCollection(@RequestBody Collection collection){
         return collectionDao.createCollection(collection);
     }
+
 
 }

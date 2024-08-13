@@ -67,15 +67,15 @@ export default {
     },
     data() {
         return {
-            addAlbum: {
-                registeredUserId: this.$store.state.user.id,
-                title: this.album.title,
-                artist: this.album.artist,
-                yearReleased: parseInt(this.album.yearReleased, 10),
-                genre: this.album.genre,
-                notes: this.album.notes,
-                albumImage: this.album.albumImage
-            }
+            // addAlbum: {
+            //     registeredUserId: this.$store.state.user.id,
+            //     title: this.album.title,
+            //     artist: this.album.artist,
+            //     yearReleased: parseInt(this.album.yearReleased, 10),
+            //     genre: this.album.genre,
+            //     notes: this.album.notes,
+            //     albumImage: this.album.albumImage
+            // }
         };
     },
     methods: {

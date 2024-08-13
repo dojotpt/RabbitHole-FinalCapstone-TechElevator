@@ -41,7 +41,7 @@ public class JdbcCollectionDao implements CollectionDao {
                         results.getString("title"),
                         results.getBoolean("shared"),
                         results.getString("description"),
-                        results.getTimestamp("create_date")
+                        results.getString("create_date")
                 );
                 collections.add(collection);
             }
@@ -54,9 +54,9 @@ public class JdbcCollectionDao implements CollectionDao {
     @Override
     public Collection createCollection(Collection collection) {
         Collection createdCollection = null;
-        final String sql = "INSERT INTO collections(user_id, title, description, shared, create_date) VALUES (?, ?, ?, ?, ?) RETURNING collection_id; ";
+        final String sql = "INSERT INTO collections(user_id, title, description, shared, create_date) VALUES (?, ?, ?, ?, NOW()) RETURNING collection_id; ";
         try {
-            int newCollectionId = jdbcTemplate.queryForObject(sql, int.class, collection.getUser_id(), collection.getTitle(), collection.getDescription(), collection.getShared(), collection.getCreateDate());
+            int newCollectionId = jdbcTemplate.queryForObject(sql, int.class, collection.getUser_id(), collection.getTitle(), collection.getDescription(), collection.getShared());
             createdCollection = getCollectionById(newCollectionId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -92,7 +92,7 @@ public class JdbcCollectionDao implements CollectionDao {
         collection.setTitle(rowSet.getString("title"));
         collection.setDescription(rowSet.getString("description"));
         collection.setShared(rowSet.getBoolean("shared"));
-        collection.setCreateDate(rowSet.getTimestamp("create_date"));
+        collection.setCreateDate(rowSet.getString("create_date"));
         return collection;
     }
 

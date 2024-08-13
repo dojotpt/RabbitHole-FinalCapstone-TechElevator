@@ -1,20 +1,19 @@
 package com.techelevator.model;
 
 
-import java.sql.Time;
-import java.sql.Timestamp;
-
 public class Collection {
+
+
     private int collection_id;
     private int user_id;
     private String title;
     private String description;
     private Boolean shared;
-    private Timestamp createDate;
+    private String createDate;
     public Collection() {}
 
-    public Collection(int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate) {
-        this. collection_id = collectionId;
+    public Collection(int collection_id, int userId, String title, Boolean shared, String description, String createDate) {
+        this.collection_id = collection_id;
         this.user_id = userId;
         this.title = title;
         this.shared = shared;
@@ -38,8 +37,11 @@ public class Collection {
         this.shared = shared;
     }
 
-    public void setCreateDate(Timestamp createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+    public int getCollection_id() {
+        return collection_id;
     }
 
 
@@ -56,13 +58,10 @@ public class Collection {
         return shared;
     }
 
-    public Timestamp getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public int getCollection_id() {
-        return collection_id;
-    }
 
     public int getUser_id() {
         return user_id;
