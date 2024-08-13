@@ -3,6 +3,7 @@ import com.techelevator.dao.AlbumDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Album;
 import com.techelevator.model.AlbumResponseDto;
+import com.techelevator.model.AlbumStats;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -48,6 +49,19 @@ private final UserDao userDao;
     public int getAlbumInCollectionsTotal(@PathVariable int album_id) {
         return this.albumDao.getAlbumInCollectionsTotal(album_id);
     }
+    @GetMapping("/album/{album_id}/albumstats")
+    public AlbumStats getAlbumStats(@PathVariable int album_id) {
+        // AUTHORIZATION
+        return albumDao.getStatsForAlbum(album_id);
+    }
+    @GetMapping("/album/{album_id}/newalbum")
+    public Album getAlbum(@PathVariable int album_id) {
+        // AUTHORIZATION
+        Album album = albumDao.getAlbumById(album_id);
+        album.setStats(albumDao.getStatsForAlbum(album_id));
+        return album;
+    }
+
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();
         User authenticatedUser = userDao.getUserByUsername(username);

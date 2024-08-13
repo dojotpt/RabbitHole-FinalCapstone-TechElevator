@@ -10,8 +10,24 @@ public class Album {
     private String notes;
     private String albumImage;
     private String createDate;
+    private AlbumStats stats;
 
-    public Album(int albumId, int registeredUserId, String title, String artist, int yearReleased, String genre, String notes, String albumImage, String createDate) {
+    public Album(int albumId, int registeredUserId, String title, String artist, int yearReleased, String genre
+            , String notes, String albumImage, String createDate, AlbumStats stats) {
+
+        this.albumId = albumId;
+        this.registeredUserId = registeredUserId;
+        this.title = title;
+        this.artist = artist;
+        this.yearReleased = yearReleased;
+        this.genre = genre;
+        this.notes = notes;
+        this.albumImage = albumImage;
+        this.createDate = createDate;
+        this.stats = stats;
+    }
+    public Album(int albumId, int registeredUserId, String title, String artist, int yearReleased, String genre
+            , String notes, String albumImage, String createDate) {
         this.albumId = albumId;
         this.registeredUserId = registeredUserId;
         this.title = title;
@@ -61,6 +77,9 @@ public class Album {
         this.createDate = createDate;
     }
 
+    public void setStats(AlbumStats stats) {
+        this.stats = stats;
+    }
 
     public int getAlbumId() {
         return albumId;
@@ -96,5 +115,9 @@ public class Album {
 
     public String getCreateDate() {
         return createDate;
+    }
+
+    public AlbumStats getStats() {
+        return stats;
     }
 }

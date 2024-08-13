@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Album;
+import com.techelevator.model.AlbumStats;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,6 +32,7 @@ public class JdbcAlbumDao implements AlbumDao {
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("unable to connect to server or database", e);
         }
+
         return album;
     }
     @Override
@@ -48,6 +50,22 @@ public class JdbcAlbumDao implements AlbumDao {
             throw new DaoException("unable to connect to server or database", e);
         }
         return numberOfCollections;
+    }
+    @Override
+    public AlbumStats getStatsForAlbum(int album_id) {
+        AlbumStats albumStats = new AlbumStats();
+        final String sql = "SELECT COUNT(album_id) AS collection_count\n" +
+                "FROM album_collections\n" +
+                "WHERE album_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
+            if (results.next()) {
+                albumStats.setInCollections(results.getInt("collection_count"));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+        return albumStats;
     }
 
     @Override
