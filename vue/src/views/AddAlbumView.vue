@@ -13,8 +13,8 @@ export default {
     },
     data() {
         return {
-
             album: {
+                albumId: 0,
                 registeredUserId: this.$store.state.user.id,
                 title: '',
                 artist: '',
@@ -26,7 +26,5 @@ export default {
         }
     }
 }
-
 </script>
-
 <style scoped></style>

@@ -32,8 +32,9 @@
                         <p>{{ album.genre }}</p>
                     </div>
                     <div class="button-container">
-                        <button id="edit-button"><img src="@/images/edit_.png"></button>
-                        <button id="delete-button"><img src="@/images/trash_.png"></button>
+                        <router-link :to="`/albums`">
+                            <button id="edit-button"><img src="@/images/edit_.png"></button>
+                        </router-link>
                     </div>
                 </div>
             </div>

@@ -100,6 +100,22 @@ public class JdbcAlbumDao implements AlbumDao {
                 }
                 return createAlbum;
     }
+    @Override
+    public Album updateAlbum(Album album) {
+        Album updatedAlbum= null;
+        final String sql = "UPDATE album SET title = ?, artist = ?, year_released = ?, genre = ?, notes = ?, album_image = ? " +
+                "WHERE album_id = ? AND registered_user_id = ?";
+        try {
+            int newAlbumId = jdbcTemplate.queryForObject(sql, int.class, album.getRegisteredUserId(), album.getTitle(), album.getArtist(), album.getYearReleased(),
+                    album.getGenre(), album.getNotes(), album.getAlbumImage());
+            updatedAlbum = getAlbumById(newAlbumId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity violation", e);
+        }
+        return updatedAlbum;
+    }
 
 
     Album mapRowToAlbum(SqlRowSet rowSet) {

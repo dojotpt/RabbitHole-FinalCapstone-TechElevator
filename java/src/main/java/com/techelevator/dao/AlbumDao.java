@@ -12,5 +12,5 @@ public interface AlbumDao {
        Album createAlbum(Album album);
        Album getAlbumById(int album_id);
        List<Album> getAlbumsByCollectionId(int collection_id/*id is collection id*/);
-
+    Album updateAlbum(Album album);
 }

@@ -3,24 +3,23 @@
     <div class="card-container">
         <img class="card-img" v-bind:src="album.albumImage" />
         <div class="card">
-                    
-                <div id="text-box">
-                    <p>This record appears  {{ stats }} times in your collections.</p>
-                    <h1>{{ album.artist }}</h1>
-                    <h2> Album:</h2>
-                    <h3>{{ album.title }}</h3> 
-                    <h2> Genre:</h2>                   
-                    <p>{{ album.genre }}</p>
-                    <h2> Year Released:</h2>
-                    <p>{{ album.yearReleased }}</p>
-                    <h2> Personal Notes:</h2>
-                    <p class="notes">{{ album.notes }}</p>
-                </div>
-                <div class="button-container">
-                    <button id="edit-button"><img src="@/images/edit_.png"></button>
-                    <button id="delete-button"><img src="@/images/trash_.png"></button>
-                </div>
-           
+
+            <div id="text-box">
+                <p>This record appears {{ stats }} times in your collections.</p>
+                <h1>{{ album.artist }}</h1>
+                <h2> Album:</h2>
+                <h3>{{ album.title }}</h3>
+                <h2> Genre:</h2>
+                <p>{{ album.genre }}</p>
+                <h2> Year Released:</h2>
+                <p>{{ album.yearReleased }}</p>
+                <h2> Personal Notes:</h2>
+                <p class="notes">{{ album.notes }}</p>
+            </div>
+            <div class="button-container">
+                <button id="edit-button"><img src="@/images/edit_.png"></button>
+            </div>
+
         </div>
     </div>
 </template>
@@ -86,22 +85,24 @@ export default {
 }
 
 #text-box {
-    
+
     height: 800px;
 }
 
 #title-box {
     margin-top: 15px;
 }
+
 h1 {
     font-family: "Caprasimo";
     color: #78c0A8;
-    font-size: 78px;    
+    font-size: 78px;
     text-align: center;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     margin-bottom: 65px;
     margin-top: 0px;
 }
+
 h3 {
     font-family: "Caprasimo", sans-serif;
     color: #FCEBB6;
@@ -112,6 +113,7 @@ h3 {
     margin-bottom: 25px;
     margin-top: 0px;
 }
+
 p {
     font-family: "Caprasimo", sans-serif;
     color: #FCEBB6;
@@ -122,6 +124,7 @@ p {
     margin-bottom: 15px;
     margin-top: 0px;
 }
+
 h2 {
     font-family: "Caprasimo", sans-serif;
     text-shadow: -1px -1px 0 gray, 1px -1px 0 gray, -1px 1px gray, 1px 1px 0 gray;
@@ -129,6 +132,7 @@ h2 {
     margin-top: 0px;
     padding-left: 10px;
 }
+
 .notes {
     margin-top: 20px;
     font-family: "Caprasimo", sans-serif;
@@ -137,7 +141,7 @@ h2 {
     text-align: left;
     padding-left: 40px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    margin-bottom: auto;   
+    margin-bottom: auto;
 }
 
 .field {
@@ -164,38 +168,43 @@ h2 {
 }
 
 img {
-    
+
     width: 35%;
     height: auto;
     border-color: black;
     border-style: solid;
 }
+
 .button-container {
-    
+
     display: flex;
     justify-content: space-between;
-    margin: 0px; 
-    justify-self: bottom;   
+    margin: 0px;
+    justify-self: bottom;
     padding-bottom: 20px;
 }
 
 button {
-  background-color: #FCEBB6;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 15px 20px; /* Small size */
-  font-size: 12px; /* Small font size */
-  cursor: pointer;
-  display: flex; 
-  margin-left: 10px;
-  margin-right: 10px;
+    background-color: #FCEBB6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    /* Small size */
+    font-size: 12px;
+    /* Small font size */
+    cursor: pointer;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 button img {
-  height: 16px; /* Small icon size */
-  width: 16px;
-  margin-right: 5px; /* Space between icon and text */
+    height: 16px;
+    /* Small icon size */
+    width: 16px;
+    margin-right: 5px;
+    /* Space between icon and text */
 }
 
 

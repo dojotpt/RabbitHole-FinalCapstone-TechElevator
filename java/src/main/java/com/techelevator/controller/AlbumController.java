@@ -31,8 +31,12 @@ private final UserDao userDao;
 
     @PostMapping("/albums")
     public Album createAlbum(@RequestBody Album album) {
-        // null checks here    if ()
         return albumDao.createAlbum(album);
+    }
+    @PutMapping("/editalbum/{album_id}")
+    public Album editAlbum(@PathVariable int album_id, @RequestBody Album album) {
+        album.setAlbumId(album_id);
+        return albumDao.updateAlbum(album);
     }
     @GetMapping("/albumcollection/{collection_id}")
     public AlbumResponseDto getAlbumsByCollectionId(@PathVariable int collection_id) {
@@ -48,6 +52,7 @@ private final UserDao userDao;
     public int getAlbumInCollectionsTotal(@PathVariable int album_id) {
         return this.albumDao.getAlbumInCollectionsTotal(album_id);
     }
+
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();
         User authenticatedUser = userDao.getUserByUsername(username);
