@@ -99,7 +99,7 @@ export default {
     list-style-type: none;
     flex-direction: row;
     height: 650px;
-    overflow-x: auto; 
+    overflow-x: auto;
     overflow-y: hidden; 
     
     
