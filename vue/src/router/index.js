@@ -61,20 +61,28 @@ const routes = [
       requiresAuth: true
     }
   },
-  {
-    path: "/albums",
-    name: "add-album",
-    component: AddAlbumView,
-    meta: {
-      requiresAuth: true
-    }
-  },
+  // {
+  //   path: "/albums",
+  //   name: "add-album",
+  //   component: AddAlbumView,
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
   {
     path: "/album/:album_id",
     name: "album-details",
     component: AlbumDetails,
     meta: {
       requiresAuth: false
+    }
+  },
+  {
+    path: "/album/:album_id/edit",
+    name: "add-album",
+    component: AddAlbumView,
+    meta: {
+      requiresAuth: true
     }
   },
   {

@@ -6,6 +6,7 @@
 
 <script>
 import AddAlbum from '../components/AddAlbum.vue';
+import MyLibraryService from '../services/MyLibraryService';
 
 export default {
     components: {
@@ -14,7 +15,7 @@ export default {
     data() {
         return {
             album: {
-                albumId: 0,
+                album_id: 0,
                 registeredUserId: this.$store.state.user.id,
                 title: '',
                 artist: '',
@@ -23,6 +24,19 @@ export default {
                 notes: '',
                 albumImage: ''
             }
+        }
+    },
+    created() {
+        let album_id = parseInt(this.$route.params.album_id);
+        if (album_id != 0) {
+            MyLibraryService
+                .getAlbum(album_id)
+                .then(response => {
+                    this.album = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     }
 }

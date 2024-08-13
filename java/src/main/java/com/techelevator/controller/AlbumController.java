@@ -34,7 +34,7 @@ private final UserDao userDao;
     public Album createAlbum(@RequestBody Album album) {
         return albumDao.createAlbum(album);
     }
-    @PutMapping("/editalbum/{album_id}")
+    @PutMapping("/album/{album_id}/edit")
     public Album editAlbum(@PathVariable int album_id, @RequestBody Album album) {
         album.setAlbumId(album_id);
         return albumDao.updateAlbum(album);
@@ -53,8 +53,7 @@ private final UserDao userDao;
     public int getAlbumInCollectionsTotal(@PathVariable int album_id) {
         return this.albumDao.getAlbumInCollectionsTotal(album_id);
     }
-<<<<<<< HEAD
-=======
+
     @GetMapping("/album/{album_id}/albumstats")
     public AlbumStats getAlbumStats(@PathVariable int album_id) {
         // AUTHORIZATION
@@ -67,7 +66,6 @@ private final UserDao userDao;
         album.setStats(albumDao.getStatsForAlbum(album_id));
         return album;
     }
->>>>>>> b7542165a87ccaa236ee762e202e799fce7920f9
 
     private void authHelper(int id, Principal principal) {
         String username = principal.getName();

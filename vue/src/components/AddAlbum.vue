@@ -68,7 +68,7 @@ export default {
     data() {
         return {
             addAlbum: {
-                albumId: this.album.$store.state.album.albumId,
+                album_id: this.album.album_id,
                 registeredUserId: this.$store.state.user.id,
                 title: this.album.title,
                 artist: this.album.artist,
@@ -81,7 +81,7 @@ export default {
     },
     methods: {
         saveAlbum() {
-            if (this.album.albumId === 0) {
+            if (this.album.album_id === 0) {
                 MyLibraryService
                     .addAlbum(this.album)
                     .then(response => {
@@ -92,9 +92,10 @@ export default {
                     .catch(error => {
                         console.error(error);
                     });
-            } else {
+            }
+            else {
                 MyLibraryService
-                    .updateAlbum(this.album.albumId)
+                    .updateAlbum(this.album)
                     .then(response => {
                         if (response.status === 200) {
                             this.$router.push({ name: 'my-library' });
@@ -103,14 +104,15 @@ export default {
                     .catch(error => {
                         console.error(error);
                     });
-            },
-            cancel() {
-                this.$router.push({ name: "my-library" });
             }
-
+        },
+        cancel() {
+            this.$router.push({ name: "my-library" });
         }
 
     }
+
+}
 </script>
 
 

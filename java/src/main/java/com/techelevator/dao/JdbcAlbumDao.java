@@ -26,7 +26,7 @@ public class JdbcAlbumDao implements AlbumDao {
                 "WHERE album_id = ?;";
         try {
             final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
-            while (results.next()) {
+            if (results.next()) {
                 album = mapRowToAlbum(results);
             }
         } catch (CannotGetJdbcConnectionException e) {
@@ -121,12 +121,15 @@ public class JdbcAlbumDao implements AlbumDao {
     @Override
     public Album updateAlbum(Album album) {
         Album updatedAlbum= null;
-        final String sql = "UPDATE album SET title = ?, artist = ?, year_released = ?, genre = ?, notes = ?, album_image = ? " +
-                "WHERE album_id = ? AND registered_user_id = ?";
+        final String sql = "UPDATE album SET title = ?, artist = ?, year_released = ?, genre = ?, notes = ?, album_image = ?\n" +
+                "WHERE album_id = ?";
         try {
-            int newAlbumId = jdbcTemplate.queryForObject(sql, int.class, album.getRegisteredUserId(), album.getTitle(), album.getArtist(), album.getYearReleased(),
-                    album.getGenre(), album.getNotes(), album.getAlbumImage());
-            updatedAlbum = getAlbumById(newAlbumId);
+            int numberOfRowsAffected = jdbcTemplate.update(sql, album.getTitle(), album.getArtist(), album.getYearReleased(),
+                    album.getGenre(), album.getNotes(), album.getAlbumImage(), album.getAlbumId());
+            updatedAlbum = getAlbumById(album.getAlbumId());
+            if (numberOfRowsAffected == 0) {
+                throw new DaoException("zero rows affected");
+            }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {

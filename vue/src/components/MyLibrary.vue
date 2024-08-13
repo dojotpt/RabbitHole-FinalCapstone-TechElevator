@@ -6,7 +6,7 @@
         <div id="album-container">
             <div class="card-container">
                 <div class="card">
-                    <router-link :to="`/albums`">
+                    <router-link :to="`/album/0/edit`">
                         <img id="sample-album-img" src="@/images/sample_album.jpg" />
                     </router-link>
                     <h3>Add a New Record</h3>
@@ -15,7 +15,7 @@
                         <p>Genre</p>
                     </div>
                     <div class="button-container">
-                        <router-link :to="`/albums`">
+                        <router-link :to="`/album/0/edit`">
                             <button class="add-record-button"><img id="add-record-button-img"
                                     src="@/images/sign-plus-square-fill_.png"></button>
                         </router-link>
@@ -32,7 +32,7 @@
                         <p>{{ album.genre }}</p>
                     </div>
                     <div class="button-container">
-                        <router-link :to="`/albums`">
+                        <router-link :to="`/album/${album.albumId}/edit`">
                             <button id="edit-button"><img src="@/images/edit_.png"></button>
                         </router-link>
                     </div>
