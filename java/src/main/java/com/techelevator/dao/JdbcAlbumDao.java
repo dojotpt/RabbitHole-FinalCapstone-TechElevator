@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Album;
+import com.techelevator.model.AlbumStats;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,8 +20,61 @@ public class JdbcAlbumDao implements AlbumDao {
     }
     @Override
     public Album getAlbumById(int album_id) {
-        return null;
+        Album album = null;
+        final String sql = "SELECT album_id, registered_user_id, title, artist, year_released, genre, notes, album_image, create_date\n" +
+                "FROM album\n" +
+                "WHERE album_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
+            if (results.next()) {
+                album = mapRowToAlbum(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+
+        return album;
     }
+    @Override
+    public int getAlbumInCollectionsTotal(int album_id) {
+        int numberOfCollections = 0;
+        final String sql = "SELECT COUNT(album_id) AS collection_count\n" +
+                "FROM album_collections\n" +
+                "WHERE album_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
+            if (results.next()) {
+                numberOfCollections = results.getInt("collection_count");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+        return numberOfCollections;
+    }
+    @Override
+    public AlbumStats getStatsForAlbum(int album_id) {
+        AlbumStats albumStats = new AlbumStats();
+        final String sql = "SELECT COUNT(album_id) AS collection_count\n" +
+                "FROM album_collections\n" +
+                "WHERE album_id = ?;";
+        try {
+            final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, album_id);
+            if (results.next()) {
+                albumStats.setInCollections(results.getInt("collection_count"));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("unable to connect to server or database", e);
+        }
+        return albumStats;
+    }
+//    public AlbumStats getTotalNumberOfAlbums(int id) {
+//        AlbumStats albumStats = new AlbumStats();
+//        final String sql = "SELECT COUNT(a.album_id) AS total_albums FROM album a WHERE a.registered_user_id = ?;\n";
+//        try {
+//            final SqlRowSet results = jdbcTemplate.queryForRowSet()
+//        }
+//        return albumStats;
+//    }
 
     @Override
     public List<Album> getLibraryByRegUserId(int id) {
@@ -71,6 +125,25 @@ public class JdbcAlbumDao implements AlbumDao {
                     throw new DaoException("Data Integrity violation", e);
                 }
                 return createAlbum;
+    }
+    @Override
+    public Album updateAlbum(Album album) {
+        Album updatedAlbum= null;
+        final String sql = "UPDATE album SET title = ?, artist = ?, year_released = ?, genre = ?, notes = ?, album_image = ?\n" +
+                "WHERE album_id = ?";
+        try {
+            int numberOfRowsAffected = jdbcTemplate.update(sql, album.getTitle(), album.getArtist(), album.getYearReleased(),
+                    album.getGenre(), album.getNotes(), album.getAlbumImage(), album.getAlbumId());
+            updatedAlbum = getAlbumById(album.getAlbumId());
+            if (numberOfRowsAffected == 0) {
+                throw new DaoException("zero rows affected");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity violation", e);
+        }
+        return updatedAlbum;
     }
 
 

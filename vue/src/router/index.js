@@ -12,6 +12,9 @@ import AddAlbumView from '../views/AddAlbumView.vue';
 import ViewAlbumCollection from '../components/ViewAlbumCollection.vue';
 import MyCollectionsView from '../views/MyCollectionsView.vue';
 import AddCollectionView from '../views/AddCollectionView.vue';
+import AlbumDetails from '../components/AlbumDetails.vue';
+
+
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -61,8 +64,24 @@ const routes = [
       requiresAuth: true
     }
   },
+  // {
+  //   path: "/albums",
+  //   name: "add-album",
+  //   component: AddAlbumView,
+  //   meta: {
+  //     requiresAuth: true
+  //   }
+  // },
   {
-    path: "/albums",
+    path: "/album/:album_id",
+    name: "album-details",
+    component: AlbumDetails,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/album/:album_id/edit",
     name: "add-album",
     component: AddAlbumView,
     meta: {

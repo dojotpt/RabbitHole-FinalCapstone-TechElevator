@@ -1,45 +1,47 @@
 <template>
-    <div>
-      <div class="blurred-background"></div>
-  
-      <div class="my-library-container">
+
+    <div class="blurred-background"></div>
+
+    <div class="my-library-container">
         <div id="album-container">
-          <div class="card-container">
-            <div class="card">
-              <router-link :to="`/albums`">
-                <img id="sample-album-img" src="@/images/sample_album.jpg" />
-              </router-link>
-              <h3>Add a New Record</h3>
-              <div class="text-box">
-                <p>Artist name</p>
-                <p>Genre</p>
-              </div>
-              <div class="button-container">
-                <router-link :to="`/albums`">
-                  <button class="add-record-button">
-                    <img id="add-record-button-img" src="@/images/sign-plus-square-fill_.png">
-                  </button>
-                </router-link>
-              </div>
+            <div class="card-container">
+                <div class="card">
+                    <router-link :to="`/album/0/edit`">
+                        <img id="sample-album-img" src="@/images/sample_album.jpg" />
+                    </router-link>
+                    <h3>Add a New Record</h3>
+                    <div class="text-box">
+                        <p>Artist name</p>
+                        <p>Genre</p>
+                    </div>
+                    <div class="button-container">
+                        <router-link :to="`/album/0/edit`">
+                            <button class="add-record-button"><img id="add-record-button-img"
+                                    src="@/images/sign-plus-square-fill_.png"></button>
+                        </router-link>
+                    </div>
+                </div>
+
+                <div class="card" v-for="album in albums" :key="album.id">
+                    <router-link :to="`/album/${album.albumId}`">
+                        <img class="card-img" v-bind:src="album.albumImage" />
+                    </router-link>
+                    <div class="text-box">
+                        <h3>{{ album.title }}</h3>
+                        <p>{{ album.artist }}</p>
+                        <p>{{ album.genre }}</p>
+                    </div>
+                    <div class="button-container">
+                        <router-link :to="`/album/${album.albumId}/edit`">
+                            <button id="edit-button"><img src="@/images/edit_.png"></button>
+                        </router-link>
+                    </div>
+                </div>
             </div>
-  
-            <div class="card" v-for="album in albums" :key="album.id">
-              <img class="card-img" v-bind:src="album.albumImage" />
-              <div class="text-box">
-                <h3>{{ album.title }}</h3>
-                <p>{{ album.artist }}</p>
-                <p>{{ album.genre }}</p>
-              </div>
-              <div class="button-container">
-                <button id="edit-button"><img src="@/images/edit_.png"></button>
-                <button id="delete-button"><img src="@/images/trash_.png"></button>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </template>
+
+</template>
 
 
 <script>

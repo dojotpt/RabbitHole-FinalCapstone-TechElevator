@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Component
-public class JdbcCollectionDao implements CollectionDao, AlbumDao {
+public class JdbcCollectionDao implements CollectionDao {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -129,25 +129,10 @@ public class JdbcCollectionDao implements CollectionDao, AlbumDao {
         return collection;
     }
 
-    @Override
-    public List<Album> getLibraryByRegUserId(int id) {
-        return List.of();
-    }
 
-    @Override
-    public Album createAlbum(Album album) {
-        return null;
-    }
 
-    @Override
-    public Album getAlbumById(int album_id) {
-        return null;
-    }
 
-    @Override
-    public List<Album> getAlbumsByCollectionId(int collection_id) {
-        return List.of();
-    }
+
 }
 
 

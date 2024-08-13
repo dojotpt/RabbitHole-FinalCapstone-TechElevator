@@ -40,10 +40,16 @@ export function createStore(currentToken, currentUser) {
       SET_LIBRARY(state, myLibrary) {
         state.myLibrary = myLibrary;
       },
+      SET_ALBUM(state, album) {
+        state.album = album;
+      },
+      SET_STATS(state, stats) {
+        state.stats = stats;
+      },
       SET_ALBUM_COLLECTION(state, albumcollection) {
         state.albumcollection = albumcollection;
       },
-      SET_COLLECTIONS(state,collections) {
+      SET_COLLECTIONS(state, collections) {
         state.collections = collections;
       },
       SET_MY_COLLECTIONS(state,collections) {

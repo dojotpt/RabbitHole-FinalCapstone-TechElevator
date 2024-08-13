@@ -1,6 +1,5 @@
 <template>
     <div class="library-container">
-        <!-- revisit collection in vbind -->
         <div id="my-library">
             <ViewAlbumCollection v-bind:collection="collection" />
         </div>
@@ -19,9 +18,6 @@ export default {
             collection: {}
         }
     },
-    // methods: {
-    //     getCollection(id)
-    // }
 }
 </script>
 
