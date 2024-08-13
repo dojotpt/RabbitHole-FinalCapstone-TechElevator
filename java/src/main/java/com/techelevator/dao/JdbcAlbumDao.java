@@ -67,6 +67,14 @@ public class JdbcAlbumDao implements AlbumDao {
         }
         return albumStats;
     }
+//    public AlbumStats getTotalNumberOfAlbums(int id) {
+//        AlbumStats albumStats = new AlbumStats();
+//        final String sql = "SELECT COUNT(a.album_id) AS total_albums FROM album a WHERE a.registered_user_id = ?;\n";
+//        try {
+//            final SqlRowSet results = jdbcTemplate.queryForRowSet()
+//        }
+//        return albumStats;
+//    }
 
     @Override
     public List<Album> getLibraryByRegUserId(int id) {

@@ -5,7 +5,7 @@
         <div class="card">
 
             <div id="text-box">
-                <p>This record appears {{ stats }} times in your collections.</p>
+                <p>This record is in   {{ stats.stats.inCollections }} collection(s)</p>
                 <h1>{{ album.artist }}</h1>
                 <h2> Album:</h2>
                 <h3>{{ album.title }}</h3>
@@ -219,6 +219,56 @@ button img {
     background-position: center;
     filter: blur(4px);
     z-index: -1;
+    @media only screen and (min-width: 1024px) {
+    .my-library-container {
+        width: 60%;
+        height: 60%;
+    }
 
+    .card-container {
+        max-height: 90vh;
+    }
+
+    .card {
+        width: 300px;
+    }
+
+    .button-container {
+        margin: 30px;
+    }
+
+    .blurred-background {
+        filter: blur(6px);
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    .text-box p {
+        padding-left: 25px;
+    }
+
+    .add-record-button {
+        font-size: 1.2em;
+    }
+
+    #add-record-button-img {
+        width: 30px;
+    }
+
+    #edit-button img {
+        width: 30px;
+    }
+
+    #delete-button img {
+        width: 30px;
+
+    }
+}
 }
 </style>

@@ -49,17 +49,17 @@ private final UserDao userDao;
        return this.albumDao.getAlbumById(album_id);
     }
 
+//    @GetMapping("/album/{album_id}/stats")
+//    public int getAlbumInCollectionsTotal(@PathVariable int album_id) {
+//        return this.albumDao.getAlbumInCollectionsTotal(album_id);
+//    }
+//
+//    @GetMapping("/album/{album_id}/albumstats")
+//    public AlbumStats getAlbumStats(@PathVariable int album_id) {
+//        // AUTHORIZATION
+//        return albumDao.getStatsForAlbum(album_id);
+//    }
     @GetMapping("/album/{album_id}/stats")
-    public int getAlbumInCollectionsTotal(@PathVariable int album_id) {
-        return this.albumDao.getAlbumInCollectionsTotal(album_id);
-    }
-
-    @GetMapping("/album/{album_id}/albumstats")
-    public AlbumStats getAlbumStats(@PathVariable int album_id) {
-        // AUTHORIZATION
-        return albumDao.getStatsForAlbum(album_id);
-    }
-    @GetMapping("/album/{album_id}/newalbum")
     public Album getAlbum(@PathVariable int album_id) {
         // AUTHORIZATION
         Album album = albumDao.getAlbumById(album_id);
