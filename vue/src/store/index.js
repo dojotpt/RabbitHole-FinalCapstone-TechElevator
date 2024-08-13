@@ -9,6 +9,10 @@ export function createStore(currentToken, currentUser) {
       myLibrary: {
         albums: [] //collection of albums
         
+      },
+      myCollections: {
+        collections: []
+     
       }
     },
     mutations: {
