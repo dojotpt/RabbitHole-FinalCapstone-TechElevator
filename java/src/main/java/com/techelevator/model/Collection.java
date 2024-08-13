@@ -42,6 +42,10 @@ public class Collection {
         this.createDate = createDate;
     }
 
+    public void setCollection_id(int collection_id) {
+        this.collection_id = collection_id;
+    }
+
 
 
     public String getTitle() {
@@ -66,10 +70,6 @@ public class Collection {
 
     public int getUser_id() {
         return user_id;
-    }
-
-    public void setCollection_id(int collection_id) {
-        this.collection_id = collection_id;
     }
 }
 

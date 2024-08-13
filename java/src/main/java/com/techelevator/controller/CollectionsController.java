@@ -35,5 +35,10 @@ public class CollectionsController {
     public Collection addCollection(@RequestBody Collection collection){
         return collectionDao.createCollection(collection);
     }
+    @PutMapping("/collections/{collection_id}/edit")
+    public Collection updateCollection(@PathVariable int collection_id, @RequestBody Collection collection){
+        collection.setCollection_id(collection_id);
+        return collectionDao.updateCollection(collection);
+    }
 
 }
