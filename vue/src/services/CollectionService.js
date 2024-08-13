@@ -6,7 +6,10 @@ export default {
   getAllCollections(){
     return axios.get("/collections");
   },
-  getCollectionByUserId(user_id){
-    return axios.get(`/mycollections/${user_id}`);
+  getCollectionByUserId(id){
+    return axios.get(`/mycollections/${id}`);
+  },
+  addCollection(collection){
+    return axios.post(`/addcollections`, collection);
   }
 }

@@ -5,6 +5,8 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Collection {
+
+
     private int collection_id;
     private int user_id;
     private String title;
@@ -41,6 +43,9 @@ public class Collection {
     public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
+    public int getCollection_id() {
+        return collection_id;
+    }
 
     public void setCollection_id(int collection_id) {
         this.collection_id = collection_id;
@@ -64,9 +69,6 @@ public class Collection {
         return createDate;
     }
 
-    public int getCollection_id() {
-        return collection_id;
-    }
 
     public int getUser_id() {
         return user_id;

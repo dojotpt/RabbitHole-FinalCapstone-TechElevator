@@ -57,7 +57,6 @@ public class JdbcCollectionDao implements CollectionDao, AlbumDao {
 
         final String sql = "INSERT INTO collections(user_id, title, description, shared, create_date) VALUES (?, ?, ?, ?, ?) RETURNING collection_id; ";
         try {
-
             int newCollectionId = jdbcTemplate.queryForObject(sql, int.class, collection.getUser_id(), collection.getTitle(), collection.getDescription(), collection.getShared(), collection.getCreateDate());
             createdCollection = getCollectionById(newCollectionId);
 
@@ -119,7 +118,6 @@ public class JdbcCollectionDao implements CollectionDao, AlbumDao {
         }
         return userCollections;
     }
-
     Collection mapRowToCollection(SqlRowSet rowSet) {
         Collection collection = new Collection();
         collection.setCollection_id(rowSet.getInt("collection_id"));
