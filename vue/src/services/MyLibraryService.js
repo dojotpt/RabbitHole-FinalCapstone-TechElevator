@@ -16,13 +16,13 @@ export default {
     },
     getAlbum(id) {
         return axios.get(`/album/${id}`)
-    }
-    // updateAlbum(id, album) {
-    //     return http.put(`//${id}`)
-    // },
+    },
+    updateAlbum(id, album) {
+        return axios.put(`/album/${id}`)
+    },
 
     // deleteAlbum(id) {
-    //     return http.delete(`//${id}`);
+    //     return axios.delete(`//${id}`);
     // }
 
 }
