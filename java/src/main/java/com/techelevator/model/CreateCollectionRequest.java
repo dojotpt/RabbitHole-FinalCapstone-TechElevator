@@ -31,8 +31,8 @@ public class CreateCollectionRequest {
         return albums;
     }
 
-    public void setUserId(int userId) {
-        this.user_id = userId;
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
     }
 
     public void setTitle(String title) {
