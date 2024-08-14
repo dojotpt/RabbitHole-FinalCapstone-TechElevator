@@ -1,11 +1,11 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.CollectionDao;
+import com.techelevator.model.Album;
+import com.techelevator.model.AlbumResponseDto;
 import com.techelevator.model.Collection;
 import com.techelevator.model.CollectionResponseDto;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +26,19 @@ public class CollectionsController {
         final List<Collection> collections = this.collectionDao.getAllCollections();
         return new CollectionResponseDto(collections);
     }
+    @GetMapping("/mycollections/{user_id}")
+    public CollectionResponseDto getCollectionByUserId(@PathVariable int user_id) {
+        final List<Collection> collections = this.collectionDao.getCollectionByUser_Id(user_id);
+        return new CollectionResponseDto(collections);
+    }
+    @PostMapping("/addcollections")
+    public Collection addCollection(@RequestBody Collection collection){
+        return collectionDao.createCollection(collection);
+    }
+    @PutMapping("/collections/{collection_id}/edit")
+    public Collection updateCollection(@PathVariable int collection_id, @RequestBody Collection collection){
+        collection.setCollection_id(collection_id);
+        return collectionDao.updateCollection(collection);
+    }
+
 }

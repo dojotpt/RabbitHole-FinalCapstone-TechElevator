@@ -10,7 +10,10 @@ import MyLibraryView from '../views/MyLibraryView.vue';
 import CollectionsView from '../views/CollectionsView.vue';
 import AddAlbumView from '../views/AddAlbumView.vue';
 import ViewAlbumCollection from '../components/ViewAlbumCollection.vue';
+import MyCollectionsView from '../views/MyCollectionsView.vue';
+import AddCollectionView from '../views/AddCollectionView.vue';
 import AlbumDetails from '../components/AlbumDetails.vue';
+
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -86,9 +89,25 @@ const routes = [
     }
   },
   {
+    path: "/addcollections",
+    name: "add-collection",
+    component: AddCollectionView,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: "/collections",
     name: "collections",
     component: CollectionsView,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/mycollections",
+    name: "my-collections",
+    component: MyCollectionsView,
     meta: {
       requiresAuth: false
     }
