@@ -18,7 +18,6 @@ import java.util.List;
 
 @Component
 public class JdbcCollectionDao implements CollectionDao {
-
     private final JdbcTemplate jdbcTemplate;
 
 
@@ -61,6 +60,7 @@ public class JdbcCollectionDao implements CollectionDao {
             int newCollectionId = jdbcTemplate.queryForObject(sql, int.class, collection.getUserId(), collection.getTitle(), collection.getDescription(), collection.getShared());
             this.updateContents(newCollectionId, collection.getAlbums());
             createdCollection = getCollectionById(newCollectionId);
+
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
@@ -70,6 +70,7 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
+
     public void updateContents(int collectionId, int[] albums) {
         Assert.notNull(albums, "must provide a non-null album array");
         final String deleteSql = "DELETE FROM album_collections WHERE collection_id = ?;";
@@ -82,32 +83,76 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
-    public Collection addAlbumToCollection(int collection_id, int album_id) {
-
-        final String sql = "INSERT INTO album_collections(collection_id, album_id) VALUES (?, ?)";
-
-        return null;
-    }
-
-    @Override
-    public Collection updateCollection(Collection collection) {
+    public Collection updateCollection(Collection collection, int collection_id, int[] album_ids) {
         Collection updatedCollection = null;
-        final String sql = "UPDATE collections\n" +
-                "SET title = ?, description = ? , shared = ?\n" +
+        this.deleteCollection(collection);
+        this.addAlbumToCollection(collection_id, album_ids);
+        final String updateSql = "UPDATE collections\n" +
+                "SET title = ?, description = ?, shared = ?\n" +
                 "WHERE collection_id = ?;";
+
         try {
-            int numberOfRows = jdbcTemplate.update(sql, collection.getTitle(), collection.getDescription(), collection.getShared(), collection.getCollection_id());
+            int numberOfRows = jdbcTemplate.update(updateSql, collection.getTitle(), collection.getDescription(), collection.getShared(),  collection.getCollection_id());
             updatedCollection = getCollectionById(collection.getCollection_id());
-            if (numberOfRows == 0){
+            if (numberOfRows == 0) {
                 throw new DaoException("Zero rows returned");
             }
-        }catch (CannotGetJdbcConnectionException e){
+        } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
-
-        }catch (DataIntegrityViolationException e){
+        } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data Integrity violation", e);
         }
         return updatedCollection;
+    }
+    @Override
+    public Collection updateCollectionContent(Collection collection) {
+        Collection updatedCollection = null;
+        Collection deleteCollection;
+        final String updateSql = "UPDATE collections\n" +
+                "SET title = ?, description = ?, shared = ?\n" +
+                "WHERE collection_id = ?;";
+        try {
+            int numberOfRows = jdbcTemplate.update(updateSql, collection.getTitle(), collection.getDescription(), collection.getShared(), collection.getCollection_id());
+            updatedCollection = getCollectionById(collection.getCollection_id());
+            if (numberOfRows == 0) {
+                throw new DaoException("Zero rows returned");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity violation", e);
+        }
+        return updatedCollection;
+    }
+    public Collection removeAlbumsFromCollection(int collectionId) {
+        final String sql = "DELETE FROM album_collections WHERE collection_id = ?;";
+
+        try {
+            jdbcTemplate.update(sql, collectionId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity violation", e);
+        }
+        return null;
+    }
+    public Collection deleteCollection(Collection collection) {
+        Collection deletedCollection = null;
+        final String sql = "DELETE FROM collections WHERE collection_id = ?;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, collection.getCollection_id());
+            if (results.next()) {
+                deletedCollection = mapRowToCollection(results);
+            } else {
+                throw new DaoException("Collection not found or could not be deleted");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity violation", e);
+        }
+        return deletedCollection;
     }
 
     @Override
@@ -139,10 +184,6 @@ public class JdbcCollectionDao implements CollectionDao {
         collection.setCreateDate(rowSet.getTimestamp("create_date"));
         return collection;
     }
-
-
-
-
 }
 
 

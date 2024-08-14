@@ -2,7 +2,10 @@
     <div class="blurred-background"></div>
     <form class="add-album-form" v-on:submit.prevent="saveAlbum">
         <div class="card-container">
-            <img src="@/images/sample_album.jpg" />
+            <img id="sample-album-img" src="@/images/sample_album.jpg" />
+            <!-- <div class="card" v-for="album in albums" :key="album.id">
+                <img class="card-img" v-bind:src="album.albumImage" />
+            </div> -->
 
             <div class="card">
                 <div id="title-box">
@@ -59,6 +62,7 @@
 import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {
+
     props: {
         album: {
             type: Object,
@@ -111,7 +115,6 @@ export default {
         }
 
     }
-
 }
 </script>
 

@@ -14,6 +14,7 @@ public class Collection {
     private Boolean shared;
     private Timestamp createDate;
     public Collection() {}
+    public int[] album_ids;
 
     public Collection(int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate) {
         this. collection_id = collectionId;
