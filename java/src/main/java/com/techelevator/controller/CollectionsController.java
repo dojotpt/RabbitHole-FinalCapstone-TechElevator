@@ -30,7 +30,7 @@ public class CollectionsController {
     }
     @PostMapping("/addcollections")
     public Collection createCollection(@RequestBody CreateCollectionRequest collection){
-        return collectionDao.createCollection(new CreateCollectionRequest());
+        return collectionDao.createCollection(collection);
     }
 
     @PutMapping("/collections/{collection_id}/edit")
