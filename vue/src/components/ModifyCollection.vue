@@ -1,49 +1,46 @@
 <template>
     <div class="container">
-      <div class="blurred-background"></div>
-  
-      <div class="my-library-container">
-        <div id="album-container">
-          <div class="card-container">
-            <div class="card">
-              <router-link :to="`/albums`">
-                <img id="sample-album-img" src="@/images/sample_album.jpg" />
-              </router-link>
-              <h3>Add a New Record</h3>
-              <div class="text-box">
-                <p>Artist name</p>
-                <p>Genre</p>
-                 <div class="button-container">
-                <router-link :to="`/albums`">
-                  <button class="add-record-button">
-                    <img id="add-record-button-img" src="@/images/sign-plus-square-fill_.png">
-                  </button>
-                </router-link>
-              </div>
-              </div>
-             
+        <div class="blurred-background"></div>
+
+        <div class="my-library-container">
+            <div id="album-container">
+                <div class="card-container">
+                    <div class="card">
+                        <router-link :to="`/albums`">
+                            <img id="sample-album-img" src="@/images/sample_album.jpg" />
+                        </router-link>
+                        <h3>Add a New Record</h3>
+                        <div class="text-box">
+                            <p>Artist name</p>
+                            <p>Genre</p>
+                            <div class="button-container">
+                                <router-link :to="`/albums`">
+                                    <button class="add-record-button">
+                                        <img id="add-record-button-img" src="@/images/sign-plus-square-fill_.png">
+                                    </button>
+                                </router-link>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card" v-for="album in albums" :key="album.albumId">
+                        <img class="card-img" v-bind:src="album.albumImage" />
+                        <div class="text-box">
+                            <h3>{{ album.title }}</h3>
+                            <p>{{ album.artist }}</p>
+                            <p>{{ album.genre }}</p>
+                            <div class="checkbox-box">
+                                <label for="checkbox">Add Album</label>
+                                <input type="checkbox" v-model="selectedAlbumIds" :value="album.albumId">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-  
-            <div class="card" v-for="album in albums" :key="album.id">
-              <img class="card-img" v-bind:src="album.albumImage" />
-              <div class="text-box">
-                <h3>{{ album.title }}</h3>
-                <p>{{ album.artist }}</p>
-                <p>{{ album.genre }}</p>
-                <div class="checkbox-box">
-                <label for="checkbox">Add Album</label>
-                <input type="checkbox">
-              </div>
-             
-                <!-- <button id="edit-button"><img src="@/images/edit_.png"></button>
-                <button id="delete-button"><img src="@/images/trash_.png"></button> -->
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </template>
+</template>
 
 
 <script>
@@ -52,8 +49,8 @@ import MyLibraryService from '../services/MyLibraryService';
 export default {
     data() {
         return {
-
-        }
+            selectedAlbumIds: []
+        };
     },
     computed: {
         albums() {
@@ -70,53 +67,58 @@ export default {
             .catch(error => {
                 console.error(error);
             });
+    },
+    methods: {
+        saveCollection() {
+            if (this.collection.collection_id === 0) {
+                CollectionService
+                    .addCollection(this.collection)
+                    .then(response => {
+                        if (response.status === 200) {
+                            this.$router.push({ name: 'my-collections' });
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        }
     }
 }
 </script>
 
 <style scoped>
-.container{
+.container {
     display: flex;
     width: 10px;
-    
 }
 
 .my-library-container {
-    
-    display: flex; 
-    
+    display: flex;
     border-radius: 10px;
     margin: auto;
-    
-
 }
 
 .card-container {
-
-    
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
     flex-direction: row;
     height: 650px;
     overflow-x: auto;
-    overflow-y: hidden; 
-    
-    
-    
-    
+    overflow-y: hidden;
 }
 
 .card {
-   display: flex;
+    display: flex;
     background-color: rgba(0, 0, 0, 0.5);
     border: 3px solid #78c0A8;
     border-radius: 10px;
     margin: 20px;
     flex-direction: column;
-   
-    
-    
+
+
+
 }
 
 h3 {
@@ -147,6 +149,7 @@ p {
     justify-content: space-evenly;
     margin: 20px;
 }
+
 .checkbox-box {
     display: flex;
     justify-content: space-evenly;
@@ -156,9 +159,12 @@ p {
     font-size: 25px;
     color: #FCEBB6;
 }
+
 .checkbox-box input[type="checkbox"] {
-    width: 30px; /* Adjust width as needed */
-    height: 30px; /* Adjust height as needed */
+    width: 30px;
+    /* Adjust width as needed */
+    height: 30px;
+    /* Adjust height as needed */
 }
 
 button {
