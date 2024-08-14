@@ -32,7 +32,11 @@ public class CollectionsController {
     public Collection createCollection(@RequestBody CreateCollectionRequest collection){
         return collectionDao.createCollection(collection);
     }
+<<<<<<< HEAD
 //
+=======
+
+>>>>>>> 6dd6978eeefb331a3f2835e51e1a4356830ff443
 //    @PutMapping("/collections/{collection_id}/albums")
 //
 //    public Collection updateCollection(@PathVariable int collection_id, @RequestBody Collection collection){

@@ -17,7 +17,11 @@
                 <p class="notes">{{ album.notes }}</p>
             </div>
             <div class="button-container">
+                
+                <router-link  :to="`/album/${album.albumId}/edit`">
                 <button id="edit-button"><img src="@/images/edit_.png"></button>
+                </router-link>
+            
             </div>
 
         </div>
@@ -25,6 +29,7 @@
 </template>
 
 <script>
+import router from '../router/index.js';
 import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {

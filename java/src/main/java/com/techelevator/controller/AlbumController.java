@@ -62,7 +62,7 @@ private final UserDao userDao;
     @GetMapping("/album/{album_id}/stats")
     public Album getAlbum(@PathVariable int album_id) {
         // AUTHORIZATION
-        Album album = albumDao.getAlbumById(album_id);
+        Album album  = albumDao.getAlbumById(album_id);
         album.setStats(albumDao.getStatsForAlbum(album_id));
         return album;
     }
