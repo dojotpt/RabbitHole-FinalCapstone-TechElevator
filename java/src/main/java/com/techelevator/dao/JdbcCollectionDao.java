@@ -1,13 +1,14 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Album;
 import com.techelevator.model.Collection;
+import com.techelevator.model.CreateCollectionRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,22 +53,32 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
-    public Collection createCollection(Collection collection) {
+    public Collection createCollection(CreateCollectionRequest collection) {
         Collection createdCollection = null;
 
-        final String sql = "INSERT INTO collections(user_id, title, description, shared, create_date) VALUES (?, ?, ?, ?, ?) RETURNING collection_id; ";
+        final String sql = "INSERT INTO collections(user_id, title, description, shared, create_date) VALUES (?, ?, ?, ?, NOW()) RETURNING collection_id; ";
         try {
-            int newCollectionId = jdbcTemplate.queryForObject(sql, int.class, collection.getUser_id(), collection.getTitle(), collection.getDescription(), collection.getShared(), collection.getCreateDate());
+            int newCollectionId = jdbcTemplate.queryForObject(sql, int.class, collection.getUserId(), collection.getTitle(), collection.getDescription(), collection.getShared());
+            this.updateContents(newCollectionId, collection.getAlbums());
             createdCollection = getCollectionById(newCollectionId);
-
-
-
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data Integrity violation", e);
         }
         return createdCollection;
+    }
+
+    @Override
+    public void updateContents(int collectionId, int[] albums) {
+        Assert.notNull(albums, "must provide a non-null album array");
+        final String deleteSql = "DELETE FROM album_collections WHERE collection_id = ?;";
+        final String insertSql = "INSERT INTO album_collections (album_id, collection_id) VALUES (?, ?);";
+
+        jdbcTemplate.update(deleteSql, collectionId);
+        for (int id : albums) {
+            jdbcTemplate.update(insertSql, id, collectionId);
+        }
     }
 
     @Override
@@ -118,7 +129,7 @@ public class JdbcCollectionDao implements CollectionDao {
         }
         return userCollections;
     }
-    Collection mapRowToCollection(SqlRowSet rowSet) {
+      Collection mapRowToCollection(SqlRowSet rowSet) {
         Collection collection = new Collection();
         collection.setCollection_id(rowSet.getInt("collection_id"));
         collection.setUser_id(rowSet.getInt("user_id"));
@@ -128,7 +139,6 @@ public class JdbcCollectionDao implements CollectionDao {
         collection.setCreateDate(rowSet.getTimestamp("create_date"));
         return collection;
     }
-
 
 
 
