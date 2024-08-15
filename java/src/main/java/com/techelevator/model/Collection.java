@@ -13,9 +13,20 @@ public class Collection {
     private String description;
     private Boolean shared;
     private Timestamp createDate;
-    public Collection() {}
+    private String albumUrl;
+    public Collection() {};
     public int[] album_ids;
 
+
+    public Collection(int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate, String albumUrl) {
+        this. collection_id = collectionId;
+        this.user_id = userId;
+        this.title = title;
+        this.shared = shared;
+        this.description = description;
+        this.createDate = createDate;
+        this.albumUrl = albumUrl;
+    }
     public Collection(int collectionId, int userId, String title, Boolean shared, String description, Timestamp createDate) {
         this. collection_id = collectionId;
         this.user_id = userId;
@@ -24,6 +35,8 @@ public class Collection {
         this.description = description;
         this.createDate = createDate;
     }
+
+
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
@@ -44,6 +57,11 @@ public class Collection {
     public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
+
+    public void setAlbumUrl(String albumUrl) {
+        this.albumUrl = albumUrl;
+    }
+
     public int getCollection_id() {
         return collection_id;
     }
@@ -51,8 +69,6 @@ public class Collection {
     public void setCollection_id(int collection_id) {
         this.collection_id = collection_id;
     }
-
-
 
     public String getTitle() {
         return title;
@@ -70,6 +86,9 @@ public class Collection {
         return createDate;
     }
 
+    public String getAlbumUrl() {
+        return albumUrl;
+    }
 
     public int getUser_id() {
         return user_id;

@@ -20,8 +20,10 @@
               <label for="password">Password</label>
               <input type="password" id="password" v-model="user.password" required />
             </div>
-            <button class="form-button-cancel" @click="handleClose">Cancel</button>
+            
             <button class="form-button" type="submit" @click="loginAndClose"> Sign in </button>
+            <button class="form-button-cancel" @click="handleClose">Cancel</button>
+            
             <p>
               <!-- <router-link id="hyperlink" :to="{ name: 'register' }">Need an account? Sign up.</router-link> -->
             </p>

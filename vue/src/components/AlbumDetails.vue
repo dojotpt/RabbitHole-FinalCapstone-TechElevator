@@ -5,7 +5,8 @@
         <div class="card">
 
             <div id="text-box">
-                <p>This record is in   {{ stats.stats.inCollections }} collection(s)</p>
+                <p v-if="stats.stats.inCollections === 1">This record is in   {{ stats.stats.inCollections }} collection</p>
+                <p v-else>This record is in   {{ stats.stats.inCollections }} collections</p>
                 <h1>{{ album.artist }}</h1>
                 <h2> Album:</h2>
                 <h3>{{ album.title }}</h3>

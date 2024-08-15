@@ -3,8 +3,7 @@
     <form class="add-album-form" v-on:submit.prevent="saveAlbum">
         <div class="card-container">
             
-            <!-- this needs a hide show thingy for the image if the view is 
-            in an add album form  or  edit album form-->
+          
 
             <img v-if="album.album_id !== 0" class="card-img" v-bind:src="album.albumImage" /> 
             <img v-else id="sample-album-img" src="@/images/sample_album.jpg"/>
