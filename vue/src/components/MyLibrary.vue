@@ -28,7 +28,7 @@
                     </router-link>
                     <div class="text-box">
                         <h3>{{ album.title }}</h3>
-                        <p>{{ album.artist }}</p>
+                        <p class="artist">{{ album.artist }}</p>
                         <p>{{ album.genre }}</p>
                     </div>
                     <div class="button-container">
@@ -120,14 +120,12 @@ p {
 }
 
 .text-box p {
+    /* display: inline-block; */
     padding-left: 20px;
     height: 15px;
 }
-
-.button-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px;
+.artist {
+    display: inline-block;    
 }
 
 button {
@@ -171,7 +169,7 @@ button {
 .button-container {
     display: flex;
     justify-content: space-evenly;
-    margin: 20px;
+    margin: 0px;
 }
 
 .add-record-button {
@@ -208,7 +206,7 @@ button {
     }
 
     .button-container {
-        margin: 30px;
+        margin: px;
     }
 
     .blurred-background {
