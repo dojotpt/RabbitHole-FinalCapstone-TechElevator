@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Album;
 
 import com.techelevator.model.AlbumStats;
+
 import java.util.List;
 
 
@@ -17,6 +18,5 @@ public interface AlbumDao {
        Album getAlbumById(int album_id);
        List<Album> getAlbumsByCollectionId(int collection_id/*id is collection id*/);
     Album updateAlbum(Album album);
-
 
 }

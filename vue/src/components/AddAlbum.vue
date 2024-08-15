@@ -2,11 +2,22 @@
     <div class="blurred-background"></div>
     <form class="add-album-form" v-on:submit.prevent="saveAlbum">
         <div class="card-container">
-            <img src="@/images/sample_album.jpg" />
+            
+            <!-- this needs a hide show thingy for the image if the view is 
+            in an add album form  or  edit album form-->
+
+            <img v-if="album.album_id !== 0" class="card-img" v-bind:src="album.albumImage" /> 
+            <img v-else id="sample-album-img" src="@/images/sample_album.jpg"/>
+            <!-- <div class="card" v-for="album in albums" :key="album.id">
+                <img class="card-img" v-bind:src="album.albumImage" />
+            </div> -->
 
             <div class="card">
                 <div id="title-box">
-                    <h3>Add a New Record</h3>
+
+                    <h3 v-if="album.album_id !== 0" class="edit">Edit Record</h3>
+                    <h3 v-else class="add">Add a New Record</h3>
+                    
                 </div>
                 <div class="text-box">
                     <div class="field">
@@ -60,6 +71,7 @@
 import MyLibraryService from '../services/MyLibraryService.js';
 
 export default {
+
     props: {
         album: {
             type: Object,
@@ -80,6 +92,7 @@ export default {
             }
         };
     },
+    
     methods: {
         saveAlbum() {
             if (this.album.album_id === 0) {
@@ -112,12 +125,21 @@ export default {
         }
 
     }
-
 }
 </script>
 
 
 <style scoped>
+.card-img{
+    width: 35%;
+    height: auto;
+    border-color: black;
+    border-style: solid;
+}
+.hide {
+    display: none;
+}
+
 .card-container {
     max-height: 80vh;
     overflow-y: scroll;
@@ -172,7 +194,7 @@ h3 {
 }
 
 .field label {
-    width: 100px;
+    
     margin-right: 10px;
 }
 
@@ -184,7 +206,7 @@ h3 {
     width: 350px;
 }
 
-img {
+#sample-album-img {
     border-radius: 50%;
     width: 45%;
     height: auto;
