@@ -81,11 +81,6 @@ public class JdbcCollectionDao implements CollectionDao {
             jdbcTemplate.update(insertSql, id, collectionId);
         }
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 6dd6978eeefb331a3f2835e51e1a4356830ff443
     @Override
     public Collection updateCollectionContent(Collection collection) {
         Collection updatedCollection = null;

@@ -192,7 +192,7 @@ h3 {
 }
 
 .field label {
-    width: 100px;
+    
     margin-right: 10px;
 }
 
