@@ -17,7 +17,8 @@ export function createStore(currentToken, currentUser) {
       },
       collections: {
         collections: []
-      }
+      },
+      selectedAlbumsIds:[]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {

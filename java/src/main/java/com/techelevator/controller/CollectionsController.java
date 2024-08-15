@@ -11,12 +11,9 @@ import java.util.List;
 public class CollectionsController {
 
     private CollectionDao collectionDao;
-
-
     public CollectionsController(CollectionDao collectionDao){
         this.collectionDao = collectionDao;
     }
-
 
     @GetMapping("/collections")
     public CollectionResponseDto getAllCollections(){
@@ -33,6 +30,7 @@ public class CollectionsController {
         return collectionDao.createCollection(collection);
     }
 
+
 //    @PutMapping("/collections/{collection_id}/albums")
 //
 //    public Collection updateCollection(@PathVariable int collection_id, @RequestBody Collection collection){
@@ -44,5 +42,6 @@ public class CollectionsController {
 //        collection.setCollection_id(collection_id);
 //        return collectionDao.addAlbumToCollection(collection_id, collection.album_ids);
 //    }
+
 
 }

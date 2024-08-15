@@ -55,8 +55,16 @@ export default {
     computed: {
         albums() {
             return this.$store.state.myLibrary.albums;
-        }
-    },
+        },
+        selectedAlbumsIds: {
+      get() {
+        return this.$store.state.selectedAlbumsIds;
+      },
+      set(value) {
+        this.$store.commit('SET_SELECTED_ALBUMS', value);
+      }
+    }
+  },
 
     created() {
         MyLibraryService.getLibraryByRegUserId(this.$store.state.user.id)
@@ -85,6 +93,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style scoped>
@@ -92,6 +101,7 @@ export default {
     display: flex;
     width: 10px;
 }
+
 
 .my-library-container {
     display: flex;

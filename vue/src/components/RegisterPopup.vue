@@ -25,8 +25,10 @@
                 <label for="premium">Premium</label>
                 <input type="checkbox" id="premium" v-model="user.role" />
               </div>
-              <button class="form-button-cancel" @click="handleClose">Cancel</button>
+              
               <button class="form-button" type="submit">Create Account</button>
+              <button class="form-button-cancel" @click="handleClose">Cancel</button>
+              
               <!-- <p><router-link  id="hyperlink" :to="{ name: 'login' }">Already have an account? Log in.</router-link></p> -->
             </form>
           </div>

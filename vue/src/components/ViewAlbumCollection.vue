@@ -5,7 +5,9 @@
             <div class="card-container">
                 
                 <div class="card" v-for="album in albums" :key="album.id">
-                    <img class="card-img" v-bind:src="album.albumImage" />
+                    <router-link :to="`/album/${album.albumId}`">
+                        <img class="card-img" v-bind:src="album.albumImage" />
+                    </router-link>
                     <div class="text-box">
                         
                         <h3>{{ album.title }}</h3>
@@ -13,8 +15,9 @@
                         <p>{{ album.genre }}</p>
                     </div>
                     <div class="button-container">
-                        <button id="edit-button"><img src="@/images/edit_.png"></button>
-                        <button id="delete-button"><img src="@/images/trash_.png"></button>
+                        <router-link :to="`/album/${album.albumId}/edit`">
+                            <button id="edit-button"><img src="@/images/edit_.png"></button>
+                        </router-link>
                     </div>
                 </div>
             </div>
