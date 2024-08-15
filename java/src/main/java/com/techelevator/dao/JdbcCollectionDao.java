@@ -13,9 +13,6 @@ import org.springframework.util.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 @Component
 public class JdbcCollectionDao implements CollectionDao {
     private final JdbcTemplate jdbcTemplate;
@@ -28,7 +25,13 @@ public class JdbcCollectionDao implements CollectionDao {
 
     @Override
     public List<Collection> getAllCollections() {
-        final String sql = "select * from collections"; ;
+        final String sql = "SELECT collection_id, user_id, title, shared, description, create_date,\n" +
+                "(SELECT album_image \n" +
+                " FROM album_collections AS ac \n" +
+                " JOIN album AS a ON a.album_id = ac.album_id\n" +
+                "WHERE ac.collection_id = c.collection_id\n" +
+                "LIMIT 1) As image_url\n" +
+                "FROM collections AS c;\n"; ;
 
         final List<Collection> collections = new ArrayList<>();
         try {
@@ -41,7 +44,8 @@ public class JdbcCollectionDao implements CollectionDao {
                         results.getString("title"),
                         results.getBoolean("shared"),
                         results.getString("description"),
-                        results.getTimestamp("create_date")
+                        results.getTimestamp("create_date"),
+                        results.getString("image_url")
                 );
                 collections.add(collection);
             }
@@ -140,11 +144,27 @@ public class JdbcCollectionDao implements CollectionDao {
     @Override
     public List<Collection> getCollectionByUser_Id(int user_id) {
         final List<Collection> userCollections = new ArrayList<>();
-        final String sql = "SELECT collection_id, user_id, title, description, shared, create_date FROM collections WHERE user_id = ?;";
+        final String sql = "SELECT collection_id, user_id, title, description, shared, create_date, \n" +
+                "(SELECT album_image \n" +
+                " FROM album_collections AS ac \n" +
+                " JOIN album AS a ON a.album_id = ac.album_id\n" +
+                "WHERE ac.collection_id = c.collection_id\n" +
+                "LIMIT 1) As image_url\n" +
+                "FROM collections AS c\n" +
+                "WHERE user_id = ?";
         try {
             final SqlRowSet results = jdbcTemplate.queryForRowSet(sql, user_id);
             while (results.next()) {
-                userCollections.add(mapRowToCollection(results));
+                final Collection collection = new Collection(
+                        results.getInt("collection_id"),
+                        results.getInt("user_id"),
+                        results.getString("title"),
+                        results.getBoolean("shared"),
+                        results.getString("description"),
+                        results.getTimestamp("create_date"),
+                        results.getString("image_url")
+                );
+                userCollections.add(collection);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("unable to connect to server or database", e);

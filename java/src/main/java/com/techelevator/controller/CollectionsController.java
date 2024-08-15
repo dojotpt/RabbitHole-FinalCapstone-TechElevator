@@ -11,12 +11,9 @@ import java.util.List;
 public class CollectionsController {
 
     private CollectionDao collectionDao;
-
-
     public CollectionsController(CollectionDao collectionDao){
         this.collectionDao = collectionDao;
     }
-
 
     @GetMapping("/collections")
     public CollectionResponseDto getAllCollections(){
@@ -32,5 +29,4 @@ public class CollectionsController {
     public Collection createCollection(@RequestBody CreateCollectionRequest collection){
         return collectionDao.createCollection(collection);
     }
-
 }
