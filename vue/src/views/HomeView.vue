@@ -59,7 +59,6 @@
   grid-template-columns: 1.3fr 2fr;
   grid-template-areas: 
   "collections genre1"
-  "collections genre2"
   "collections genre3";    
     width: 100%;
     height: 50vh;
@@ -95,6 +94,7 @@
   background-image: url('src/images/browsecollectionsbutton.png');
   background-size: cover;
   background-position: center;
+  background-position-y: -30px;
   justify-self: self-end;
   margin-right: 12px;
   color: white;

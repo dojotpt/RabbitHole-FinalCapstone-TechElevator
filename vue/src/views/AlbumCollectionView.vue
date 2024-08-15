@@ -2,6 +2,7 @@
     <div class="library-container">
         <div id="my-library">
             <ViewAlbumCollection v-bind:collection="collection" />
+         
         </div>
     </div>
 </template>

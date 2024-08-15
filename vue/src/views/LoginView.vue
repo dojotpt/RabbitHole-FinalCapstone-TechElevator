@@ -1,125 +1,147 @@
 <template>
-  
-  
-  <div class="login-container">
+  <div id="home-view"> 
     <div class="blurred-background"></div>
-  <div id="login">
-    <form v-on:submit.prevent="login">
-      <h1 >Please Sign In</h1>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
-      </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <button class="form-button" type="submit">Sign in</button>
-      <p>
-      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
-    </form>
-  </div>
-</div>
+    
+    <div class="home-container">
+     <div class="collection-card">
+        </div>
+
+        <div id="browse-collections" class="card">
+          <a href="collections" class="card-text">Browse Collections</a>
+        </div>
+
+        <div class="collection-card">
+        </div>
+
+        <div id="about-us" class="card">
+          <a href="additionalinfo" class="card-text">Additional Info</a>
+        </div>
+
+       
+
+        <!-- will add later for full functionality after demo -->
+
+        <!-- <div id="profile" class="card">
+          <a href="profile" class="card-text">Profile</a>
+        </div> -->
+
+        
+
+        
+      
+    </div>
+   
+
+  </div>  
+  
 </template>
 
 <script>
-import authService from "../services/AuthService";
 
-export default {
-  components: {
-    
-  },
-  data() {
-    return {
-      user: {
-        username: "",
-        password: ""
-      },
-      invalidCredentials: false
-    };
-  },
-  methods: {
-    login() {
-      authService
-        .login(this.user)
-        .then(response => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
-          }
-        })
-        .catch(error => {
-          const response = error.response;
-
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
-    }
-  }
-};
 </script>
 
 <style scoped>
-
+#home-view {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.home {
+  padding: 20px;
+}
+.home-container {
+  display: grid;
+  grid-template-columns: 1.3fr 2fr;
+  grid-template-areas: 
+  "collections genre1";    
+    width: 100%;
+    height: 50vh;
+    align-items:center;
+    justify-content: center;   
+    font-family: 'RabbitFont';
+    font-weight: 300;
+    color: #78c0A8;
+    text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 25px;
+    align-content: center;
+    box-shadow: black 0px 0px 100px; 
+}
 .blurred-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('src/images/record store.jpeg');
+  background-image: linear-gradient(hwb(28 5% 89% / 0.247),hwb(29 9% 81% / 0.5) ), url('src/images/recordcollection2.jpeg');
   background-size: cover;
   background-position: center;
-  filter: blur(5px);
-  z-index: -1;
+  filter: blur(4px);
+  z-index: -1; 
 }
-
-#password{
-margin-left: 3px;
-}
-
-.form-button{
-  background-color: #F0A830;
-}
-
-.form-button:hover{
-  background-color: #F07818;
-}
-.login-container {
+#browse-collections{ 
   display: flex;
-  justify-content: flex-end;
-
-}
-.form-input-group {
-  margin-bottom: 1rem;
-}
-label {
-  margin-right: 0.5rem;
-  color: #FCEBB6;
-  text-shadow: 
-    -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-}
-#login {
-  background: rgba(94, 65, 36, 0.9);
-  width: 370px;
-  border-radius: 10px;
-  text-align: center;
-  border: 2px solid black;
-  
-}
-input{
-  background-color: #FCEBB6;
+  grid-area: collections;
+  width: 500px;
+  height: 500px;
+  border: 2PX #FCEBB6 solid;
+  border-radius: 7PX;
+  background-image: url('src/images/browsecollectionsbutton.png');
+  background-size: cover;
+  background-position: center;
+  background-position-y: -30px;
+  justify-self: self-end;
+  margin-right: 12px;
+  color: white;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 60px;
+ }
+ .card-text {
+  font-family: "Caprasimo",sans-serif;
+  font-weight: 400; 
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
+  font-size: 40px;
+  text-decoration: none;
+  color:  #FCEBB6;
 }
+#placeholder .card-text{
+  backdrop-filter: blur(3px); 
+}
+#about-us .card-text{
+ backdrop-filter: blur(3px); 
+}
+#profile .card-text{
+  backdrop-filter: blur(3px);
+}
+#about-us{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('src/images/playerStylus.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-area: genre1;
+  align-self: center;
+  border: 2PX #FCEBB6 solid;
+  font-size: 80px;
+  text-align: center;
+  width:70%;
+  text-decoration: none;
+  height: 50%;
+  border-radius: 7PX;
+  color: white;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  align-self: end;
+  margin-bottom: 120px;
+}
+
+
+
+
 </style>

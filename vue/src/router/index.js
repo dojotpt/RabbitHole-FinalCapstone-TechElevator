@@ -14,7 +14,7 @@ import MyCollectionsView from '../views/MyCollectionsView.vue';
 import AddCollectionView from '../views/AddCollectionView.vue';
 import AlbumDetails from '../components/AlbumDetails.vue';
 import ModifyCollection from '../components/ModifyCollection.vue';
-
+import AdditionalInfoView from '../views/AdditionalInfoView.vue';
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
  * inside of App.vue depending on the URL.
@@ -29,7 +29,7 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -62,6 +62,14 @@ const routes = [
     component: MyLibraryView,
     meta: {
       requiresAuth: true
+    }
+  },
+  {
+    path: "/additionalinfo",
+    name: "additional-info",
+    component: AdditionalInfoView,
+    meta: {
+      requiresAuth: false
     }
   },
   // {
@@ -109,7 +117,7 @@ const routes = [
     name: "my-collections",
     component: MyCollectionsView,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {

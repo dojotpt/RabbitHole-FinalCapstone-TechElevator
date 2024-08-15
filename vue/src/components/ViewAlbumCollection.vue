@@ -3,9 +3,11 @@
     <div class="my-library-container">
         <div id="album-container">
             <div class="card-container">
+                
                 <div class="card" v-for="album in albums" :key="album.id">
                     <img class="card-img" v-bind:src="album.albumImage" />
                     <div class="text-box">
+                        
                         <h3>{{ album.title }}</h3>
                         <p>{{ album.artist }}</p>
                         <p>{{ album.genre }}</p>
@@ -22,6 +24,7 @@
 
 <script>
 import MyLibraryService from '../services/MyLibraryService';
+
 export default {
     computed: {
         albums() {
