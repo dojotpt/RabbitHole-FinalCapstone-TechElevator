@@ -28,7 +28,7 @@
                     </router-link>
                     <div class="text-box">
                         <h3>{{ album.title }}</h3>
-                        <p>{{ album.artist }}</p>
+                        <p class="artist">{{ album.artist }}</p>
                         <p>{{ album.genre }}</p>
                     </div>
                     <div class="button-container">
@@ -97,23 +97,28 @@ export default {
 }
 
 .card {
-    background-color: rgba(94, 65, 36, 0.5);
-    border: 2px solid #78c0A8;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 3px solid #78C0A8;
     border-radius: 10px;
-    width: 250px;
-    margin: 20px;
+    margin-right: 20PX;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 h3 {
     font-family: "Caprasimo", sans-serif;
-    color: #78c0A8;
-    font-size: medium;
+    color: #78C0A8;
+    width: 250px;
+    height: 50px;
+    margin: 25px;
     text-align: center;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
+    font-weight: 300;
 }
 
 p {
+    margin-bottom: 60px;
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
     font-size: 16px;
     color: #FCEBB6;
@@ -126,8 +131,12 @@ p {
 
 .button-container {
     display: flex;
-    justify-content: space-evenly;
-    margin: 20px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.artist {
+    display: inline-block;
 }
 
 button {
@@ -168,12 +177,6 @@ button {
     padding-left: 20px;
 }
 
-.button-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px;
-}
-
 .add-record-button {
     display: flex;
     justify-content: center;
@@ -186,10 +189,6 @@ button {
 }
 
 #edit-button img {
-    width: 25px;
-}
-
-#delete-button img {
     width: 25px;
 }
 
@@ -207,25 +206,25 @@ button {
         width: 300px;
     }
 
-    .button-container {
+    /* .button-container {
         margin: 30px;
-    }
+    } */
 
     .blurred-background {
         filter: blur(6px);
     }
 
     h3 {
-        font-size: 1.8em;
-    }
-
-    p {
         font-size: 1.5em;
     }
 
-    .text-box p {
-        padding-left: 25px;
+    p {
+        font-size: 1em;
     }
+
+    /* .text-box p {
+        padding-left: 25px;
+    } */
 
     .add-record-button {
         font-size: 1.2em;
