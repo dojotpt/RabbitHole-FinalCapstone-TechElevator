@@ -32,21 +32,5 @@ public class CollectionsController {
     public Collection createCollection(@RequestBody CreateCollectionRequest collection){
         return collectionDao.createCollection(collection);
     }
-<<<<<<< HEAD
-//
-=======
-
->>>>>>> 6dd6978eeefb331a3f2835e51e1a4356830ff443
-//    @PutMapping("/collections/{collection_id}/albums")
-//
-//    public Collection updateCollection(@PathVariable int collection_id, @RequestBody Collection collection){
-//        collection.setCollection_id(collection_id);
-//        return collectionDao.updateCollection(collection, collection_id, collection.album_ids);
-//    }
-//    @PutMapping("/collections/{collection_id}/addAlbumsToCollection")
-//    public Collection addAlbumToCollection(@PathVariable int collection_id, @RequestBody Collection collection){
-//        collection.setCollection_id(collection_id);
-//        return collectionDao.addAlbumToCollection(collection_id, collection.album_ids);
-//    }
 
 }
