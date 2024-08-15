@@ -1,8 +1,10 @@
 <template>
-    <div class="add-collection-container">
+    
+    <div class="add-collections-container">
+       
         <AddCollection :collection="collection" />
-        <div class="my-library-container">
-        </div>
+       
+       
     </div>
 </template>
 
@@ -29,20 +31,14 @@ export default {
 </script>
 
 <style scoped>
-.add-collection-container {
+.add-collections-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    padding-top: 60px;
+    
+ 
 }
 
-.my-library-container {
-    width: 150vh;
-    overflow-x: scroll;
-    scrollbar-color: #F07818 rgb(94, 65, 36);
 
-}
+
 </style>

@@ -8,26 +8,6 @@
             class="fa-solid fa-compact-disc"></i>le</router-link>
       </h1>
 
-      <!-- search bar to be added later  -->
-
-      <!-- <div class="search-bar">
-      <form @submit.prevent="handleSearch" class="search-form">
-        <select id="collection-filter" @change="handleFilterChange">
-        <option value=""></option>
-        <option value="All">All</option>
-        <option value="value1">Rock</option>
-        <option value="value2">Jazz</option> 
-        <option value="value3">Country</option>
-        <option value="value4">Alternative</option>
-       
-      </select>
-        <input type="search" id="search" name="q" placeholder="Search Collections">
-        <button id="search-button" type="submit">
-          <img id="search-icon" src="src/images/search_.png" alt="Search">
-        </button>
-      </form>
-    </div> -->
-
 
 
       <nav id="header-buttons">
@@ -108,9 +88,6 @@ export default {
 @font-face {
   font-family: 'RabbitFont';
   src: url('@/assets/fonts/RABBITZ HOLE_PERSONALUSEONLY.TTF') format('truetype');
-}
-.card-collection {
-  
 }
 
 .insta-icon img {

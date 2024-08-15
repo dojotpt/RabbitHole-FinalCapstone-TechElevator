@@ -1,11 +1,11 @@
 <template>
-  <div class="collection-form-wrapper">
+  
     <div class="blurred-background"></div>
     <form class="add-album-form" @submit.prevent="saveCollection">
-      <div class="card-container">
+      <div class="add-collection-container">
         <img src="@/images/addrecordcollectioncard.png" alt="Add Record Collection Card" />
 
-        <div class="card">
+        <div class="card-template">
           <div id="title-box">
             <h3>Add a Collection</h3>
           </div>
@@ -32,7 +32,7 @@
         </div>
       </div>
     </form>
-  </div>
+  
 
   <div class="my-library-container">
     <div id="album-container">
@@ -129,6 +129,7 @@ export default {
 
 
 <style scoped>
+
 .actions {
   display: flex;
   align-self: center;
@@ -141,23 +142,28 @@ export default {
   display: flex;
   align-self: center;
 }
-
-.card-container {
-  height: 500px;
-
-  scrollbar-color: #F07818 rgb(94, 65, 36);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
+.add-collection-container {
+     display: flex;
+    flex-direction: row; 
+    align-items: center;
+    
+    
 }
 
-.card {
+.card-container {
+  scrollbar-color: #F07818 rgb(94, 65, 36);
+  display: flex;
+  width: 1600px;
+  margin-left: -40px;
+ 
+}
+
+.card-template {
   background-color: rgba(0, 0, 0, 0.6);
   border: 3px solid #78c0A8;
   border-radius: 10px;
   width: 600px;
-  height: 600px;
+  height: 400px;
 
   display: flex;
   flex-direction: column;
@@ -203,24 +209,13 @@ h3 {
 }
 
 img {
-
-  height: 550px;
-
-}
-
-.blurred-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(hwb(28 5% 89% / 0.247), hwb(29 9% 81% / 0.5)), url('@/images/mycollections.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: blur(4px);
-  z-index: -1;
+display: flex;
+  height: 400px;
+  justify-self: center;
 
 }
+
+
 
 label {
   color: #FCEBB6;
@@ -243,5 +238,190 @@ button {
   text-decoration: none;
   border: #000 2px solid;
   margin-top: 60px;
+}
+.container {
+    display: flex;
+    width: 10px;
+}
+
+
+
+
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    flex-direction: row;
+    height: 650px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 20px;
+}
+
+.card {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 3px solid #78c0A8;
+    border-radius: 10px;
+    margin-right:20PX;
+    flex-direction: column;
+
+
+
+}
+
+h3 {
+    font-family: "Caprasimo", sans-serif;
+    color: #78c0A8;
+    width: 250px;
+    height: 50px;
+    margin: 25px;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: 300;
+}
+
+p {
+    margin-bottom: 60px ;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+    font-size: 16px;
+    color: #FCEBB6;
+}
+
+.text-box p {
+    padding-left: 20px;
+    height: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+.checkbox-box {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+    font-size: 25px;
+    color: #FCEBB6;
+}
+
+.checkbox-box input[type="checkbox"] {
+    width: 30px;
+    /* Adjust width as needed */
+    height: 30px;
+    /* Adjust height as needed */
+}
+
+
+
+.card-img {
+    width: 100%;
+    border-radius: 2.5%;
+    height: 250px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 2.5%;
+}
+
+#sample-album-img {
+    height: 250px;
+    border-radius: 2.5%;
+}
+
+.blurred-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('src/images/mycollectionsclipped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+ 
+  z-index: -1;
+}
+
+
+
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px;
+}
+
+.add-record-button {
+    display: flex;
+    justify-content: center;
+}
+
+#add-record-button-img {
+    display: flex;
+    width: 25px;
+    justify-content: center;
+}
+
+#edit-button img {
+    width: 25px;
+}
+
+#delete-button img {
+    width: 25px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .my-library-container {
+        width: 60%;
+        height: 60%;
+    }
+
+    .card-container {
+        max-height: 90vh;
+    }
+
+    .card {
+        width: 300px;
+    }
+
+    .button-container {
+        margin: 30px;
+    }
+
+    .blurred-background {
+        filter: blur(6px);
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1.5em;
+    }
+
+    .text-box p {
+        padding-left: 25px;
+    }
+
+    .add-record-button {
+        font-size: 1.2em;
+    }
+
+    #add-record-button-img {
+        width: 30px;
+    }
+
+    #edit-button img {
+        width: 30px;
+    }
+
+    #delete-button img {
+        width: 30px;
+
+    }
 }
 </style>

@@ -36,14 +36,14 @@ export default {
 .collections-container {
   display: flex;
   width: 100%;
-  height: 87vh;
   justify-content: center;
   font-family: 'caprasimo', sans-serif;
   font-weight: 190;
   color: #FCEBB6;
   font-size: 25px;
   scrollbar-color: #78c0A8 rgb(26, 20, 14, 0.3);
-  flex-direction: row;
+  height: 900px;
+ 
 }
 
 .blurred-background {

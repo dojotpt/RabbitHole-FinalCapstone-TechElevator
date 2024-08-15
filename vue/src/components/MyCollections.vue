@@ -75,6 +75,7 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
+    height: 780px;
   }
   button {
     
