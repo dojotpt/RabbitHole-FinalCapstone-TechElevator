@@ -63,6 +63,7 @@ export default {
        .then( r => {
          if (r.status === 201) {
           this.$store.commit('SET_MY_COLLECTION',r.data);
+          this.$store.commit('SET_SELECTED_ALBUMS',this.selectedAlbumsIds);
          }
          
        })

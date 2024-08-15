@@ -43,11 +43,12 @@
                     <div class="field">
                         <label for="albumImage">Url for Album Image</label>
                         <input id="albumImage" type="text" v-model="album.albumImage" />
-                    </div>
-                    <div class="actions">
+                        <div class="actions">
                         <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
                         <button type="submit">Save Album</button>
                     </div>
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -128,6 +129,7 @@ export default {
 }
 
 .card {
+    display: flex;
     background-color: rgba(94, 65, 36, 0.5);
     border: 2px solid #78c0A8;
     border-radius: 10px;
@@ -187,6 +189,20 @@ img {
     width: 45%;
     height: auto;
 }
+button {
+  font-family: "Caprasimo", sans-serif;
+  font-weight: 400;
+  background-color: #F07818;
+  font-size: large;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #FCEBB6;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-decoration: none;
+  border: #000 2px solid;
+  margin-top: 60px;
+}
 
 .blurred-background {
     position: absolute;
@@ -200,5 +216,8 @@ img {
     filter: blur(4px);
     z-index: -1;
 
+}
+.actions {
+    margin-top: -30px;
 }
 </style>

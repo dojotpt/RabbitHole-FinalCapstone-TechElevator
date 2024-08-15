@@ -78,6 +78,7 @@ public class JdbcCollectionDao implements CollectionDao {
         return null;
     }
 
+
     @Override
     public Collection updateCollection(Collection collection) {
         Collection updatedCollection = null;
@@ -97,6 +98,24 @@ public class JdbcCollectionDao implements CollectionDao {
             throw new DaoException("Data Integrity violation", e);
         }
         return updatedCollection;
+    }
+    public Collection deleteCollection(Collection collection) {
+        Collection deletedCollection = null;
+        final String sql = "DELETE FROM collections WHERE collection_id = ? RETURNING *;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, collection.getCollection_id());
+            if (results.next()) {
+                deletedCollection = mapRowToCollection(results);
+            } else {
+                throw new DaoException("Collection not found or could not be deleted");
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity violation", e);
+        }
+        return deletedCollection;
     }
 
     @Override

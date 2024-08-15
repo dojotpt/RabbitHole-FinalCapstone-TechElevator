@@ -31,8 +31,11 @@
                 <p>{{ album.artist }}</p>
                 <p>{{ album.genre }}</p>
                 <div class="checkbox-box">
-                <label for="checkbox">Add Album</label>
-                <input type="checkbox">
+                <label>Add Album
+                <input :id="album.id" type="checkbox" :value="album.id" v-model="selectedAlbumsIds">
+                
+                Select
+                 </label>
               </div>
              
                 <!-- <button id="edit-button"><img src="@/images/edit_.png"></button>
@@ -58,8 +61,16 @@ export default {
     computed: {
         albums() {
             return this.$store.state.myLibrary.albums;
-        }
-    },
+        },
+        selectedAlbumsIds: {
+      get() {
+        return this.$store.state.selectedAlbumsIds;
+      },
+      set(value) {
+        this.$store.commit('SET_SELECTED_ALBUMS', value);
+      }
+    }
+  },
 
     created() {
         MyLibraryService.getLibraryByRegUserId(this.$store.state.user.id)
@@ -70,8 +81,15 @@ export default {
             .catch(error => {
                 console.error(error);
             });
-    }
+    },
+    methods: {
+    // updateSelectedAlbums(album) {
+    //   // Handle the checkbox change event
+    //   this.$store.commit('SET_SELECTED_ALBUMS', this.selectedAlbumsIds);
+    // }
+  }
 }
+
 </script>
 
 <style scoped>

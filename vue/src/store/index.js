@@ -18,7 +18,8 @@ export function createStore(currentToken, currentUser) {
       },
       collections: {
         collections: []
-      }
+      },
+      selectedAlbumsIds:[]
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -54,8 +55,11 @@ export function createStore(currentToken, currentUser) {
       },
       SET_MY_COLLECTIONS(state,collections) {
         state.myCollections = collections;
+      },
+      SET_SELECTED_ALBUMS(state, albumIds) {
+        state.selectedAlbumsIds = albumIds;
       }
-    },
+    }
   });
   return store;
 }
