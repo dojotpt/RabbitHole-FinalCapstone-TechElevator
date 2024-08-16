@@ -1,17 +1,21 @@
 <template>
 
     <div class="blurred-background"></div>
-
+   
     <div class="my-library-container">
+          
+       
+        
         <div id="album-container">
+           
             <div class="card-container">
                 <div class="card">
                     <router-link :to="`/album/0/edit`">
-                        <img id="sample-album-img" src="@/images/sample_album.jpg" />
+                        <img class="card-img" src="@/images/sample_album.jpg" />
                     </router-link>
-                    <h3>Add a New Record</h3>
                     <div class="text-box">
-                        <p>Artist name</p>
+                    <h3>Add a New Record</h3>
+                    <p>Artist name</p>
                         <p>Genre</p>
                     </div>
                     <div class="button-container">
@@ -73,6 +77,11 @@ export default {
 </script>
 
 <style scoped>
+.my-library-header {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
 .my-library-container {
     display: flex;
     flex-direction: column;
@@ -86,14 +95,18 @@ export default {
     list-style-type: none;
 }
 
+
+
+
 .card-container {
-    max-height: 80vh;
+    
     overflow-y: scroll;
     scrollbar-color: #F07818 rgb(94, 65, 36);
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     list-style-type: none;
+    
 }
 
 .card {
@@ -104,7 +117,10 @@ export default {
     margin-right: 20PX;
     flex-direction: column;
     margin-bottom: 15px;
+    justify-content: space-around;
+    
 }
+
 
 h3 {
     font-family: "Caprasimo", sans-serif;
@@ -117,23 +133,25 @@ h3 {
     font-weight: 300;
 }
 
-p {
-    margin-bottom: 60px;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
-    font-size: 16px;
-    color: #FCEBB6;
-}
 
 .text-box p {
     /* display: inline-block; */
+    margin-bottom: 60px;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+    
+    color: #FCEBB6;
     padding-left: 20px;
-    height: 15px;
+    height: 5px;
+    font-size: 25px;
 }
 
 .button-container {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    margin-bottom: 10%;
+    
+    
+    
 }
 
 .artist {
@@ -174,23 +192,27 @@ button {
 
 }
 
-.text-box p {
-    padding-left: 20px;
-}
+
+
+
+
 
 .add-record-button {
     display: flex;
     justify-content: center;
+    
 }
 
 #add-record-button-img {
     display: flex;
     width: 25px;
     justify-content: center;
+    
 }
 
 #edit-button img {
     width: 25px;
+    
 }
 
 @media only screen and (min-width: 1024px) {

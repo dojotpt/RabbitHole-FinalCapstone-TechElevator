@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="add-album-container">
         <AddAlbum :album="album" />
     </div>
 </template>
@@ -41,4 +41,12 @@ export default {
     }
 }
 </script>
-<style scoped></style>
+<style scoped>
+
+.add-album-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+</style>

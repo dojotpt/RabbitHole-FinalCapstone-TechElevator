@@ -42,7 +42,7 @@ export default {
   color: #FCEBB6;
   font-size: 25px;
   scrollbar-color: #78c0A8 rgb(26, 20, 14, 0.3);
-  height: 900px;
+  height: 90%;
  
 }
 

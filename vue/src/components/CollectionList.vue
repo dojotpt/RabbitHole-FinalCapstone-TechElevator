@@ -2,16 +2,25 @@
   <div id="collection-container">
     <div class="background"></div>
     <div v-for="collection in collections" :key="collection.id" class="collection">
+      
       <router-link :to="`/albumcollection/${collection.collection_id}`">
-        <img src="@/images/recordcollectioncard.png" alt="Album Collection Card">
+        <img :src="collection.albumUrl" alt="" class="album-image">
+        <img src="@/images/recordcollectioncard.png" alt="Album Collection Card" class="record-image">
       </router-link>
+      
       <div class="text-box">
+        
         <h2>{{ collection.title }}</h2>
         <p>{{ collection.description }}</p>
+        
       </div>
       <div class="button-container"> </div>
+      
+      
     </div>
+    
   </div>
+  
 </template>
 
 <script>
@@ -38,6 +47,19 @@ export default {
 
 
 <style scoped>
+
+.album-image {
+  position: relative;
+  top: 0px;
+  left: 34%;
+  width:310px;
+  z-index: 1; /* Ensure this image is on top */
+  
+}
+
+
+
+
 #collection-container {
   display: flex;
   flex-direction: column;
@@ -84,5 +106,12 @@ img {
   width: 1100px;
   border-radius: 10px;
   border: 2px solid;
+  justify-content: center;
+  align-items: center;
 }
+a{
+  display : flex;
+margin-left: -33%;
+}
+
 </style>

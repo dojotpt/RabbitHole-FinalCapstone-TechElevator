@@ -3,7 +3,20 @@
     <div class="my-library-container">
         <div id="album-container">
             <div class="card-container">
+                   
                 
+                <!-- <div class="back-to-browse">
+                   
+                    <h3 class="back-to-browse-text">Browse Collections</h3>
+                    
+                </div> -->
+                <div id="browse-collections" class="card">
+                    
+          <a href="/collections" class="card-text">Browse Collections</a>
+        </div>
+
+
+
                 <div class="card" v-for="album in albums" :key="album.id">
                     <router-link :to="`/album/${album.albumId}`">
                         <img class="card-img" v-bind:src="album.albumImage" />
@@ -52,6 +65,82 @@ export default {
 }
 </script>
 <style scoped>
+#browse-collections{ 
+  display: flex;
+  border: 2PX solid #78C0A8;;
+  border-radius: 7PX;
+  background-image: url('src/images/browsecollectionsbutton.png');
+  background-size: cover;
+  background-position: center;
+  background-position-y: -30px;
+  justify-self: self-end;
+  margin-right: 12px;
+  color: white;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 60px;
+ }
+ .card-text {
+  font-family: "Caprasimo",sans-serif;
+  font-weight: 400; 
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 20px;
+  text-decoration: none;
+  color:  #FCEBB6;
+}
+h3 {
+    font-family: "Caprasimo", sans-serif;
+    color: #78C0A8;
+    font-size: medium;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.card {
+    background-color: rgba(94, 65, 36, 0.5);
+    border: 2px solid #78C0A8;
+    border-radius: 10px;
+    width: 250px;
+    margin: 20px;
+}
+.back-to-browse{
+display: flex;
+  
+  
+  background-image: url('src/images/browsecollectionsbutton.png');
+  background-size: cover;
+  background-position: center;
+  
+  
+  
+  
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+   border: 2px solid #78C0A8;
+   border-radius: 10px;
+   width: 250px;
+   margin: 20px;
+   
+}
+.back-to-browse-text{
+  font-family: "Caprasimo",sans-serif;
+  font-weight: 300; 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 20px;
+  
+  color:  #FCEBB6;
+
+}
+
+
 .my-library-container {
     display: flex;
     flex-direction: column;
@@ -75,21 +164,9 @@ export default {
     list-style-type: none;
 }
 
-.card {
-    background-color: rgba(94, 65, 36, 0.5);
-    border: 2px solid #78C0A8;
-    border-radius: 10px;
-    width: 250px;
-    margin: 20px;
-}
 
-h3 {
-    font-family: "Caprasimo", sans-serif;
-    color: #78C0A8;
-    font-size: medium;
-    text-align: center;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
+
+
 
 p {
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
