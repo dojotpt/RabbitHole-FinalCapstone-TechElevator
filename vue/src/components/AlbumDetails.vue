@@ -5,8 +5,8 @@
         <div class="card">
 
             <div id="text-box">
-                <p v-if="stats.stats.inCollections === 1">This record is in   {{ stats.stats.inCollections }} collection</p>
-                <p v-else>This record is in   {{ stats.stats.inCollections }} collections</p>
+                <p class="stats" v-if="stats.stats.inCollections === 1">This record is in   {{ stats.stats.inCollections }} collection</p>
+                <p class="stats" v-else>This record is in   {{ stats.stats.inCollections }} collections</p>
                 <h1>{{ album.artist }}</h1>
                 <h2> Album:</h2>
                 <h3>{{ album.title }}</h3>
@@ -67,6 +67,8 @@ export default {
 
 
 <style scoped>
+
+
 .card-container {
     max-height: 80vh;
     overflow-y: scroll;
@@ -91,8 +93,9 @@ export default {
 }
 
 #text-box {
-
+display:flex ;
     height: 800px;
+    flex-direction: column;
 }
 
 #title-box {
@@ -211,6 +214,11 @@ button img {
     width: 16px;
     margin-right: 5px;
     /* Space between icon and text */
+}
+.stats{
+    display: flex;
+    align-self: center;
+    justify-self: center;
 }
 
 

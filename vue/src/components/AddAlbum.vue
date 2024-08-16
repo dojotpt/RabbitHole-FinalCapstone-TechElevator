@@ -54,8 +54,8 @@
                         <label for="albumImage">Url for Album Image</label>
                         <input id="albumImage" type="text" v-model="album.albumImage" />
                         <div class="actions">
-                        <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
                         <button type="submit">Save Album</button>
+                        <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
                     </div>
                     </div>
                    
@@ -129,6 +129,7 @@ export default {
 
 
 <style scoped>
+
 .card-img{
     width: 35%;
     height: auto;
@@ -141,12 +142,11 @@ export default {
 
 .card-container {
     max-height: 80vh;
-    overflow-y: scroll;
-    scrollbar-color: #F07818 rgb(94, 65, 36);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+   
 }
 
 .card {
