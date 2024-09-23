@@ -13,9 +13,9 @@
         <div class="collection-card">
         </div>
 
-        <div id="about-us" class="card">
+        <!-- <div id="about-us" class="card">
           <a href="additionalinfo" class="card-text">Additional Info</a>
-        </div>
+        </div> -->
 
        
 
@@ -52,9 +52,9 @@
 }
 .home-container {
   display: grid;
-  grid-template-columns: 1.3fr 2fr;
+  /* grid-template-columns: 1.3fr 2fr;
   grid-template-areas: 
-  "collections genre1";    
+  "collections genre1";     */
     width: 100%;
     height: 50vh;
     align-items:center;
@@ -86,7 +86,7 @@
   height: 500px;
   border: 2PX #FCEBB6 solid;
   border-radius: 7PX;
-  background-image: url('src/images/browsecollectionsbutton.png');
+  background-image: url('@/images/browsecollectionsbutton.png');
   background-size: cover;
   background-position: center;
   background-position-y: -30px;
